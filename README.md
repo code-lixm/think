@@ -9,7 +9,7 @@ Think 是一款开源知识管理工具。通过独立的知识库空间，结�
 - `nest.js`：服务端框架
 - `tiptap`：编辑器及文档协作
 
-可访问[云策文档帮助中心](https://think.codingit.cn/share/wiki/JtXHW2BjrQ6G)，查看更多功能文档。
+可访问[云策文档帮助中心](https://think.codingit.cn/share/wiki/WoiR8N5uj4i7)，查看更多功能文档。
 
 ## 链接
 
@@ -19,7 +19,8 @@ Think 是一款开源知识管理工具。通过独立的知识库空间，结�
 
 欢迎进群交流。
 
-<img width="300" alt="image" src="https://user-images.githubusercontent.com/26452939/179165456-932d8cca-964f-4814-b365-b8948501c201.PNG">
+<img width="300" alt="image" src="https://user-images.githubusercontent.com/26452939/180590944-1fb9dcbb-69df-4d2d-80d7-57ffbc1f10a5.PNG">
+
 
 ## 预览
 
