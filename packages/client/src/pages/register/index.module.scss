@@ -1,34 +1,25 @@
-.wrap {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  background-color: var(--semi-color-bg-0);
-
-  .content {
-    position: relative;
-    z-index: 10;
-    display: flex;
-    height: calc(100% - 52px);
-    padding: 10vh 24px;
-    flex: 1;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+.register {
+  :global {
+    .form-tips {
+      font-size: 36px;
+      letter-spacing: 2px;
+    }
 
     .form {
-      width: 100%;
-      max-width: 400px;
-      padding: 32px 24px;
-      margin: 0 auto;
-      border: 1px solid var(--semi-color-border);
-      border-radius: var(--border-radius);
-      box-shadow: var(--box-shadow);
+      .semi-input-wrapper {
+        width: 100%;
+        height: 56px;
+        overflow: hidden;
+        border-radius: 12px;
+      }
+
+      input {
+        height: 100%;
+      }
 
       footer {
-        padding-top: 16px;
-        border-top: 1px solid var(--semi-color-border);
-        margin-top: 12px;
+        display: block;
+        margin-top: 8px;
         text-align: center;
       }
     }

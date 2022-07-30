@@ -12,7 +12,7 @@ const nextConfig = semi({
     legacyBrowsers: false,
     browsersListForSwc: true,
   },
-  assetPrefix: config.assetPrefix,
+  assetPrefix: config.client.assetPrefix,
   env: {
     SERVER_API_URL: config.client.apiUrl,
     COLLABORATION_API_URL: config.client.collaborationUrl,

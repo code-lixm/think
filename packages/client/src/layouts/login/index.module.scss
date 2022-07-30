@@ -1,0 +1,45 @@
+.wrap {
+  position: relative;
+  flex-direction: column;
+  height: 100%;
+  background-color: rgb(var(--semi-grey-0) 1);
+
+  :global {
+    .logo {
+      position: fixed;
+      top: 32px;
+      left: 32px;
+      display: flex;
+    }
+
+    .content-container {
+      position: relative;
+      z-index: 10;
+      display: flex;
+      flex: 1;
+      justify-content: center;
+      align-items: center;
+      width: 1200px;
+      height: 100%;
+      margin: 0 auto;
+
+      .slogan {
+        flex: 6;
+      }
+
+      .form-container {
+        position: relative;
+        width: fit-content;
+        padding: 80px;
+        overflow: hidden;
+        background: #fff;
+        border-radius: 24px;
+        flex: 4;
+        box-shadow:
+          rgb(23 25 29 / 20%) 0 16px 16px -16px,
+          rgb(23 25 29 / 3%) 0 14px 20px 0,
+          rgb(23 25 29 / 4%) 0 0 0 1px;
+      }
+    }
+  }
+}

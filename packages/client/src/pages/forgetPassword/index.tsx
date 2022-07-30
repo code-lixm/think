@@ -1,9 +1,7 @@
-import { Layout, Modal, Space, Typography } from '@douyinfe/semi-ui';
-import { Author } from 'components/author';
-import { LogoImage, LogoText } from 'components/logo';
-import { Seo } from 'components/seo';
+import { Layout, Modal, Typography } from '@douyinfe/semi-ui';
 import { ResetPassword } from 'components/user/reset-password';
 import { useRouterQuery } from 'hooks/use-router-query';
+import { LoginLayout } from 'layouts/login';
 import Link from 'next/link';
 import Router from 'next/router';
 import React, { useCallback, useState } from 'react';
@@ -16,7 +14,7 @@ const { Title, Text } = Typography;
 const Page = () => {
   const query = useRouterQuery();
 
-  const onResetSucccess = useCallback(() => {
+  const onResetSuccess = useCallback(() => {
     Modal.confirm({
       title: <Title heading={5}>密码修改成功</Title>,
       content: <Text>是否跳转至登录?</Text>,
@@ -29,38 +27,37 @@ const Page = () => {
   }, [query]);
 
   return (
-    <Layout className={styles.wrap}>
-      <Seo title="重置密码" />
-      <Content className={styles.content}>
-        <Title heading={4} style={{ marginBottom: 16, textAlign: 'center' }}>
-          <Space>
-            <LogoImage></LogoImage>
-            <LogoText></LogoText>
-          </Space>
-        </Title>
-        <div className={styles.form}>
-          <Title type="tertiary" heading={5} style={{ marginBottom: 16, textAlign: 'center' }}>
-            重置密码
-          </Title>
-          <ResetPassword onSuccess={onResetSucccess} />
-          <footer>
-            <Link
-              href={{
-                pathname: '/login',
-                query,
-              }}
-            >
-              <Text link style={{ textAlign: 'center' }}>
-                去登录
-              </Text>
-            </Link>
-          </footer>
+    <LoginLayout title="重置密码">
+      <div className={styles.reset}>
+        <Title className="form-tips">修改您的云策账密</Title>
+        <div style={{ marginBottom: '50px', marginTop: '8px' }}>
+          <Text type="secondary">没有账户?</Text>
+          <Link
+            href={{
+              pathname: '/register',
+              query,
+            }}
+          >
+            <Text link style={{ marginLeft: '8px' }}>
+              立即注册
+            </Text>
+          </Link>
         </div>
-      </Content>
-      <Footer>
-        <Author></Author>
-      </Footer>
-    </Layout>
+        <ResetPassword onSuccess={onResetSuccess} />
+        <footer style={{ textAlign: 'right' }}>
+          <Link
+            href={{
+              pathname: '/login',
+              query,
+            }}
+          >
+            <Text type="tertiary" link>
+              去登陆
+            </Text>
+          </Link>
+        </footer>
+      </div>
+    </LoginLayout>
   );
 };
 

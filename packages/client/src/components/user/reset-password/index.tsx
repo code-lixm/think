@@ -1,8 +1,10 @@
-import { Button, Col, Form, Row, Toast, Typography } from '@douyinfe/semi-ui';
+import { Button, Col, Form, Row, Toast } from '@douyinfe/semi-ui';
 import { useResetPassword, useVerifyCode } from 'data/user';
 import { useInterval } from 'hooks/use-interval';
 import { useToggle } from 'hooks/use-toggle';
 import React, { useCallback, useState } from 'react';
+
+import styles from './index.module.scss';
 
 export const ResetPassword = ({ onSuccess }) => {
   const [email, setEmail] = useState('');
@@ -50,7 +52,7 @@ export const ResetPassword = ({ onSuccess }) => {
   }, [email, toggleHasSendVerifyCode, sendVerifyCode, start, stop]);
 
   return (
-    <Form initValues={{ name: '', password: '' }} onChange={onFormChange} onSubmit={onFinish}>
+    <Form className={styles.form} initValues={{ name: '', password: '' }} onChange={onFormChange} onSubmit={onFinish}>
       <Form.Input
         noLabel
         field="email"
@@ -78,7 +80,13 @@ export const ResetPassword = ({ onSuccess }) => {
           />
         </Col>
         <Col span={8}>
-          <Button disabled={!email || countDown > 0} loading={sendVerifyCodeLoading} onClick={getVerifyCode} block>
+          <Button
+            disabled={!email || countDown > 0}
+            loading={sendVerifyCodeLoading}
+            onClick={getVerifyCode}
+            block
+            style={{ height: '56px', borderRadius: '12px' }}
+          >
             {hasSendVerifyCode ? countDown : '获取验证码'}
           </Button>
         </Col>
@@ -104,7 +112,14 @@ export const ResetPassword = ({ onSuccess }) => {
         rules={[{ required: true, message: '请再次输入密码' }]}
       />
 
-      <Button htmlType="submit" type="primary" theme="solid" block loading={loading} style={{ margin: '16px 0' }}>
+      <Button
+        htmlType="submit"
+        type="primary"
+        theme="solid"
+        block
+        loading={loading}
+        style={{ height: '56px', borderRadius: '12px', fontSize: '18px', marginTop: '12px', letterSpacing: '10px' }}
+      >
         重置密码
       </Button>
     </Form>
