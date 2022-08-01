@@ -45,7 +45,7 @@ importers:
       '@douyinfe/semi-next': ^2.16.0
       '@douyinfe/semi-ui': ^2.16.0
       '@hocuspocus/provider': ^1.0.0-alpha.29
-      '@semi-bot/semi-theme-universedesign': ^1.0.12
+      '@semi-bot/semi-theme-universe-think': ^1.0.0
       '@think/config': workspace:^1.0.0
       '@think/constants': workspace:^1.0.0
       '@think/domains': workspace:^1.0.0
@@ -156,7 +156,7 @@ importers:
       '@douyinfe/semi-next': 2.16.0
       '@douyinfe/semi-ui': 2.16.0_sfoxds7t5ydpegc3knd667wn6m
       '@hocuspocus/provider': 1.0.0-alpha.29
-      '@semi-bot/semi-theme-universedesign': 1.0.12
+      '@semi-bot/semi-theme-universe-think': 1.0.0
       '@think/config': link:../config
       '@think/constants': link:../constants
       '@think/domains': link:../domains
@@ -2734,8 +2734,8 @@ packages:
       rollup: 2.74.1
     dev: false
 
-  /@semi-bot/semi-theme-universedesign/1.0.12:
-    resolution: {integrity: sha512-EeqpOnoWPSZ22px//b3BLkA5TnALXeK81MqYRYlCgYeW/dpdDnSenGDmlxMQzLhgHOyfSZUFh5faFJp8VL5xog==}
+  /@semi-bot/semi-theme-universe-think/1.0.0:
+    resolution: {integrity: sha512-J87Sx0ozZ9CVonNTwPm/Ztv1TeHyi19t8eqfvY8V677sGn7zc3E99TQB+yaxZdEQmmmGA+7NIihSGgCG6QoiuA==}
     dev: false
 
   /@sinonjs/commons/1.8.3:
@@ -7866,7 +7866,7 @@ packages:
     dependencies:
       universalify: 2.0.0
     optionalDependencies:
-      graceful-fs: 4.2.10
+      graceful-fs: 4.2.9
 
   /jsonpointer/5.0.0:
     resolution: {integrity: sha512-PNYZIdMjVIvVgDSYKTT63Y+KZ6IZvGRNNWcxwD+GNnUz1MKPfv30J8ueCjdwcN0nDx2SlshgyB7Oy0epAzVRRg==}
