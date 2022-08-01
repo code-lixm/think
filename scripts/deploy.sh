@@ -1,7 +1,7 @@
 #! /bin/bash
 
 cd /apps/think
-git checkout main
+git checkout dev
 git pull
 
 pnpm install
