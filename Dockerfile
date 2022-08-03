@@ -1,6 +1,7 @@
 FROM node:18-alpine as builder
 COPY . /app/
 WORKDIR /app
+RUN rm -f ./runtime
 RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositories
 RUN npm config set registry https://registry.npmmirror.com
 RUN npm i -g pm2 @nestjs/cli pnpm
