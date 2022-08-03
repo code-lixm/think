@@ -2,5 +2,5 @@
 runtime
 .git
 
-**/.next/**
+# **/.next/**
 **/node_modules/**
