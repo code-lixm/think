@@ -16,7 +16,7 @@ tsconfig.tsbuildinfo
 *debug.log
 *.conf
 
-**/prod.yaml
+# **/prod.yaml
 
 scripts/update.sh
 
