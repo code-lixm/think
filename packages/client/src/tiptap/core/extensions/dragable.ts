@@ -1,154 +1,169 @@
 import { Extension } from '@tiptap/core';
-import { Plugin } from 'prosemirror-state';
+import { Plugin, PluginKey, Selection } from 'prosemirror-state';
 import { NodeSelection } from 'prosemirror-state';
-import { __serializeForClipboard } from 'prosemirror-view';
+import { __serializeForClipboard, EditorView } from 'prosemirror-view';
+import { ActiveNode, removePossibleTable, selectRootNodeByDom } from 'tiptap/prose-utils';
 
-function createRect(rect) {
-  if (rect == null) {
-    return null;
-  }
-  const newRect = {
-    left: rect.left + document.body.scrollLeft,
-    top: rect.top + document.body.scrollTop,
-    width: rect.width,
-    height: rect.height,
-    bottom: 0,
-    right: 0,
-  };
-  newRect.bottom = newRect.top + newRect.height;
-  newRect.right = newRect.left + newRect.width;
-  return newRect;
-}
-
-function absoluteRect(element) {
-  return createRect(element.getBoundingClientRect());
-}
+export const DragablePluginKey = new PluginKey('dragable');
 
 export const Dragable = Extension.create({
   name: 'dragable',
 
   addProseMirrorPlugins() {
-    let scrollContainer;
-    let dropElement;
-    let currentNode;
-    let editorView;
-    const WIDTH = 24;
+    let editorView: EditorView;
+    let dragHandleDOM: HTMLElement;
+    let activeNode: ActiveNode;
+    let activeSelection: Selection;
+    let dragging = false;
 
-    function drag(e) {
-      if (!currentNode || currentNode.nodeType !== 1) return;
+    const createDragHandleDOM = () => {
+      const dom = document.createElement('div');
+      dom.draggable = true;
+      dom.setAttribute('data-drag-handle', 'true');
+      return dom;
+    };
 
-      let pos = null;
-      const desc = editorView.docView.nearestDesc(currentNode, true);
+    const showDragHandleDOM = () => {
+      dragHandleDOM.classList.add('show');
+      dragHandleDOM.classList.remove('hide');
+    };
 
-      if (!(!desc || desc === editorView.docView)) {
-        pos = desc.posBefore;
+    const hideDragHandleDOM = () => {
+      dragHandleDOM.classList.remove('show');
+      dragHandleDOM.classList.add('hide');
+    };
+
+    const renderDragHandleDOM = (view: EditorView, el: HTMLElement) => {
+      const root = view.dom.parentElement;
+
+      if (!root) return;
+
+      const targetNodeRect = (<HTMLElement>el).getBoundingClientRect();
+      const rootRect = root.getBoundingClientRect();
+      const handleRect = dragHandleDOM.getBoundingClientRect();
+
+      const left = targetNodeRect.left - rootRect.left - handleRect.width - handleRect.width / 2;
+      const top = targetNodeRect.top - rootRect.top + handleRect.height / 2 + root.scrollTop;
+
+      dragHandleDOM.style.left = `${left}px`;
+      dragHandleDOM.style.top = `${top}px`;
+
+      showDragHandleDOM();
+    };
+
+    const handleMouseDown = () => {
+      if (!activeNode) return null;
+
+      if (NodeSelection.isSelectable(activeNode.node)) {
+        const nodeSelection = NodeSelection.create(editorView.state.doc, activeNode.$pos.pos - activeNode.offset);
+        editorView.dispatch(editorView.state.tr.setSelection(nodeSelection));
+        editorView.focus();
+        activeSelection = nodeSelection;
+        return nodeSelection;
       }
 
-      if (!pos) return;
+      return null;
+    };
 
-      editorView.dispatch(editorView.state.tr.setSelection(NodeSelection.create(editorView.state.doc, pos)));
-      const slice = editorView.state.selection.content();
-      const { dom, text } = __serializeForClipboard(editorView, slice);
-      e.dataTransfer.clearData();
-      e.dataTransfer.setData('text/html', dom.innerHTML);
-      e.dataTransfer.setData('text/plain', text);
-      editorView.dragging = { slice, move: true };
-    }
+    const handleMouseUp = () => {
+      if (!dragging) return;
 
-    function onScroll() {
-      if (!dropElement) return;
-      dropElement.style.opacity = 0;
-    }
+      dragging = false;
+      activeSelection = null;
+    };
+
+    const handleDragStart = (event) => {
+      dragging = true;
+      if (event.dataTransfer && activeSelection) {
+        const brokenClipboardAPI = false;
+        const slice = activeSelection.content();
+        event.dataTransfer.effectAllowed = 'copyMove';
+        const { dom, text } = __serializeForClipboard(editorView, slice);
+        event.dataTransfer.clearData();
+        event.dataTransfer.setData(brokenClipboardAPI ? 'Text' : 'text/html', dom.innerHTML);
+        if (!brokenClipboardAPI) event.dataTransfer.setData('text/plain', text);
+        editorView.dragging = {
+          slice,
+          move: true,
+        };
+      }
+    };
 
     return [
       new Plugin({
-        view(view) {
+        key: DragablePluginKey,
+        view: (view) => {
           if (view.editable) {
-            editorView = view;
-            dropElement = document.createElement('div');
-            dropElement.setAttribute('draggable', 'true');
-            dropElement.className = 'drag-handler';
-            dropElement.addEventListener('dragstart', drag);
-            view.dom.parentElement.appendChild(dropElement);
-
-            scrollContainer = view.dom.parentElement.parentElement?.parentElement?.parentElement;
-
-            if (scrollContainer) {
-              scrollContainer.addEventListener('scroll', onScroll);
-            }
+            dragHandleDOM = createDragHandleDOM();
+            dragHandleDOM.addEventListener('mousedown', handleMouseDown);
+            dragHandleDOM.addEventListener('mouseup', handleMouseUp);
+            dragHandleDOM.addEventListener('dragstart', handleDragStart);
+            view.dom.parentNode?.appendChild(dragHandleDOM);
           }
 
           return {
             update(view) {
               editorView = view;
             },
-            destroy() {
-              if (dropElement && dropElement.parentNode) {
-                dropElement.removeEventListener('dragstart', drag);
-                dropElement.parentNode.removeChild(dropElement);
-              }
+            destroy: () => {
+              if (!dragHandleDOM) return;
 
-              if (scrollContainer) {
-                scrollContainer.removeEventListener('scroll', onScroll);
-              }
+              dragHandleDOM.remove();
             },
           };
         },
         props: {
           handleDOMEvents: {
-            drop() {
-              if (!dropElement) return;
+            drop: (view, event: DragEvent) => {
+              if (!view.editable || !dragHandleDOM) return false;
 
-              dropElement.style.opacity = 0;
-              setTimeout(() => {
-                const node = document.querySelector('.ProseMirror-hideselection');
-                if (node) {
-                  node.classList.remove('ProseMirror-hideselection');
+              if (dragging) {
+                const tr = removePossibleTable(view, event);
+                dragging = false;
+
+                if (tr) {
+                  view.dispatch(tr);
+                  event.preventDefault();
+                  return true;
                 }
-              }, 50);
+              }
+
+              return false;
             },
-            mousedown(view, event) {
-              if (!dropElement) return;
+            mousemove: (view, event) => {
+              if (!view.editable || !dragHandleDOM) return false;
 
-              const coords = { left: event.clientX, top: event.clientY };
-              const pos = view.posAtCoords(coords);
+              const dom = event.target;
 
-              if (!pos) {
-                dropElement.style.opacity = 0;
-                return;
+              if (!(dom instanceof Element)) {
+                if (dragging) return false;
+                hideDragHandleDOM();
+                return false;
               }
 
-              let node = view.domAtPos(pos.pos);
+              const result = selectRootNodeByDom(dom, view);
+              activeNode = result;
 
-              node = node.node;
-
-              while (node && node.parentNode) {
-                if (node.parentNode?.classList?.contains?.('ProseMirror')) {
-                  break;
-                }
-                node = node.parentNode;
+              if (!result) {
+                if (dragging) return false;
+                hideDragHandleDOM();
+                return false;
               }
 
-              if (!node || !node.getBoundingClientRect) {
-                dropElement.style.opacity = 0;
-                return;
+              if (result.node.type.name === 'title') {
+                if (dragging) return false;
+                hideDragHandleDOM();
+                return false;
               }
 
-              if (node?.classList?.contains('node-title') || node?.classList?.contains('node-table')) {
-                dropElement.style.opacity = 0;
-                return;
-              }
-
-              currentNode = node;
-
-              const rect = absoluteRect(node);
-              const win = node.ownerDocument.defaultView;
-              rect.top += win.pageYOffset;
-              rect.left += win.pageXOffset;
-              rect.width = WIDTH + 'px';
-              dropElement.style.left = rect.left - WIDTH + 'px';
-              dropElement.style.top = rect.top + 6 + 'px';
-              dropElement.style.opacity = 1;
+              renderDragHandleDOM(view, result.el);
+              return false;
+            },
+            keydown: () => {
+              if (!editorView.editable || !dragHandleDOM) return false;
+              dragHandleDOM.classList.remove('show');
+              hideDragHandleDOM();
+              return false;
             },
           },
         },

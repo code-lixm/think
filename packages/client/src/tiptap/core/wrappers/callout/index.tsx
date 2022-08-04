@@ -1,11 +1,9 @@
-import { NodeViewContent } from '@tiptap/react';
+import { NodeViewContent, NodeViewWrapper } from '@tiptap/react';
 import cls from 'classnames';
 import { EmojiPicker } from 'components/emoji-picker';
 import { convertColorToRGBA } from 'helpers/color';
 import { Theme, ThemeEnum } from 'hooks/use-theme';
 import { useCallback, useMemo } from 'react';
-import { Callout } from 'tiptap/core/extensions/callout';
-import { DragableWrapper } from 'tiptap/core/wrappers/dragable';
 
 import styles from './index.module.scss';
 
@@ -27,12 +25,7 @@ export const CalloutWrapper = ({ editor, node, updateAttributes }) => {
   );
 
   return (
-    <DragableWrapper
-      editor={editor}
-      extensionName={Callout.name}
-      id="js-callout-container"
-      className={cls(styles.wrap)}
-    >
+    <NodeViewWrapper id="js-callout-container" className={cls(styles.wrap)}>
       <div
         className={cls(styles.innerWrap, 'render-wrapper')}
         style={{
@@ -53,6 +46,6 @@ export const CalloutWrapper = ({ editor, node, updateAttributes }) => {
           }}
         />
       </div>
-    </DragableWrapper>
+    </NodeViewWrapper>
   );
 };

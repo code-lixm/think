@@ -99,7 +99,6 @@ export const CollaborationKit = [
   CodeBlock,
   Color,
   ColorHighlighter,
-  Dragable,
   Dropcursor,
   EventEmitter,
   Focus,
@@ -158,4 +157,5 @@ export const CollaborationKit = [
   }),
   Title,
   DocumentWithTitle,
+  Dragable,
 ];

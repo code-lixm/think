@@ -1,10 +1,9 @@
+import { NodeViewWrapper } from '@tiptap/react';
 import cls from 'classnames';
 import { IconDocument } from 'components/icons';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useMemo } from 'react';
-import { DocumentReference } from 'tiptap/core/extensions/document-reference';
-import { DragableWrapper } from 'tiptap/core/wrappers/dragable';
 
 import styles from './index.module.scss';
 
@@ -51,13 +50,8 @@ export const DocumentReferenceWrapper = ({ editor, node, updateAttributes }) => 
   }, [organizationId, wikiId, documentId, isEditable, isShare, title]);
 
   return (
-    <DragableWrapper
-      editor={editor}
-      extensionName={DocumentReference.name}
-      as="div"
-      className={cls(styles.wrap, isEditable && 'render-wrapper')}
-    >
+    <NodeViewWrapper as="div" className={cls(styles.wrap, isEditable && 'render-wrapper')}>
       {content}
-    </DragableWrapper>
+    </NodeViewWrapper>
   );
 };

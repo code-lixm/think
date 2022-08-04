@@ -1,4 +1,5 @@
 import { Button, Space, Spin, Typography } from '@douyinfe/semi-ui';
+import { NodeViewWrapper } from '@tiptap/react';
 import cls from 'classnames';
 import { IconFlow, IconMindCenter, IconZoomIn, IconZoomOut } from 'components/icons';
 import { Resizeable } from 'components/resizeable';
@@ -7,7 +8,6 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import VisibilitySensor from 'react-visibility-sensor';
 import { load, renderXml } from 'thirtypart/diagram';
 import { Flow } from 'tiptap/core/extensions/flow';
-import { DragableWrapper } from 'tiptap/core/wrappers/dragable';
 import { getEditorContainerDOMSize } from 'tiptap/prose-utils';
 
 import styles from './index.module.scss';
@@ -95,11 +95,7 @@ export const FlowWrapper = ({ editor, node, updateAttributes }) => {
   }, [toggleLoading, data]);
 
   return (
-    <DragableWrapper
-      editor={editor}
-      className={cls(styles.wrap, isActive && styles.isActive)}
-      extensionName={Flow.name}
-    >
+    <NodeViewWrapper className={cls(styles.wrap, isActive && styles.isActive)}>
       <VisibilitySensor onChange={onViewportChange}>
         <Resizeable isEditable={isEditable} width={width} height={height} maxWidth={maxWidth} onChangeEnd={onResize}>
           <div
@@ -138,6 +134,6 @@ export const FlowWrapper = ({ editor, node, updateAttributes }) => {
           </div>
         </Resizeable>
       </VisibilitySensor>
-    </DragableWrapper>
+    </NodeViewWrapper>
   );
 };

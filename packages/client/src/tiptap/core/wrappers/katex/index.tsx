@@ -1,9 +1,8 @@
+import { NodeViewWrapper } from '@tiptap/react';
 import { convertColorToRGBA } from 'helpers/color';
 import { Theme, ThemeEnum } from 'hooks/use-theme';
 import katex from 'katex';
 import { useMemo } from 'react';
-import { Katex } from 'tiptap/core/extensions/katex';
-import { DragableWrapper } from 'tiptap/core/wrappers/dragable';
 
 import styles from './index.module.scss';
 
@@ -35,15 +34,13 @@ export const KatexWrapper = ({ node, editor }) => {
   );
 
   return (
-    <DragableWrapper
-      editor={editor}
-      extensionName={Katex.name}
+    <NodeViewWrapper
       className={'render-wrapper'}
       style={{
         backgroundColor,
       }}
     >
       <div className={styles.wrap}>{content}</div>
-    </DragableWrapper>
+    </NodeViewWrapper>
   );
 };

@@ -1,11 +1,9 @@
 import { IconCopy } from '@douyinfe/semi-icons';
 import { Button, Select, Tooltip } from '@douyinfe/semi-ui';
-import { NodeViewContent } from '@tiptap/react';
+import { NodeViewContent, NodeViewWrapper } from '@tiptap/react';
 import cls from 'classnames';
 import { copy } from 'helpers/copy';
 import React, { useRef } from 'react';
-import { CodeBlock } from 'tiptap/core/extensions/code-block';
-import { DragableWrapper } from 'tiptap/core/wrappers/dragable';
 
 import styles from './index.module.scss';
 
@@ -16,11 +14,7 @@ export const CodeBlockWrapper = ({ editor, node: { attrs }, updateAttributes, ex
   const $container = useRef<HTMLPreElement>();
 
   return (
-    <DragableWrapper
-      editor={editor}
-      extensionName={CodeBlock.name}
-      className={cls(styles.wrap, !isPrint && styles.maxHeight, 'render-wrapper')}
-    >
+    <NodeViewWrapper className={cls(styles.wrap, !isPrint && styles.maxHeight, 'render-wrapper')}>
       <div className={styles.handleWrap}>
         <Select
           size="small"
@@ -50,6 +44,6 @@ export const CodeBlockWrapper = ({ editor, node: { attrs }, updateAttributes, ex
       <pre ref={$container}>
         <NodeViewContent as="code" />
       </pre>
-    </DragableWrapper>
+    </NodeViewWrapper>
   );
 };

@@ -1,11 +1,10 @@
 import { Spin, Typography } from '@douyinfe/semi-ui';
+import { NodeViewWrapper } from '@tiptap/react';
 import { Resizeable } from 'components/resizeable';
 import { useToggle } from 'hooks/use-toggle';
 import { useCallback, useEffect, useRef } from 'react';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { uploadFile } from 'services/file';
-import { Image } from 'tiptap/core/extensions/image';
-import { DragableWrapper } from 'tiptap/core/wrappers/dragable';
 import {
   extractFileExtension,
   extractFilename,
@@ -70,7 +69,7 @@ export const ImageWrapper = ({ editor, node, updateAttributes }) => {
   }, [src, hasTrigger, selectFile, updateAttributes]);
 
   return (
-    <DragableWrapper editor={editor} extensionName={Image.name} style={{ textAlign, fontSize: 0, maxWidth: '100%' }}>
+    <NodeViewWrapper style={{ textAlign, fontSize: 0, maxWidth: '100%' }}>
       <Resizeable
         className={'render-wrapper'}
         width={width || maxWidth}
@@ -94,6 +93,6 @@ export const ImageWrapper = ({ editor, node, updateAttributes }) => {
           <LazyLoadImage src={src} alt={alt} width={width} height={height} />
         )}
       </Resizeable>
-    </DragableWrapper>
+    </NodeViewWrapper>
   );
 };
