@@ -22,7 +22,7 @@ const menus = [
   },
   {
     itemKey: '/find',
-    text: '发现',
+    text: '广场',
     onClick: () => {
       Router.push({
         pathname: `/find`,

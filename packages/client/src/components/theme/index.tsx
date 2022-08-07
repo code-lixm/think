@@ -27,16 +27,13 @@ export const Theme = () => {
       render={
         <Dropdown.Menu>
           <Dropdown.Item active={userPrefer === ThemeEnum.light} onClick={setLight}>
-            <IconSun />
-            亮色
+            浅色
           </Dropdown.Item>
           <Dropdown.Item active={userPrefer === ThemeEnum.dark} onClick={setDark}>
-            <IconMoon />
-            夜色
+            深色
           </Dropdown.Item>
           <Dropdown.Item active={userPrefer === ThemeEnum.system} onClick={setSystem}>
-            <IconDesktop />
-            系统
+            跟随系统
           </Dropdown.Item>
         </Dropdown.Menu>
       }
