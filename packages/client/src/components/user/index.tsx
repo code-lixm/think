@@ -28,7 +28,7 @@ export const User: React.FC = () => {
 
   if (error || !user) {
     return (
-      <Button theme="solid" type="primary" size="small" onClick={toLogin}>
+      <Button type="primary" onClick={toLogin}>
         登录
       </Button>
     );
@@ -62,9 +62,9 @@ export const User: React.FC = () => {
         <Button
           icon={
             user.avatar ? (
-              <Avatar size="extra-extra-small" src={user.avatar}></Avatar>
+              <Avatar size="extra-small" src={user.avatar}></Avatar>
             ) : (
-              <Avatar size="extra-extra-small" color="orange">
+              <Avatar size="extra-small" color="orange">
                 {user && user.name && user.name[0]}
               </Avatar>
             )
@@ -76,6 +76,7 @@ export const User: React.FC = () => {
       <UserSetting visible={visible} toggleVisible={toggleVisible} />
       <Modal title="重置密码" visible={resetVisible} onCancel={toggleResetVisible} footer={null}>
         <ResetPassword onSuccess={onResetSuccess} />
+        <div style={{ marginBottom: '20px' }}></div>
       </Modal>
     </>
   );

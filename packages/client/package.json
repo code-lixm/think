@@ -8,11 +8,11 @@
     "pm2": "pm2 start npm --name @think/client -- start"
   },
   "dependencies": {
-    "@douyinfe/semi-icons": "^2.16.0",
-    "@douyinfe/semi-next": "^2.16.0",
-    "@douyinfe/semi-ui": "^2.16.0",
+    "@douyinfe/semi-icons": "^2.16.1",
+    "@douyinfe/semi-next": "^2.16.1",
+    "@douyinfe/semi-ui": "^2.16.1",
     "@hocuspocus/provider": "^1.0.0-alpha.29",
-    "@semi-bot/semi-theme-universe-think": "^1.0.0",
+    "@semi-bot/semi-theme-universe-think": "^1.1.0",
     "@think/config": "workspace:^1.0.0",
     "@think/constants": "workspace:^1.0.0",
     "@think/domains": "workspace:^1.0.0",

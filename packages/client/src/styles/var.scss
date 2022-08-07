@@ -3,3 +3,7 @@ body {
   --box-shadow: rgb(0 0 0 / 10%) 0 0 10px;
   --scrollbar-bg: #dadada;
 }
+
+.semi-dropdown-item:not(.semi-dropdown-item-active):hover {
+  border-radius: var(--semi-border-radius-extra-small);
+}
