@@ -6,7 +6,6 @@ import { DocumentCollaboration } from 'components/document/collaboration';
 import { DocumentStar } from 'components/document/star';
 import { DocumentVersion } from 'components/document/version';
 import { Seo } from 'components/seo';
-import { Theme } from 'components/theme';
 import { User } from 'components/user';
 import { useDocumentDetail } from 'data/document';
 import { useUser } from 'data/user';
@@ -114,7 +113,6 @@ export const DocumentEditor: React.FC<IProps> = ({ documentId }) => {
                   <Divider />
                 </>
               )}
-              <Theme />
               <User />
             </>
           }

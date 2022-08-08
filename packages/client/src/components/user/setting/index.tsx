@@ -78,6 +78,7 @@ export const UserSetting: React.FC<IProps> = ({ visible, toggleVisible }) => {
 
   return (
     <Modal
+      centered
       title="更新用户信息"
       visible={visible}
       onOk={handleOk}

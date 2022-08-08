@@ -1,5 +1,6 @@
 import { IconSpin } from '@douyinfe/semi-icons';
 import { Avatar, Button, Dropdown, Modal, Toast, Typography } from '@douyinfe/semi-ui';
+import { Theme } from 'components/theme';
 import { useUser } from 'data/user';
 import { useToggle } from 'hooks/use-toggle';
 import Router from 'next/router';
@@ -37,10 +38,11 @@ export const User: React.FC = () => {
   return (
     <>
       <Dropdown
-        trigger="click"
         position="bottomRight"
         render={
-          <Dropdown.Menu style={{ width: 160 }}>
+          <Dropdown.Menu>
+            <Theme />
+            <Dropdown.Divider />
             <Dropdown.Item onClick={() => toggleVisible(true)}>
               <Text>账户设置</Text>
             </Dropdown.Item>
@@ -59,24 +61,25 @@ export const User: React.FC = () => {
           </Dropdown.Menu>
         }
       >
-        <Button
+        {/* <Button
           icon={
-            user.avatar ? (
-              <Avatar size="extra-small" src={user.avatar}></Avatar>
-            ) : (
-              <Avatar size="extra-small" color="orange">
-                {user && user.name && user.name[0]}
-              </Avatar>
-            )
+            
           }
           theme="borderless"
           type="tertiary"
-        />
+        /> */}
+        {user.avatar ? (
+          <Avatar size="small" src={user.avatar}></Avatar>
+        ) : (
+          <Avatar size="small" color="blue">
+            {user && user.name && user.name.slice(1, 3)}
+          </Avatar>
+        )}
       </Dropdown>
       <UserSetting visible={visible} toggleVisible={toggleVisible} />
-      <Modal title="重置密码" visible={resetVisible} onCancel={toggleResetVisible} footer={null}>
-        <ResetPassword onSuccess={onResetSuccess} />
-        <div style={{ marginBottom: '20px' }}></div>
+      <Modal title="重置密码" visible={resetVisible} onCancel={toggleResetVisible} footer={null} centered>
+        <ResetPassword onSuccess={onResetSuccess} status="normal" />
+        <div style={{ marginBottom: '24px' }}></div>
       </Modal>
     </>
   );

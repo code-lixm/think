@@ -6,7 +6,6 @@ import { Divider } from 'components/divider';
 import { DocumentStyle } from 'components/document/style';
 import { LogoImage, LogoText } from 'components/logo';
 import { Seo } from 'components/seo';
-import { Theme } from 'components/theme';
 import { User } from 'components/user';
 import { usePublicDocumentDetail } from 'data/document';
 import { useDocumentStyle } from 'hooks/use-document-style';
@@ -153,7 +152,6 @@ export const DocumentPublicReader: React.FC<IProps> = ({ documentId, hideLogo = 
               </Tooltip>
 
               <DocumentStyle />
-              <Theme />
               <User />
             </Space>
           }

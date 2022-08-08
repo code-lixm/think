@@ -32,7 +32,7 @@ export const WikiOrDocumentCreator: React.FC<IProps> = ({ onCreateDocument, chil
       >
         <span onClick={toggleDropdownVisible}>
           {children || (
-            <Button type="primary" theme="solid" icon={<IconPlus />} iconPosition="right">
+            <Button theme="solid" icon={<IconPlus />}>
               新建
             </Button>
           )}

@@ -1,7 +1,6 @@
 import { Button, Layout as SemiLayout, Nav, Space } from '@douyinfe/semi-ui';
 import { Message } from 'components/message';
 import { OrganizationPublicSwitcher } from 'components/organization/public-switcher';
-import { Theme } from 'components/theme';
 import { User } from 'components/user';
 import { useUser } from 'data/user';
 import { IsOnMobile } from 'hooks/use-on-mobile';
@@ -67,7 +66,6 @@ export const RouterHeader: React.FC = () => {
                   前往组织空间
                 </Button>
               )}
-              <Theme />
               <User />
             </Space>
           }
@@ -91,7 +89,6 @@ export const RouterHeader: React.FC = () => {
                 </Button>
               )}
               {user && <Message />}
-              <Theme />
               <User />
             </Space>
           }

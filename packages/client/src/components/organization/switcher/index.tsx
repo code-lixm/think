@@ -27,6 +27,7 @@ export const UserOrganizationsSwitcher = () => {
   return (
     <Dropdown
       trigger="click"
+      position="bottomLeft"
       render={
         <DataRender
           loading={userOrganizationsLoading}
@@ -77,9 +78,9 @@ export const UserOrganizationsSwitcher = () => {
                     <a style={{ display: 'flex', alignItems: 'center', width: '100%', padding: '8px 16px' }}>
                       <Text>
                         <Space>
-                          <Avatar size="extra-small">
+                          {/* <Avatar size="extra-small">
                             <IconApps />
-                          </Avatar>
+                          </Avatar> */}
                           前往广场
                         </Space>
                       </Text>
@@ -96,9 +97,9 @@ export const UserOrganizationsSwitcher = () => {
                     <a style={{ display: 'flex', alignItems: 'center', width: '100%', padding: '8px 16px' }}>
                       <Text>
                         <Space>
-                          <Avatar size="extra-small">
+                          {/* <Avatar size="extra-small">
                             <IconAppCenter />
-                          </Avatar>
+                          </Avatar> */}
                           新建组织
                         </Space>
                       </Text>

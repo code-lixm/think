@@ -3,7 +3,6 @@ import { Button, Dropdown, Layout as SemiLayout, Nav, Space } from '@douyinfe/se
 import { Message } from 'components/message';
 import { OrganizationSwitcher } from 'components/organization/switcher';
 import { Search } from 'components/search';
-import { Theme } from 'components/theme';
 import { User } from 'components/user';
 import { WikiOrDocumentCreator } from 'components/wiki-or-document-creator';
 import { IsOnMobile } from 'hooks/use-on-mobile';
@@ -113,7 +112,6 @@ export const AppRouterHeader: React.FC = () => {
               <WikiOrDocumentCreator />
               <Search />
               <Message />
-              <Theme />
               <User />
             </Space>
           }
@@ -134,7 +132,6 @@ export const AppRouterHeader: React.FC = () => {
               <WikiOrDocumentCreator />
               <Search />
               <Message />
-              <Theme />
               <User />
             </Space>
           }

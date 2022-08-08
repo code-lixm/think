@@ -2,16 +2,18 @@ import { Button, Col, Form, Row, Toast } from '@douyinfe/semi-ui';
 import { useResetPassword, useVerifyCode } from 'data/user';
 import { useInterval } from 'hooks/use-interval';
 import { useToggle } from 'hooks/use-toggle';
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useMemo, useState } from 'react';
 
 import styles from './index.module.scss';
 
-export const ResetPassword = ({ onSuccess }) => {
+export const ResetPassword = ({ onSuccess, status = 'large' }) => {
   const [email, setEmail] = useState('');
   const [hasSendVerifyCode, toggleHasSendVerifyCode] = useToggle(false);
   const [countDown, setCountDown] = useState(0);
   const { reset, loading } = useResetPassword();
   const { sendVerifyCode, loading: sendVerifyCodeLoading } = useVerifyCode();
+
+  const isNormal = useMemo(() => status === 'normal', [status]);
 
   const onFormChange = useCallback((formState) => {
     setEmail(formState.values.email);
@@ -52,7 +54,12 @@ export const ResetPassword = ({ onSuccess }) => {
   }, [email, toggleHasSendVerifyCode, sendVerifyCode, start, stop]);
 
   return (
-    <Form className={styles.form} initValues={{ name: '', password: '' }} onChange={onFormChange} onSubmit={onFinish}>
+    <Form
+      className={isNormal ? '' : styles.form}
+      initValues={{ name: '', password: '' }}
+      onChange={onFormChange}
+      onSubmit={onFinish}
+    >
       <Form.Input
         noLabel
         field="email"
@@ -85,7 +92,7 @@ export const ResetPassword = ({ onSuccess }) => {
             loading={sendVerifyCodeLoading}
             onClick={getVerifyCode}
             block
-            style={{ height: '56px', borderRadius: '12px' }}
+            style={isNormal ? {} : { height: '56px', borderRadius: '12px' }}
           >
             {hasSendVerifyCode ? countDown : '获取验证码'}
           </Button>
@@ -118,7 +125,11 @@ export const ResetPassword = ({ onSuccess }) => {
         theme="solid"
         block
         loading={loading}
-        style={{ height: '56px', borderRadius: '12px', fontSize: '18px', marginTop: '12px', letterSpacing: '10px' }}
+        style={
+          isNormal
+            ? {}
+            : { height: '56px', borderRadius: '12px', fontSize: '18px', marginTop: '12px', letterSpacing: '10px' }
+        }
       >
         重置密码
       </Button>

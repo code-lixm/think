@@ -1,11 +1,11 @@
-import { IconDesktop, IconMoon, IconSun } from '@douyinfe/semi-icons';
-import { Button, Dropdown } from '@douyinfe/semi-ui';
+import { Button, Dropdown, Typography } from '@douyinfe/semi-ui';
 import { Theme as ThemeState, ThemeEnum } from 'hooks/use-theme';
 import React, { useCallback } from 'react';
 
 export const Theme = () => {
-  const { userPrefer, theme, toggle } = ThemeState.useHook();
-  const Icon = theme === 'dark' ? IconMoon : IconSun;
+  const { userPrefer, toggle } = ThemeState.useHook();
+
+  const { Text } = Typography;
 
   const setLight = useCallback(() => {
     toggle(ThemeEnum.light);
@@ -21,8 +21,7 @@ export const Theme = () => {
 
   return (
     <Dropdown
-      position="bottomRight"
-      trigger="click"
+      position="rightBottom"
       showTick
       render={
         <Dropdown.Menu>
@@ -38,7 +37,9 @@ export const Theme = () => {
         </Dropdown.Menu>
       }
     >
-      <Button icon={<Icon style={{ fontSize: 20 }} />} theme="borderless"></Button>
+      <Button theme="borderless" style={{ width: '100%', fontWeight: 'normal', height: '36px', lineHeight: '36px' }}>
+        <Text>系统主题</Text>
+      </Button>
     </Dropdown>
   );
 };

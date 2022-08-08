@@ -2,7 +2,6 @@ import { IconChevronLeft } from '@douyinfe/semi-icons';
 import { Button, Nav, Popconfirm, Space, Switch, Tooltip, Typography } from '@douyinfe/semi-ui';
 import { DocumentStyle } from 'components/document/style';
 import { Seo } from 'components/seo';
-import { Theme } from 'components/theme';
 import { User } from 'components/user';
 import { useTemplate } from 'data/template';
 import { useUser } from 'data/user';
@@ -76,7 +75,6 @@ export const TemplateEditor: React.FC<IProps> = ({ templateId }) => {
                 <Popconfirm title="删除模板" content="模板删除后不可恢复，谨慎操作！" onConfirm={handleDelte}>
                   <Button type="danger">删除</Button>
                 </Popconfirm>
-                <Theme />
                 <User />
               </Space>
             }

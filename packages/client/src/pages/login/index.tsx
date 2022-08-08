@@ -8,7 +8,6 @@ import React, { useCallback } from 'react';
 
 import styles from './index.module.scss';
 
-const { Content, Footer } = Layout;
 const { Title, Text } = Typography;
 
 const Page = () => {
