@@ -1,5 +1,5 @@
 import { IconChevronLeft } from '@douyinfe/semi-icons';
-import { Button, Modal, Typography } from '@douyinfe/semi-ui';
+import { Button, Modal, Timeline, Typography } from '@douyinfe/semi-ui';
 import { EditorContent, useEditor } from '@tiptap/react';
 import cls from 'classnames';
 import { DataRender } from 'components/data-render';
@@ -78,11 +78,6 @@ export const DocumentVersion: React.FC<Partial<IProps>> = ({ documentId, onSelec
               </Title>
             </div>
             <div>
-              <Button type="primary" theme="solid" disabled={!onSelect || !selectedVersion} onClick={restore}>
-                恢复此记录
-              </Button>
-            </div>
-            <div>
               <Button
                 theme="light"
                 type="primary"
@@ -92,6 +87,9 @@ export const DocumentVersion: React.FC<Partial<IProps>> = ({ documentId, onSelec
                 onClick={refresh}
               >
                 刷新
+              </Button>
+              <Button type="primary" theme="solid" disabled={!onSelect || !selectedVersion} onClick={restore}>
+                恢复此记录
               </Button>
             </div>
           </div>
@@ -110,26 +108,46 @@ export const DocumentVersion: React.FC<Partial<IProps>> = ({ documentId, onSelec
                 </div>
               </main>
               <aside className={cls(isMobile && styles.isMobile)}>
-                {data.map(({ version, data, createUser }) => {
-                  return (
-                    <div
-                      key={version}
-                      className={cls(
-                        styles.item,
-                        isMobile && styles.isMobile,
-                        selectedVersion && selectedVersion.version === version && styles.selected
-                      )}
-                      onClick={() => select({ version, data })}
-                    >
-                      <p>
-                        <LocaleTime date={+version} />
-                      </p>
-                      <p>
-                        <Text>{createUser && createUser.name}</Text>
-                      </p>
-                    </div>
-                  );
-                })}
+                <Timeline mode="left">
+                  {data.map(({ version, data, createUser }) => {
+                    return (
+                      // <div
+                      //   key={version}
+                      //   className={cls(
+                      //     styles.item,
+                      //     isMobile && styles.isMobile,
+                      //     selectedVersion && selectedVersion.version === version && styles.selected
+                      //   )}
+                      //   onClick={() => select({ version, data })}
+                      // >
+                      //   <p>
+                      //     <LocaleTime date={+version} />
+                      //   </p>
+                      //   <p>
+                      //     <Text>{createUser && createUser.name}</Text>
+                      //   </p>
+                      // </div>
+                      <Timeline.Item
+                        className={cls(
+                          styles.item,
+                          isMobile && styles.isMobile,
+                          selectedVersion && selectedVersion.version === version && styles.selected
+                        )}
+                        onClick={() => select({ version, data })}
+                        type={selectedVersion && selectedVersion.version === version ? 'ongoing' : 'default'}
+                        key={version}
+                        time={<LocaleTime date={+version} />}
+                        extra={
+                          <Text ellipsis={{ showTooltip: true }} style={{ width: '100%' }}>
+                            作者：{createUser && createUser.name}
+                          </Text>
+                        }
+                      >
+                        <Text className={styles.version}>版本：{version}</Text>
+                      </Timeline.Item>
+                    );
+                  })}
+                </Timeline>
               </aside>
             </div>
           )}

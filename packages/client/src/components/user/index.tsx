@@ -38,11 +38,10 @@ export const User: React.FC = () => {
   return (
     <>
       <Dropdown
+        trigger="hover"
         position="bottomRight"
         render={
           <Dropdown.Menu>
-            <Theme />
-            <Dropdown.Divider />
             <Dropdown.Item onClick={() => toggleVisible(true)}>
               <Text>账户设置</Text>
             </Dropdown.Item>
@@ -55,19 +54,14 @@ export const User: React.FC = () => {
               </Dropdown.Item>
             ) : null}
             <Dropdown.Divider />
+            <Theme />
+            <Dropdown.Divider />
             <Dropdown.Item onClick={logout}>
               <Text>退出登录</Text>
             </Dropdown.Item>
           </Dropdown.Menu>
         }
       >
-        {/* <Button
-          icon={
-            
-          }
-          theme="borderless"
-          type="tertiary"
-        /> */}
         {user.avatar ? (
           <Avatar size="small" src={user.avatar}></Avatar>
         ) : (

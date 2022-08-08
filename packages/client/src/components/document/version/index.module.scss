@@ -61,28 +61,22 @@
     }
 
     .item {
-      display: flex;
-      height: 54px;
-      padding: 8px 12px;
-      margin-top: 8px;
-      white-space: nowrap;
-      cursor: pointer;
-      border-radius: var(--semi-border-radius-small);
-      align-items: center;
-      flex-direction: column;
-
       &.isMobile {
         margin: 0;
       }
 
       &:hover {
-        color: var(--semi-color-text-1);
-        background-color: var(--semi-color-fill-1);
+        cursor: pointer;
+
+        .version {
+          color: var(--semi-color-primary) !important;
+        }
       }
 
       &.selected {
-        color: var(--semi-color-primary);
-        background-color: var(--semi-color-primary-light-default);
+        .version {
+          color: var(--semi-color-primary) !important;
+        }
       }
     }
   }

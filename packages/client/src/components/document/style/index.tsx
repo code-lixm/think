@@ -29,10 +29,12 @@ export const DocumentStyle: React.FC<IProps> = ({ render }) => {
       key="style"
       trigger="click"
       zIndex={1061}
-      position={isMobile ? 'topRight' : 'bottomLeft'}
+      position={isMobile ? 'topRight' : 'leftBottom'}
       visible={visible}
+      clickToHide={false}
       onVisibleChange={toggleVisible}
       onClickOutSide={toggleVisible}
+      stopPropagation
       content={
         <div
           className={styles.wrap}
@@ -48,7 +50,13 @@ export const DocumentStyle: React.FC<IProps> = ({ render }) => {
           <div className={styles.item}>
             <Text>页面尺寸</Text>
             <div>
-              <RadioGroup type="button" value={width} onChange={throttleSetWidth} style={{ marginTop: '0.5em' }}>
+              <RadioGroup
+                type="button"
+                buttonSize="middle"
+                value={width}
+                onChange={throttleSetWidth}
+                style={{ marginTop: '0.5em' }}
+              >
                 <Radio value={'standardWidth'}>标宽模式</Radio>
                 <Radio value={'fullWidth'}>超宽模式</Radio>
               </RadioGroup>

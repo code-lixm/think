@@ -8,16 +8,12 @@
   margin-left: auto;
 }
 
-[theme-mode='light'] {
-  .wrap {
-    background-color: #fafafa;
-  }
+body[theme-mode='light'] {
+  background-color: #fafafa;
 }
 
-[theme-mode='dark'] {
-  .wrap {
-    background-color: var(--semi-color-bg-0);
-  }
+body[theme-mode='dark'] {
+  background-color: var(--semi-color-bg-0);
 }
 
 @media (max-width: 768px) {

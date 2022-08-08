@@ -143,10 +143,11 @@ export const DocumentShare: React.FC<IProps> = ({ documentId, disabled = false, 
       ) : (
         <Dropdown
           visible={visible}
-          onVisibleChange={toggleVisible}
           trigger="click"
-          position="bottomRight"
-          content={
+          position="leftBottom"
+          stopPropagation
+          onVisibleChange={toggleVisible}
+          render={
             <div
               style={{
                 width: 412,
