@@ -38,7 +38,7 @@ export const User: React.FC = () => {
   return (
     <>
       <Dropdown
-        trigger="hover"
+        trigger="click"
         position="bottomRight"
         render={
           <Dropdown.Menu>

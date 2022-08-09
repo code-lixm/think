@@ -42,6 +42,7 @@ importers:
   packages/client:
     specifiers:
       '@douyinfe/semi-icons': ^2.16.1
+      '@douyinfe/semi-illustrations': ^2.16.1
       '@douyinfe/semi-next': ^2.16.1
       '@douyinfe/semi-ui': ^2.16.1
       '@hocuspocus/provider': ^1.0.0-alpha.29
@@ -153,6 +154,7 @@ importers:
       yjs: ^13.5.24
     dependencies:
       '@douyinfe/semi-icons': 2.16.1_react@17.0.2
+      '@douyinfe/semi-illustrations': 2.16.1_react@17.0.2
       '@douyinfe/semi-next': 2.16.1
       '@douyinfe/semi-ui': 2.16.1_sfoxds7t5ydpegc3knd667wn6m
       '@hocuspocus/provider': 1.0.0-alpha.29
@@ -1943,6 +1945,14 @@ packages:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
     dependencies:
       '@babel/runtime-corejs3': 7.16.8
+      react: 17.0.2
+    dev: false
+
+  /@douyinfe/semi-illustrations/2.16.1_react@17.0.2:
+    resolution: {integrity: sha512-JQN4pPxIARivPVFMXyqkP3nvPHWYt7bCvRPmJzkeb9J/TrZQBuphp8ZI4aVeuKk5c7X4Daj/fNIxBRsOCi4XeA==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0
+    dependencies:
       react: 17.0.2
     dev: false
 
@@ -7892,7 +7902,7 @@ packages:
     dependencies:
       universalify: 2.0.0
     optionalDependencies:
-      graceful-fs: 4.2.9
+      graceful-fs: 4.2.10
 
   /jsonpointer/5.0.0:
     resolution: {integrity: sha512-PNYZIdMjVIvVgDSYKTT63Y+KZ6IZvGRNNWcxwD+GNnUz1MKPfv30J8ueCjdwcN0nDx2SlshgyB7Oy0epAzVRRg==}

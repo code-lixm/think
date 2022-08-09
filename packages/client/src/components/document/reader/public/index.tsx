@@ -1,5 +1,6 @@
-import { Breadcrumb, Button, Form, Layout, Nav, Skeleton, Space, Tooltip, Typography } from '@douyinfe/semi-ui';
+import { Breadcrumb, Button, Form, Layout, Nav, Skeleton, Space, Tooltip, Typography, Empty } from '@douyinfe/semi-ui';
 import { IconRoute } from '@douyinfe/semi-icons';
+import { IllustrationNoAccess, IllustrationNoAccessDark } from '@douyinfe/semi-illustrations'
 import { FormApi } from '@douyinfe/semi-ui/lib/es/form';
 import { DataRender } from 'components/data-render';
 import { Divider } from 'components/divider';
@@ -11,7 +12,7 @@ import { usePublicDocumentDetail } from 'data/document';
 import { useDocumentStyle } from 'hooks/use-document-style';
 import { useMount } from 'hooks/use-mount';
 import { IsOnMobile } from 'hooks/use-on-mobile';
-import { SecureDocumentIllustration } from 'illustrations/secure-document';
+// import { SecureDocumentIllustration } from 'illustrations/secure-document';
 import Link from 'next/link';
 import React, { useCallback, useMemo, useRef } from 'react';
 import { createPortal } from 'react-dom';
@@ -104,7 +105,10 @@ export const DocumentPublicReader: React.FC<IProps> = ({ documentId, hideLogo = 
             alignItems: 'center',
           }}
         >
-          <SecureDocumentIllustration />
+          <Empty
+            image={<IllustrationNoAccess style={{ width: 250, height: 250 }} />}
+            darkModeImage={<IllustrationNoAccessDark style={{ width: 250, height: 250 }} />}
+          />
           <Text style={{ marginTop: 12 }} type="danger">
             {(error && (error as Error).message) || '未知错误'}
           </Text>

@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@douyinfe/semi-icons": "^2.16.1",
+    "@douyinfe/semi-illustrations": "^2.16.1",
     "@douyinfe/semi-next": "^2.16.1",
     "@douyinfe/semi-ui": "^2.16.1",
     "@hocuspocus/provider": "^1.0.0-alpha.29",

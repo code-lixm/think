@@ -1,5 +1,6 @@
 import { IconChevronLeft } from '@douyinfe/semi-icons';
-import { Button, Nav, Skeleton, Space, Tooltip, Typography } from '@douyinfe/semi-ui';
+import { IllustrationNoAccess, IllustrationNoAccessDark } from '@douyinfe/semi-illustrations';
+import { Button, Empty, Nav, Skeleton, Space, Tooltip, Typography } from '@douyinfe/semi-ui';
 import { DataRender } from 'components/data-render';
 import { Divider } from 'components/divider';
 import { DocumentCollaboration } from 'components/document/collaboration';
@@ -13,7 +14,7 @@ import { CHANGE_DOCUMENT_TITLE, event, triggerUseDocumentVersion } from 'event';
 import { triggerRefreshTocs } from 'event';
 import { IsOnMobile } from 'hooks/use-on-mobile';
 import { useWindowSize } from 'hooks/use-window-size';
-import { SecureDocumentIllustration } from 'illustrations/secure-document';
+// import { SecureDocumentIllustration } from 'illustrations/secure-document';
 import Router from 'next/router';
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 
@@ -126,7 +127,11 @@ export const DocumentEditor: React.FC<IProps> = ({ documentId }) => {
           errorContent={() => {
             return (
               <div style={{ margin: '10vh', textAlign: 'center' }}>
-                <SecureDocumentIllustration />
+                {/* <SecureDocumentIllustration /> */}
+                <Empty
+                  image={<IllustrationNoAccess style={{ width: 250, height: 250 }} />}
+                  darkModeImage={<IllustrationNoAccessDark style={{ width: 250, height: 250 }} />}
+                />
               </div>
             );
           }}

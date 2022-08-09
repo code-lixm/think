@@ -39,18 +39,3 @@ Think 是一款开源知识管理工具。通过独立的知识库空间，结�
 > 思路：在服务器部署 webhook，然后在 github setting 中配置相应钩子，实现自动化部署
 
 参考：[webhook](https://github.com/adnanh/webhook/blob/master/docs/Hook-Examples.md#incoming-github-webhook)
-
-## 赞助
-
-如果这个项目对您有帮助，并且您希望支持该项目的开发和维护，请随时扫描一下二维码进行捐赠。非常感谢您的捐款，谢谢！
-
-<div style="display: flex;">
-  <img width="300" alt="alipay" src="https://think-1256095494.cos.ap-shanghai.myqcloud.com/think-alipay.jpg" />
-  <img width="300" alt="wechat" src="https://think-1256095494.cos.ap-shanghai.myqcloud.com/think-wechat.jpg" />
-</div>
-
-## 贡献者
-
-感谢所有为本项目作出贡献的同学！
-
-<a href="https://github.com/fantasticit/think/contributors"><img src="https://opencollective.com/think/contributors.svg?width=890" /></a>

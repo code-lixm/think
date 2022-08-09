@@ -2,10 +2,10 @@ import { IconLink } from '@douyinfe/semi-icons';
 import { Button, Dropdown, Input, Modal, Space, Toast, Typography } from '@douyinfe/semi-ui';
 import { isPublicDocument } from '@think/domains';
 import { useDocumentDetail } from 'data/document';
+import { copy } from 'helpers/copy';
 import { getDocumentShareURL } from 'helpers/url';
 import { IsOnMobile } from 'hooks/use-on-mobile';
 import { useToggle } from 'hooks/use-toggle';
-import { ShareIllustration } from 'illustrations/share';
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
 interface IProps {
@@ -45,6 +45,12 @@ export const DocumentShare: React.FC<IProps> = ({ documentId, disabled = false, 
     toggleStatus({ sharePassword: isPublic ? '' : sharePassword });
   }, [isPublic, sharePassword, toggleStatus]);
 
+  const copySharePassword = useCallback(() => {
+    if (sharePassword) {
+      copy(sharePassword);
+    }
+  }, [sharePassword]);
+
   const content = useMemo(
     () => (
       <div
@@ -54,9 +60,6 @@ export const DocumentShare: React.FC<IProps> = ({ documentId, disabled = false, 
         }}
         onClick={prevent}
       >
-        <div style={{ textAlign: 'center' }}>
-          <ShareIllustration />
-        </div>
         {isPublic ? (
           <Text
             ellipsis
@@ -84,8 +87,9 @@ export const DocumentShare: React.FC<IProps> = ({ documentId, disabled = false, 
               : '  分享关闭后，非协作成员将不能继续访问该页面'}
           </Text>
         </div>
-        <Space style={{ width: '100%', justifyContent: 'end', margin: '12px 0' }}>
+        <Space style={{ width: '100%', justifyContent: 'end', marginTop: '12px' }}>
           <Button onClick={() => toggleVisible(false)}>取消</Button>
+          {/* <Button onClick={() => copySharePassword()}>复制密码</Button> */}
           <Button theme="solid" type={isPublic ? 'danger' : 'primary'} onClick={handleOk}>
             {isPublic ? '关闭分享' : '开启分享'}
           </Button>
@@ -152,7 +156,7 @@ export const DocumentShare: React.FC<IProps> = ({ documentId, disabled = false, 
               style={{
                 width: 412,
                 maxWidth: '96vw',
-                padding: '0 24px',
+                padding: '24px',
               }}
             >
               {content}

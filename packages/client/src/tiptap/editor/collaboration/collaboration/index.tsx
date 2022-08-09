@@ -1,10 +1,11 @@
-import { Spin, Typography } from '@douyinfe/semi-ui';
+import { IllustrationNoAccess, IllustrationNoAccessDark } from '@douyinfe/semi-illustrations';
+import { Empty, Spin, Typography } from '@douyinfe/semi-ui';
 import { HocuspocusProvider } from '@hocuspocus/provider';
 import { DataRender } from 'components/data-render';
 import deepEqual from 'deep-equal';
 import { throttle } from 'helpers/throttle';
 import { useToggle } from 'hooks/use-toggle';
-import { SecureDocumentIllustration } from 'illustrations/secure-document';
+// import { SecureDocumentIllustration } from 'illustrations/secure-document';
 import React, { forwardRef, useEffect, useImperativeHandle, useMemo, useRef, useState } from 'react';
 import { Editor } from 'tiptap/core';
 import { IndexeddbPersistence } from 'tiptap/core/thritypart/y-indexeddb';
@@ -122,7 +123,11 @@ export const CollaborationEditor = forwardRef((props: ICollaborationEditorProps,
                 alignItems: 'center',
               }}
             >
-              <SecureDocumentIllustration />
+              {/* <SecureDocumentIllustration /> */}
+              <Empty
+                image={<IllustrationNoAccess style={{ width: 250, height: 250 }} />}
+                darkModeImage={<IllustrationNoAccessDark style={{ width: 250, height: 250 }} />}
+              />
               <Text style={{ marginTop: 12 }} type="danger">
                 {(error && error.message) || '未知错误'}
               </Text>

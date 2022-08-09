@@ -54,7 +54,7 @@ export const DocumentDeletor: React.FC<IProps> = ({ wikiId, documentId, render, 
   return (
     <Popconfirm
       title="确定删除吗？"
-      content="文档删除后不可恢复！"
+      content="文档删除后不可恢复哦！"
       onConfirm={deleteAction}
       okButtonProps={{ loading }}
       zIndex={1070}

@@ -1,4 +1,4 @@
-import { Badge, Button, Dropdown, Modal, Pagination, TabPane, Tabs, Typography } from '@douyinfe/semi-ui';
+import { Badge, Button, Dropdown, Modal, Pagination, TabPane, Tabs, Tooltip, Typography } from '@douyinfe/semi-ui';
 import { DataRender } from 'components/data-render';
 import { Empty } from 'components/empty';
 import { IconMessage } from 'components/icons/IconMessage';
