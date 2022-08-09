@@ -22,6 +22,7 @@ export const Theme = () => {
   return (
     <Dropdown
       position="rightBottom"
+      stopPropagation
       showTick
       render={
         <Dropdown.Menu>

@@ -88,7 +88,7 @@ export const DocumentVersion: React.FC<Partial<IProps>> = ({ documentId, onSelec
               >
                 刷新
               </Button>
-              <Button type="primary" theme="solid" disabled={!onSelect || !selectedVersion} onClick={restore}>
+              <Button type="primary" theme="solid" disabled={!selectedVersion} onClick={restore}>
                 恢复此记录
               </Button>
             </div>
@@ -109,24 +109,8 @@ export const DocumentVersion: React.FC<Partial<IProps>> = ({ documentId, onSelec
               </main>
               <aside className={cls(isMobile && styles.isMobile)}>
                 <Timeline mode="left">
-                  {data.map(({ version, data, createUser }) => {
+                  {data.map(({ version, data, createUser }, index) => {
                     return (
-                      // <div
-                      //   key={version}
-                      //   className={cls(
-                      //     styles.item,
-                      //     isMobile && styles.isMobile,
-                      //     selectedVersion && selectedVersion.version === version && styles.selected
-                      //   )}
-                      //   onClick={() => select({ version, data })}
-                      // >
-                      //   <p>
-                      //     <LocaleTime date={+version} />
-                      //   </p>
-                      //   <p>
-                      //     <Text>{createUser && createUser.name}</Text>
-                      //   </p>
-                      // </div>
                       <Timeline.Item
                         className={cls(
                           styles.item,
@@ -138,13 +122,11 @@ export const DocumentVersion: React.FC<Partial<IProps>> = ({ documentId, onSelec
                         key={version}
                         time={<LocaleTime date={+version} />}
                         extra={
-                          <Text ellipsis={{ showTooltip: true }} style={{ width: '100%' }}>
-                            作者：{createUser && createUser.name}
+                          <Text className={styles.version} ellipsis={{ showTooltip: true }} style={{ width: '100%' }}>
+                            编辑者：{createUser && createUser.name}
                           </Text>
                         }
-                      >
-                        <Text className={styles.version}>版本：{version}</Text>
-                      </Timeline.Item>
+                      />
                     );
                   })}
                 </Timeline>

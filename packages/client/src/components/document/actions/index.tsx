@@ -1,5 +1,5 @@
 import { IconArticle, IconBranch, IconExport, IconHistory, IconMore, IconPlus, IconStar } from '@douyinfe/semi-icons';
-import { Button, Dropdown, Space, Typography } from '@douyinfe/semi-ui';
+import { Button, Dropdown, Space, Tooltip, Typography } from '@douyinfe/semi-ui';
 import { ButtonProps } from '@douyinfe/semi-ui/button/Button';
 import { IDocument, IOrganization, IWiki } from '@think/domains';
 import cls from 'classnames';
@@ -57,7 +57,7 @@ export const DocumentActions: React.FC<IProps> = ({
     toggleCreateVisible(true);
   }, [togglePopoverVisible, toggleCreateVisible]);
 
-  const wrapedOnDelete = useCallback(() => {
+  const wrappedOnDelete = useCallback(() => {
     togglePopoverVisible(false);
     onDelete && onDelete();
   }, [onDelete, togglePopoverVisible]);
@@ -90,7 +90,7 @@ export const DocumentActions: React.FC<IProps> = ({
                 </Text>
               </Dropdown.Item>
             )}
-
+            {/* 分享 */}
             <DocumentShare
               key="share"
               documentId={documentId}
@@ -100,14 +100,14 @@ export const DocumentActions: React.FC<IProps> = ({
                     <Text>
                       <Space>
                         <IconBranch />
-                        {isPublic ? '分享中' : '分享'}
+                        {isPublic ? '分享中' : '分享他人'}
                       </Space>
                     </Text>
                   </Dropdown.Item>
                 );
               }}
             />
-
+            {/* 收藏 */}
             <DocumentStar
               organizationId={organizationId}
               wikiId={wikiId}
@@ -131,7 +131,7 @@ export const DocumentActions: React.FC<IProps> = ({
                 </Dropdown.Item>
               )}
             />
-
+            {/* 复制链接 */}
             <DocumentLinkCopyer
               organizationId={organizationId}
               wikiId={wikiId}
@@ -144,7 +144,7 @@ export const DocumentActions: React.FC<IProps> = ({
                 );
               }}
             />
-
+            {/* 历史记录 */}
             {!hideDocumentVersion && (
               <DocumentVersionTrigger
                 key="version"
@@ -168,7 +168,7 @@ export const DocumentActions: React.FC<IProps> = ({
                 }}
               />
             )}
-
+            {/* 文档排版 */}
             {!hideDocumentVersion && (
               <DocumentStyle
                 key="style"
@@ -186,7 +186,7 @@ export const DocumentActions: React.FC<IProps> = ({
                 }}
               />
             )}
-
+            {/* 文档导出 */}
             {document && (
               <DocumentExporter
                 document={document}
@@ -210,7 +210,7 @@ export const DocumentActions: React.FC<IProps> = ({
             <DocumentDeletor
               wikiId={wikiId}
               documentId={documentId}
-              onDelete={wrapedOnDelete}
+              onDelete={wrappedOnDelete}
               render={({ children }) => {
                 return <Dropdown.Item>{children}</Dropdown.Item>;
               }}

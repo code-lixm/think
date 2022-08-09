@@ -163,7 +163,8 @@ export const DocumentExporter: React.FC<IProps> = ({ document, render }) => {
           visible={visible}
           onVisibleChange={toggleVisible}
           trigger="click"
-          position="bottomRight"
+          position="leftBottom"
+          stopPropagation
           content={<div style={{ padding: '0 16px' }}>{content}</div>}
         >
           {btn}
