@@ -13,7 +13,7 @@
     "@douyinfe/semi-next": "^2.16.1",
     "@douyinfe/semi-ui": "^2.16.1",
     "@hocuspocus/provider": "^1.0.0-alpha.29",
-    "@semi-bot/semi-theme-universe-think": "^1.1.4",
+    "@semi-bot/semi-theme-universe-think": "^1.1.5",
     "@think/config": "workspace:^1.0.0",
     "@think/constants": "workspace:^1.0.0",
     "@think/domains": "workspace:^1.0.0",

@@ -1,12 +1,13 @@
-import { Badge, Button, Dropdown, Modal, Pagination, TabPane, Tabs, Tooltip, Typography } from '@douyinfe/semi-ui';
+import { IllustrationIdle, IllustrationIdleDark } from '@douyinfe/semi-illustrations';
+import { Badge, Button, Dropdown, Empty, Modal, Pagination, TabPane, Tabs, Typography } from '@douyinfe/semi-ui';
 import { DataRender } from 'components/data-render';
-import { Empty } from 'components/empty';
+// import { Empty } from 'components/empty';
 import { IconMessage } from 'components/icons/IconMessage';
 import { useAllMessages, useReadMessages, useUnreadMessages } from 'data/message';
 import { useUser } from 'data/user';
 import { IsOnMobile } from 'hooks/use-on-mobile';
 import { useToggle } from 'hooks/use-toggle';
-import { EmptyBoxIllustration } from 'illustrations/empty-box';
+// import { EmptyBoxIllustration } from 'illustrations/empty-box';
 import Link from 'next/link';
 import React, { useCallback } from 'react';
 
@@ -77,7 +78,13 @@ const MessagesRender = ({ messageData, loading, error, onClick = null, page = 1,
                 )}
               </>
             ) : (
-              <Empty illustration={<EmptyBoxIllustration />} message="暂无消息" />
+              <Empty
+                image={<IllustrationIdle style={{ width: 150, height: 150 }} />}
+                darkModeImage={<IllustrationIdleDark style={{ width: 150, height: 150 }} />}
+                description={'暂无消息'}
+                style={{ marginTop: '20px' }}
+              />
+              // <Empty illustration={<EmptyBoxIllustration />} message="暂无消息" />
             )}
           </div>
         );

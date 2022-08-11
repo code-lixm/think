@@ -12,11 +12,11 @@ export const OrganizationPublicSwitcher = () => {
 
   return (
     <span className={styles.nameWrap}>
-      <Space>
+      <Space style={{ minWidth: '200px' }}>
         <LogoImage />
         {width >= 768 && <LogoText />}
       </Space>
-      {user && <UserOrganizationsSwitcher />}
+      {/* {user && <UserOrganizationsSwitcher />} */}
     </span>
   );
 };

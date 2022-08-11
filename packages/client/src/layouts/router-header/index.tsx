@@ -10,15 +10,15 @@ import React, { useCallback } from 'react';
 const { Header: SemiHeader } = SemiLayout;
 
 const menus = [
-  {
-    itemKey: '/',
-    text: '主页',
-    onClick: () => {
-      Router.push({
-        pathname: `/`,
-      });
-    },
-  },
+  // {
+  //   itemKey: '/',
+  //   text: '主页',
+  //   onClick: () => {
+  //     Router.push({
+  //       pathname: `/`,
+  //     });
+  //   },
+  // },
   {
     itemKey: '/find',
     text: '广场',
@@ -61,11 +61,11 @@ export const RouterHeader: React.FC = () => {
           }
           footer={
             <Space>
-              {user && (
+              {/* {user && (
                 <Button theme="solid" onClick={gotoApp}>
                   前往组织空间
                 </Button>
-              )}
+              )} */}
               <User />
             </Space>
           }

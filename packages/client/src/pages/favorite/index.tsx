@@ -14,14 +14,6 @@ import styles from './index.module.scss';
 const Page: NextPage = () => {
   const { user } = useUser();
 
-  const start = useCallback(() => {
-    if (user) {
-      Router.push(`/app`);
-    } else {
-      toLogin();
-    }
-  }, [user]);
-
   // const toGithub = useCallback(() => {
   //   window.open('https://github.com/fantasticit/think');
   // }, []);
@@ -54,7 +46,7 @@ const Page: NextPage = () => {
           </div>
         </div>
       </div> */}
-      <div>主页</div>
+      <div>收藏</div>
     </SingleColumnLayout>
   );
 };

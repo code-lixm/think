@@ -1,16 +1,19 @@
 import { Layout as SemiLayout } from '@douyinfe/semi-ui';
+import { SiderNavigation } from 'components/sider-navigation';
 import React from 'react';
 
 import { RouterHeader } from '../router-header';
-import styles from './index.module.scss';
 
-const { Content } = SemiLayout;
+const { Sider, Content } = SemiLayout;
 
 export const SingleColumnLayout: React.FC = ({ children }) => {
   return (
-    <SemiLayout className={styles.wrap}>
+    <SemiLayout>
       <RouterHeader />
-      <SemiLayout className={styles.contentWrap}>
+      <SemiLayout>
+        <Sider>
+          <SiderNavigation />
+        </Sider>
         <Content
           style={{
             padding: '16px 24px',
