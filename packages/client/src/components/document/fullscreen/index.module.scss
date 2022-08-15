@@ -97,8 +97,13 @@
   padding: 12px;
   background-color: rgb(var(--semi-grey-9));
   border-radius: var(--semi-border-radius-medium);
+  opacity: 0;
   transform: translateX(-50%);
-  transition: opacity 0.3s ease-in-out;
+  transition: opacity 0.5s ease-in-out;
+
+  &.isVisible {
+    opacity: 1;
+  }
 
   .selected {
     background-color: rgb(var(--semi-grey-8)) !important;
