@@ -20,10 +20,6 @@ body[theme-mode='dark'] {
   color: var(--semi-color-primary);
 }
 
-.semi-navigation-horizontal {
-  padding-left: 8px;
-}
-
 @media (max-width: 768px) {
   .container {
     width: 100%;

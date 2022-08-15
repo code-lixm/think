@@ -74,7 +74,7 @@ export const ExcalidrawSettingModal: React.FC<IProps> = ({ editor }) => {
   return (
     <Modal
       centered
-      title="绘图"
+      title="画板"
       fullScreen
       visible={visible}
       onCancel={toggleVisible}

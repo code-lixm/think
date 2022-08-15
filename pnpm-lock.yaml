@@ -157,9 +157,11 @@ importers:
       viewerjs: ^1.10.4
       yjs: ^13.5.24
     dependencies:
-      '@douyinfe/semi-icons': 2.3.1_react@17.0.2
-      '@douyinfe/semi-next': 2.3.1
-      '@douyinfe/semi-ui': 2.3.1_wnecvl2xit6hykxlpfa3byfhr4
+      '@douyinfe/semi-icons': 2.17.0_react@17.0.2
+      '@douyinfe/semi-illustrations': 2.17.0_react@17.0.2
+      '@douyinfe/semi-next': 2.17.0
+      '@douyinfe/semi-ui': 2.17.0_sfoxds7t5ydpegc3knd667wn6m
+      '@excalidraw/excalidraw': 0.12.0_sfoxds7t5ydpegc3knd667wn6m
       '@hocuspocus/provider': 1.0.0-alpha.29
       '@semi-bot/semi-theme-universe-think': 1.1.5
       '@think/config': link:../config

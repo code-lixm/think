@@ -16,6 +16,7 @@ import {
   IconTable,
   IconTableOfContents,
 } from 'components/icons';
+import { IconDrawPanel } from 'components/icons/IconDrawPanel';
 import { createKeysLocalStorageLRUCache } from 'helpers/lru-cache';
 import { Editor } from 'tiptap/core';
 
@@ -87,9 +88,10 @@ export const COMMANDS: ICommand[] = [
   },
   {
     isBlock: true,
-    icon: <IconCodeBlock />,
-    label: '代码块',
-    action: (editor) => editor.chain().focus().toggleCodeBlock().run(),
+    icon: <IconLink />,
+    label: '外链',
+    action: (editor, user) =>
+      editor.chain().focus().setIframe({ url: '', defaultShowPicker: true, createUser: user.id }).run(),
   },
   {
     isBlock: true,
@@ -111,13 +113,31 @@ export const COMMANDS: ICommand[] = [
   },
   {
     isBlock: true,
-    icon: <IconLink />,
-    label: '外链',
-    action: (editor, user) =>
-      editor.chain().focus().setIframe({ url: '', defaultShowPicker: true, createUser: user.id }).run(),
+    icon: <IconCodeBlock />,
+    label: '代码块',
+    action: (editor) => editor.chain().focus().toggleCodeBlock().run(),
   },
   {
     title: '卡片',
+  },
+  {
+    icon: <IconStatus />,
+    label: '状态',
+    action: (editor, user) => editor.chain().focus().setStatus({ defaultShowPicker: true, createUser: user.id }).run(),
+  },
+  {
+    isBlock: true,
+    icon: <IconDrawPanel />,
+    label: '画板',
+    action: (editor, user) => {
+      editor.chain().focus().setExcalidraw({ width: '100%', defaultShowPicker: true, createUser: user.id }).run();
+    },
+  },
+  {
+    isBlock: true,
+    icon: <IconCallout />,
+    label: '高亮块',
+    action: (editor) => editor.chain().focus().setCallout().run(),
   },
   {
     isBlock: true,
@@ -137,28 +157,9 @@ export const COMMANDS: ICommand[] = [
   },
   {
     isBlock: true,
-    icon: <IconMind />,
-    label: '绘图',
-    action: (editor, user) => {
-      editor.chain().focus().setExcalidraw({ width: '100%', defaultShowPicker: true, createUser: user.id }).run();
-    },
-  },
-  {
-    isBlock: true,
     icon: <IconMath />,
     label: '数学公式',
     action: (editor, user) => editor.chain().focus().setKatex({ defaultShowPicker: true, createUser: user.id }).run(),
-  },
-  {
-    icon: <IconStatus />,
-    label: '状态',
-    action: (editor, user) => editor.chain().focus().setStatus({ defaultShowPicker: true, createUser: user.id }).run(),
-  },
-  {
-    isBlock: true,
-    icon: <IconCallout />,
-    label: '高亮块',
-    action: (editor) => editor.chain().focus().setCallout().run(),
   },
   {
     title: '内容引用',

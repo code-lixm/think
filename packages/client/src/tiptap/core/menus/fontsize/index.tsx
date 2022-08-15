@@ -25,7 +25,13 @@ export const FontSize: React.FC<{ editor: Editor }> = ({ editor }) => {
   );
 
   return (
-    <Select disabled={isTitleActive} value={+currentFontSize} onChange={toggle} style={{ width: 80, marginRight: 10 }}>
+    <Select
+      disabled={isTitleActive}
+      value={+currentFontSize}
+      onChange={toggle}
+      style={{ width: 80, marginRight: 10 }}
+      size="small"
+    >
       {FONT_SIZES.map((fontSize) => (
         <Select.Option key={fontSize} value={fontSize}>
           {fontSize}px

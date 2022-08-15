@@ -34,7 +34,13 @@ export const Heading: React.FC<{ editor: Editor }> = ({ editor }) => {
   );
 
   return (
-    <Select disabled={isTitleActive} value={current} onChange={toggle} style={{ width: 90, marginRight: 10 }}>
+    <Select
+      disabled={isTitleActive}
+      value={current}
+      onChange={toggle}
+      style={{ width: 90, marginRight: 10 }}
+      size="small"
+    >
       <Select.Option value="paragraph">正文</Select.Option>
       <Select.Option value={1}>
         <h1 style={{ margin: 0, fontSize: '1.3em' }}>标题1</h1>
@@ -48,12 +54,12 @@ export const Heading: React.FC<{ editor: Editor }> = ({ editor }) => {
       <Select.Option value={4}>
         <h4 style={{ margin: 0, fontSize: '0.9em' }}>标题4</h4>
       </Select.Option>
-      <Select.Option value={5}>
+      {/* <Select.Option value={5}>
         <h5 style={{ margin: 0, fontSize: '0.8em' }}>标题5</h5>
       </Select.Option>
       <Select.Option value={6}>
         <h6 style={{ margin: 0, fontSize: '0.8em' }}>标题6</h6>
-      </Select.Option>
+      </Select.Option> */}
     </Select>
   );
 };

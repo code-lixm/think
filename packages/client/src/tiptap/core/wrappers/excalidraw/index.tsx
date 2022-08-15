@@ -102,7 +102,7 @@ export const ExcalidrawWrapper = ({ editor, node, updateAttributes }) => {
                 <span className={styles.icon}>
                   <IconMind />
                 </span>
-                绘图
+                画板
               </Space>
             </div>
           </div>
