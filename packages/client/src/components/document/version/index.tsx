@@ -178,11 +178,11 @@ export const DocumentVersion: React.FC<Partial<IProps>> = ({ documentId, onSelec
                         time={<LocaleTime date={+version} />}
                         extra={
                           <Text ellipsis={{ showTooltip: true }} style={{ width: '100%' }}>
-                            编辑者：{createUser && createUser.name}
+                            {createUser && createUser.name}
                           </Text>
                         }
                       >
-                        <Text className={styles.version}>版本：{new Date(+version).toLocaleString()}</Text>
+                        <Text className={styles.version}>{new Date(+version).toLocaleString()}</Text>
                       </Timeline.Item>
                     );
                   })}

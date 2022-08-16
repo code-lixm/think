@@ -1,3 +1,8 @@
+// import TaskItem from '@tiptap/extension-task-item';
+// TaskItem.configure({
+//   nested: true,
+// });
+// export { TaskItem };
 import { mergeAttributes, Node, wrappingInputRule } from '@tiptap/core';
 
 export interface TaskItemOptions {
@@ -12,7 +17,7 @@ export const TaskItem = Node.create<TaskItemOptions>({
 
   addOptions() {
     return {
-      nested: false,
+      nested: true,
       HTMLAttributes: {},
     };
   },

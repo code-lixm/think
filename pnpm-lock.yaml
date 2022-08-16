@@ -81,8 +81,8 @@ importers:
       '@tiptap/extension-table-cell': ^2.0.0-beta.20
       '@tiptap/extension-table-header': ^2.0.0-beta.22
       '@tiptap/extension-table-row': ^2.0.0-beta.19
-      '@tiptap/extension-task-item': ^2.0.0-beta.31
-      '@tiptap/extension-task-list': ^2.0.0-beta.26
+      '@tiptap/extension-task-item': 2.0.0-beta.37
+      '@tiptap/extension-task-list': 2.0.0-beta.29
       '@tiptap/extension-text': ^2.0.0-beta.15
       '@tiptap/extension-text-align': ^2.0.0-beta.29
       '@tiptap/extension-text-style': ^2.0.0-beta.23
@@ -197,8 +197,8 @@ importers:
       '@tiptap/extension-table-cell': 2.0.0-beta.20_neatuoot4hdn6bibaypc754kfi
       '@tiptap/extension-table-header': 2.0.0-beta.22_neatuoot4hdn6bibaypc754kfi
       '@tiptap/extension-table-row': 2.0.0-beta.19_neatuoot4hdn6bibaypc754kfi
-      '@tiptap/extension-task-item': 2.0.0-beta.31_neatuoot4hdn6bibaypc754kfi
-      '@tiptap/extension-task-list': 2.0.0-beta.26_neatuoot4hdn6bibaypc754kfi
+      '@tiptap/extension-task-item': 2.0.0-beta.37_scwfsoqv7g3p3nsc54k5chnfwq
+      '@tiptap/extension-task-list': 2.0.0-beta.29_neatuoot4hdn6bibaypc754kfi
       '@tiptap/extension-text': 2.0.0-beta.15_neatuoot4hdn6bibaypc754kfi
       '@tiptap/extension-text-align': 2.0.0-beta.29_neatuoot4hdn6bibaypc754kfi
       '@tiptap/extension-text-style': 2.0.0-beta.23_neatuoot4hdn6bibaypc754kfi
@@ -3149,16 +3149,18 @@ packages:
       prosemirror-view: 1.23.6
     dev: false
 
-  /@tiptap/extension-task-item/2.0.0-beta.31_neatuoot4hdn6bibaypc754kfi:
-    resolution: {integrity: sha512-9MCInLAf/l/wDD1N3GgOImemloFARi1l9AJ5acfo+sDjN52yfvaLb//lvLJ6IGz4xGepeAyCME8Qns8UGqG4RQ==}
+  /@tiptap/extension-task-item/2.0.0-beta.37_scwfsoqv7g3p3nsc54k5chnfwq:
+    resolution: {integrity: sha512-zdTE7G6KHgdr+V32eWk7V6YkKxV3X0VJvfuybRlUcS4QyX4dSWnIqeHzzmX8Jd9IXjRghIFtjNi7IKxIGAhMsg==}
     peerDependencies:
       '@tiptap/core': ^2.0.0-beta.1
+      prosemirror-model: 1.18.1
     dependencies:
       '@tiptap/core': 2.0.0-beta.171
+      prosemirror-model: 1.16.1
     dev: false
 
-  /@tiptap/extension-task-list/2.0.0-beta.26_neatuoot4hdn6bibaypc754kfi:
-    resolution: {integrity: sha512-7zPpz9eOUCnFyWNDFYPCUJ39gjID+mCI5BuXyXrjJjDfm8wxg/xTgg9+KC6xakczos7DypnhzlRKSs4EFczeUg==}
+  /@tiptap/extension-task-list/2.0.0-beta.29_neatuoot4hdn6bibaypc754kfi:
+    resolution: {integrity: sha512-PbHlVmYWevClA3mmXyshhR58GT1J22vVlFEDj2o25WRPY2dCTv4X136wPRVf9ee4nZII0Xcp2SsVC1kfgtuVRg==}
     peerDependencies:
       '@tiptap/core': ^2.0.0-beta.1
     dependencies:
@@ -8084,7 +8086,7 @@ packages:
     dependencies:
       universalify: 2.0.0
     optionalDependencies:
-      graceful-fs: 4.2.10
+      graceful-fs: 4.2.9
 
   /jsonpointer/5.0.0:
     resolution: {integrity: sha512-PNYZIdMjVIvVgDSYKTT63Y+KZ6IZvGRNNWcxwD+GNnUz1MKPfv30J8ueCjdwcN0nDx2SlshgyB7Oy0epAzVRRg==}
