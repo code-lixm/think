@@ -9,7 +9,7 @@ import { LogoImage, LogoText } from 'components/logo';
 import { Seo } from 'components/seo';
 import { User } from 'components/user';
 import { usePublicDocumentDetail } from 'data/document';
-import { useDocumentStyle } from 'hooks/use-document-style';
+// import { useDocumentStyle } from 'hooks/use-document-style';
 import { useMount } from 'hooks/use-mount';
 import { IsOnMobile } from 'hooks/use-on-mobile';
 // import { SecureDocumentIllustration } from 'illustrations/secure-document';
@@ -38,11 +38,11 @@ export const DocumentPublicReader: React.FC<IProps> = ({ documentId, hideLogo = 
   const mounted = useMount();
   const { wikiId: currentWikiId } = useRouterQuery<{ wikiId: IWiki['id']; documentId: IDocument['id'] }>();
   const { data, loading, error, query } = usePublicDocumentDetail(documentId);
-  const { width, fontSize } = useDocumentStyle();
+  // const { width, fontSize } = useDocumentStyle();
   const { isMobile } = IsOnMobile.useHook();
-  const editorWrapClassNames = useMemo(() => {
-    return width === 'standardWidth' ? styles.isStandardWidth : styles.isFullWidth;
-  }, [width]);
+  // const editorWrapClassNames = useMemo(() => {
+  //   return width === 'standardWidth' ? styles.isStandardWidth : styles.isFullWidth;
+  // }, [width]);
 
   const renderAuthor = useCallback(
     (element) => {
@@ -110,9 +110,12 @@ export const DocumentPublicReader: React.FC<IProps> = ({ documentId, hideLogo = 
             image={<IllustrationNoAccess style={{ width: 250, height: 250 }} />}
             darkModeImage={<IllustrationNoAccessDark style={{ width: 250, height: 250 }} />}
           />
-          <Text style={{ marginTop: 12 }} type="danger">
-            {(error && (error as Error).message) || '未知错误'}
-          </Text>
+          <Space vertical spacing='loose'>
+            <Text style={{ marginTop: 12 }} type="danger">
+              {(error && (error as Error).message) || '未知错误'}
+            </Text>
+            <Button><Link href='/'>回到我的主页</Link></Button>
+          </Space>
         </div>
       );
     }
@@ -152,12 +155,12 @@ export const DocumentPublicReader: React.FC<IProps> = ({ documentId, hideLogo = 
           }
           footer={
             <Space>
-              {!isMobile && data && <DocumentFullscreen data={data}/>}
-              <Tooltip content={currentWikiId ? '独立模式' : '嵌入模式'}>
+              {data && !isMobile && <DocumentFullscreen data={data} />}
+              {data && <Tooltip content={currentWikiId ? '独立模式' : '嵌入模式'}>
                 <Button theme="borderless" type="tertiary" icon={<IconRoute />} onClick={toPublicWikiOrDocumentURL} />
-              </Tooltip>
+              </Tooltip>}
 
-              <DocumentStyle />
+              {data && <DocumentStyle />}
               <User />
             </Space>
           }

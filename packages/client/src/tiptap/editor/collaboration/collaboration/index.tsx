@@ -1,10 +1,11 @@
 import { IllustrationNoAccess, IllustrationNoAccessDark } from '@douyinfe/semi-illustrations';
-import { Empty, Spin, Typography } from '@douyinfe/semi-ui';
+import { Button, Empty, Space, Spin, Typography } from '@douyinfe/semi-ui';
 import { HocuspocusProvider } from '@hocuspocus/provider';
 import { DataRender } from 'components/data-render';
 import deepEqual from 'deep-equal';
 import { throttle } from 'helpers/throttle';
 import { useToggle } from 'hooks/use-toggle';
+import Link from 'next/link';
 // import { SecureDocumentIllustration } from 'illustrations/secure-document';
 import React, { forwardRef, useEffect, useImperativeHandle, useMemo, useRef, useState } from 'react';
 import { Editor } from 'tiptap/core';
@@ -128,9 +129,14 @@ export const CollaborationEditor = forwardRef((props: ICollaborationEditorProps,
                 image={<IllustrationNoAccess style={{ width: 250, height: 250 }} />}
                 darkModeImage={<IllustrationNoAccessDark style={{ width: 250, height: 250 }} />}
               />
-              <Text style={{ marginTop: 12 }} type="danger">
-                {(error && error.message) || '未知错误'}
-              </Text>
+              <Space vertical spacing="loose">
+                <Text style={{ marginTop: 12 }} type="danger">
+                  {(error && (error as Error).message) || '未知错误'}
+                </Text>
+                <Button>
+                  <Link href="/">回到我的主页</Link>
+                </Button>
+              </Space>
             </div>
           )}
           normalContent={() => (

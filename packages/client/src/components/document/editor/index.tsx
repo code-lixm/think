@@ -14,6 +14,7 @@ import { CHANGE_DOCUMENT_TITLE, event, triggerUseDocumentVersion } from 'event';
 import { triggerRefreshTocs } from 'event';
 import { IsOnMobile } from 'hooks/use-on-mobile';
 import { useWindowSize } from 'hooks/use-window-size';
+import Link from 'next/link';
 // import { SecureDocumentIllustration } from 'illustrations/secure-document';
 import Router from 'next/router';
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
@@ -132,6 +133,9 @@ export const DocumentEditor: React.FC<IProps> = ({ documentId }) => {
                   image={<IllustrationNoAccess style={{ width: 250, height: 250 }} />}
                   darkModeImage={<IllustrationNoAccessDark style={{ width: 250, height: 250 }} />}
                 />
+                <Button>
+                  <Link href="/">回到我的主页</Link>
+                </Button>
               </div>
             );
           }}

@@ -8,7 +8,7 @@ import * as lodash from 'lodash';
 
 import { UserService } from './user.service';
 
-type VerisonDataItem = { version: string; data: string; userId: IUser['id']; createUser: IUser };
+type VersionDataItem = { version: string; data: string; userId: IUser['id']; createUser: IUser };
 
 @Injectable()
 export class DocumentVersionService {
@@ -23,7 +23,7 @@ export class DocumentVersionService {
     this.init();
   }
 
-  private async withUser(data: Array<Omit<VerisonDataItem, 'createUser'>>): Promise<VerisonDataItem[]> {
+  private async withUser(data: Array<Omit<VersionDataItem, 'createUser'>>): Promise<VersionDataItem[]> {
     return await Promise.all(
       data
         .filter(Boolean)
@@ -36,7 +36,7 @@ export class DocumentVersionService {
     );
   }
 
-  private versionDataToArray(data: Record<string, string>): Array<Omit<VerisonDataItem, 'createUser'>> {
+  private versionDataToArray(data: Record<string, string>): Array<Omit<VersionDataItem, 'createUser'>> {
     return Object.keys(data)
       .sort((a, b) => +b - +a)
       .map((key) => {
@@ -110,7 +110,7 @@ export class DocumentVersionService {
    * @param documentId
    * @returns
    */
-  public async getDocumentVersions(documentId: IDocument['id']): Promise<Array<VerisonDataItem>> {
+  public async getDocumentVersions(documentId: IDocument['id']): Promise<Array<VersionDataItem>> {
     if (this.error || !this.redis) {
       throw new HttpException(this.error, HttpStatus.NOT_IMPLEMENTED);
     }

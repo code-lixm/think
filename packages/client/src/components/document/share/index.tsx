@@ -2,7 +2,6 @@ import { IconLink } from '@douyinfe/semi-icons';
 import { Button, Dropdown, Input, Modal, Space, Toast, Typography } from '@douyinfe/semi-ui';
 import { isPublicDocument } from '@think/domains';
 import { useDocumentDetail } from 'data/document';
-import { copy } from 'helpers/copy';
 import { getDocumentShareURL } from 'helpers/url';
 import { IsOnMobile } from 'hooks/use-on-mobile';
 import { useToggle } from 'hooks/use-toggle';
@@ -27,7 +26,7 @@ export const DocumentShare: React.FC<IProps> = ({ documentId, disabled = false, 
 
   const copyable = useMemo(
     () => ({
-      onCopy: () => Toast.success({ content: '复制文本成功' }),
+      onCopy: () => Toast.success({ content: '文章链接已复制，快去分享给别人吧！' }),
       successTip: '已复制',
     }),
     []
@@ -45,12 +44,6 @@ export const DocumentShare: React.FC<IProps> = ({ documentId, disabled = false, 
     toggleStatus({ sharePassword: isPublic ? '' : sharePassword });
   }, [isPublic, sharePassword, toggleStatus]);
 
-  const copySharePassword = useCallback(() => {
-    if (sharePassword) {
-      copy(sharePassword);
-    }
-  }, [sharePassword]);
-
   const content = useMemo(
     () => (
       <div
@@ -62,12 +55,17 @@ export const DocumentShare: React.FC<IProps> = ({ documentId, disabled = false, 
       >
         {isPublic ? (
           <Text
+            link={{ href: shareUrl }}
             ellipsis
-            icon={<IconLink />}
-            copyable={copyable}
-            style={{
-              width: 280,
+            copyable={{
+              ...copyable,
+              content: sharePassword
+                ? `文档链接：${shareUrl}，密码：${sharePassword}，注意密码安全！`
+                : `文档链接：${shareUrl}，点击立即访问！`,
             }}
+            icon={<IconLink />}
+            style={{ width: 320 }}
+            underline
           >
             {shareUrl}
           </Text>
@@ -75,21 +73,20 @@ export const DocumentShare: React.FC<IProps> = ({ documentId, disabled = false, 
           <Input
             ref={ref}
             mode="password"
-            placeholder="设置访问密码"
+            placeholder="您可以设置访问密码或者直接分享"
             value={sharePassword}
             onChange={setSharePassword}
           ></Input>
         )}
         <div style={{ marginTop: 16 }}>
-          <Text type="tertiary">
+          <Text type="warning">
             {isPublic
-              ? '分享开启后，该页面包含的所有内容均可访问，请谨慎开启'
-              : '  分享关闭后，非协作成员将不能继续访问该页面'}
+              ? '注意：分享开启后，页面包含的所有内容均可访问!'
+              : '注意：分享关闭后，非协作成员将不能继续访问该页面！'}
           </Text>
         </div>
         <Space style={{ width: '100%', justifyContent: 'end', marginTop: '12px' }}>
           <Button onClick={() => toggleVisible(false)}>取消</Button>
-          {/* <Button onClick={() => copySharePassword()}>复制密码</Button> */}
           <Button theme="solid" type={isPublic ? 'danger' : 'primary'} onClick={handleOk}>
             {isPublic ? '关闭分享' : '开启分享'}
           </Button>
@@ -148,7 +145,7 @@ export const DocumentShare: React.FC<IProps> = ({ documentId, disabled = false, 
         <Dropdown
           visible={visible}
           trigger="click"
-          position="leftBottom"
+          position="leftTop"
           stopPropagation
           onVisibleChange={toggleVisible}
           render={

@@ -175,14 +175,14 @@ export const DocumentVersion: React.FC<Partial<IProps>> = ({ documentId, onSelec
                         onClick={() => select({ version, data })}
                         type={selectedVersion && selectedVersion.version === version ? 'ongoing' : 'default'}
                         key={version}
-                        time={<LocaleTime date={+version} />}
+                        time={new Date(+version).toLocaleString()}
                         extra={
-                          <Text ellipsis={{ showTooltip: true }} style={{ width: '100%' }}>
-                            {createUser && createUser.name}
+                          <Text size="small" ellipsis={{ showTooltip: true }} style={{ width: '100%' }}>
+                            <LocaleTime date={+version} />
                           </Text>
                         }
                       >
-                        <Text className={styles.version}>{new Date(+version).toLocaleString()}</Text>
+                        <Text className={styles.version}>{createUser && createUser.name}</Text>
                       </Timeline.Item>
                     );
                   })}

@@ -32,8 +32,8 @@ export const findMentions = (content) => {
 @Injectable()
 export class CollaborationService {
   server: typeof Server;
-  debounceTime = 1000;
-  maxDebounceTime = 10000;
+  intervalTime = 1000;
+  maxIntervalTime = 1000 * 60 * 10;
   timers: Map<
     string,
     {
@@ -61,7 +61,7 @@ export class CollaborationService {
     this.initServer();
   }
 
-  debounce(id: string, func: () => void, debounceTime = this.debounceTime, immediately = false) {
+  throttle(id: string, func: () => void, intervalTime = this.intervalTime, immediately = false) {
     const old = this.timers.get(id);
     const start = old?.start || Date.now();
 
@@ -78,13 +78,13 @@ export class CollaborationService {
       return run();
     }
 
-    if (Date.now() - start >= this.maxDebounceTime) {
+    if (Date.now() - start >= this.maxIntervalTime) {
       return run();
     }
 
     this.timers.set(id, {
       start,
-      timeout: setTimeout(run, debounceTime),
+      timeout: setTimeout(run, intervalTime),
     });
   }
 
@@ -214,7 +214,7 @@ export class CollaborationService {
 
     const updateDocument = async (user: IUser, documentId: string, data) => {
       await this.documentService.updateDocument(user, documentId, data);
-      this.debounce(
+      this.throttle(
         `onStoreDocumentVersion-${documentId}`,
         () => {
           this.documentVersionService.storeDocumentVersion({
@@ -223,14 +223,14 @@ export class CollaborationService {
             userId,
           });
         },
-        this.debounceTime * 2
+        this.intervalTime * 2
       );
     };
     const updateTemplate = this.templateService.updateTemplate.bind(this.templateService);
 
     const updateHandler = docType === 'document' ? updateDocument : updateTemplate;
 
-    this.debounce(`onStoreDocument-${targetId}`, () => {
+    this.throttle(`onStoreDocument-${targetId}`, () => {
       this.onStoreDocument(updateHandler, data).catch((error) => {
         if (error?.message) {
           throw new HttpException(error?.message, HttpStatus.SERVICE_UNAVAILABLE);
