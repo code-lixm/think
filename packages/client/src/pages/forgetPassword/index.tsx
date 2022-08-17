@@ -4,7 +4,7 @@ import { useRouterQuery } from 'hooks/use-router-query';
 import { LoginLayout } from 'layouts/login';
 import Link from 'next/link';
 import Router from 'next/router';
-import React, { useCallback, useState } from 'react';
+import React, { useCallback } from 'react';
 
 import styles from './index.module.scss';
 

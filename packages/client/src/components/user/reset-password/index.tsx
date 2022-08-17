@@ -1,5 +1,5 @@
 import { Button, Col, Form, Row, Toast } from '@douyinfe/semi-ui';
-import { useResetPassword, useVerifyCode } from 'data/user';
+import { useResetPassword, useSystemPublicConfig, useUser, useVerifyCode } from 'data/user';
 import { useInterval } from 'hooks/use-interval';
 import { useToggle } from 'hooks/use-toggle';
 import React, { useCallback, useMemo, useState } from 'react';
@@ -10,7 +10,9 @@ export const ResetPassword = ({ onSuccess, status = 'large' }) => {
   const [email, setEmail] = useState('');
   const [hasSendVerifyCode, toggleHasSendVerifyCode] = useToggle(false);
   const [countDown, setCountDown] = useState(0);
+  const { user } = useUser();
   const { reset, loading } = useResetPassword();
+  const { data: systemConfig } = useSystemPublicConfig();
   const { sendVerifyCode, loading: sendVerifyCodeLoading } = useVerifyCode();
 
   const isNormal = useMemo(() => status === 'normal', [status]);
@@ -56,7 +58,7 @@ export const ResetPassword = ({ onSuccess, status = 'large' }) => {
   return (
     <Form
       className={isNormal ? '' : styles.form}
-      initValues={{ name: '', password: '' }}
+      initValues={{ email: user.email, password: '', confirmPassword: '' }}
       onChange={onFormChange}
       onSubmit={onFinish}
     >
@@ -76,28 +78,30 @@ export const ResetPassword = ({ onSuccess, status = 'large' }) => {
         ]}
       />
 
-      <Row gutter={8} style={{ paddingTop: 12 }}>
-        <Col span={16}>
-          <Form.Input
-            noLabel
-            fieldStyle={{ paddingTop: 0 }}
-            placeholder={'请输入验证码'}
-            field="verifyCode"
-            rules={[{ required: true, message: '请输入邮箱收到的验证码！' }]}
-          />
-        </Col>
-        <Col span={8}>
-          <Button
-            disabled={!email || countDown > 0}
-            loading={sendVerifyCodeLoading}
-            onClick={getVerifyCode}
-            block
-            style={isNormal ? {} : { height: '56px', borderRadius: '12px' }}
-          >
-            {hasSendVerifyCode ? countDown : '获取验证码'}
-          </Button>
-        </Col>
-      </Row>
+      {systemConfig && systemConfig.enableEmailVerify ? (
+        <Row gutter={8} style={{ paddingTop: 12 }}>
+          <Col span={16}>
+            <Form.Input
+              noLabel
+              fieldStyle={{ paddingTop: 0 }}
+              placeholder={'请输入验证码'}
+              field="verifyCode"
+              rules={[{ required: true, message: '请输入邮箱收到的验证码！' }]}
+            />
+          </Col>
+          <Col span={8}>
+            <Button
+              disabled={!email || countDown > 0}
+              loading={sendVerifyCodeLoading}
+              onClick={getVerifyCode}
+              block
+              style={isNormal ? {} : { height: '56px', borderRadius: '12px' }}
+            >
+              {hasSendVerifyCode ? countDown : '获取验证码'}
+            </Button>
+          </Col>
+        </Row>
+      ) : null}
 
       <Form.Input
         noLabel

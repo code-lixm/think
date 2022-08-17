@@ -4,7 +4,7 @@ import { IsEmail, IsNotEmpty, IsOptional, IsString, MinLength } from 'class-vali
  * 用户注册
  */
 export class RegisterUserDto {
-  @MinLength(3, { message: '用户账号至少3个字符' })
+  @MinLength(1, { message: '用户账号至少1个字符' })
   @IsString({ message: '用户名称类型错误（正确类型为：String）' })
   @IsNotEmpty({ message: '用户账号不能为空' })
   name: string;
@@ -46,6 +46,6 @@ export class ResetPasswordDto {
 
   @MinLength(5, { message: '邮箱验证码至少5个字符' })
   @IsString({ message: '邮箱验证码错误（正确类型为：String）' })
-  @IsNotEmpty({ message: '邮箱验证码不能为空' })
+  @IsOptional({ message: '邮箱验证码不能为空' })
   verifyCode: string;
 }
