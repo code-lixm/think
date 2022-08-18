@@ -1,8 +1,8 @@
 import { IconChevronDown } from '@douyinfe/semi-icons';
-import { Dropdown, Modal, Space, TabPane, Tabs, Typography } from '@douyinfe/semi-ui';
+import { IllustrationIdle, IllustrationIdleDark } from '@douyinfe/semi-illustrations';
+import { Dropdown, Empty, Modal, Space, TabPane, Tabs, Typography } from '@douyinfe/semi-ui';
 import { DataRender } from 'components/data-render';
 import { DocumentStar } from 'components/document/star';
-import { Empty } from 'components/empty';
 import { IconDocumentFill } from 'components/icons/IconDocumentFill';
 import { LocaleTime } from 'components/locale-time';
 import { useRecentDocuments } from 'data/document';
@@ -77,7 +77,15 @@ export const RecentDocs = ({ visible }) => {
                     );
                   })
                 ) : (
-                  <Empty message="最近访问的文档会出现在此处" />
+                  <Empty
+                    image={<IllustrationIdle style={{ width: 150, height: 150 }} />}
+                    darkModeImage={<IllustrationIdleDark style={{ width: 150, height: 150 }} />}
+                    description={
+                      <Text size="small" className="m-5">
+                        您最近还有没访问过文档
+                      </Text>
+                    }
+                  />
                 )}
               </div>
             );
