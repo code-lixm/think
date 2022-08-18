@@ -1,15 +1,16 @@
-// import { Button, Typography } from '@douyinfe/semi-ui';
+import { Divider, Layout, Radio, RadioGroup, Space, Typography } from '@douyinfe/semi-ui';
+import cls from 'classnames';
+import { DataRender } from 'components/data-render';
 import { Seo } from 'components/seo';
 import { toLogin, useUser } from 'data/user';
-// import { TeamWorkIllustration } from 'illustrations/team-work';
+import { useToggle } from 'hooks/use-toggle';
 import { SingleColumnLayout } from 'layouts/single-column';
 import type { NextPage } from 'next';
 import Router from 'next/router';
 import React, { useCallback } from 'react';
 
-import styles from './index.module.scss';
-
-// const { Title, Paragraph } = Typography;
+const { Title, Paragraph } = Typography;
+const { Content, Sider } = Layout;
 
 const Page: NextPage = () => {
   const { user } = useUser();
@@ -22,39 +23,33 @@ const Page: NextPage = () => {
     }
   }, [user]);
 
-  // const toGithub = useCallback(() => {
-  //   window.open('https://github.com/fantasticit/think');
-  // }, []);
-
+  const [isActive, toggleIsActive] = useToggle(true);
   return (
     <SingleColumnLayout>
       <Seo title="主页" />
-      {/* <div className="container">
-        <div className={styles.wrap}>
-          <div className={styles.content}>
-            <div>
-              <div>
-                <Title style={{ marginBottom: 12 }}>云策文档</Title>
-                <Paragraph type="tertiary">
-                  云策文档是一款开源知识管理工具。通过独立的知识库空间，结构化地组织在线协作文档，实现知识的积累与沉淀，促进知识的复用与流通。
-                </Paragraph>
-              </div>
-              <div style={{ margin: '32px 0' }}>
-                <Button theme="solid" onClick={start}>
-                  开始使用
-                </Button>
-                <Button style={{ marginLeft: 12 }} onClick={toGithub}>
-                  Github
-                </Button>
-              </div>
-            </div>
-          </div>
-          <div className={styles.hero}>
-            <TeamWorkIllustration />
-          </div>
-        </div>
-      </div> */}
-      <div>主页</div>
+      <Layout className={styles.wrap}>
+        <Content className="mr-4">
+          <Space spacing="loose">
+            <Title heading={5} link={isActive} onClick={() => toggleIsActive(false)} className="cursor-pointer">
+              最近编辑
+            </Title>
+            <Title heading={5} link={!isActive} onClick={() => toggleIsActive(true)} className="cursor-pointer">
+              最近浏览
+            </Title>
+          </Space>
+        </Content>
+        {/* style={{ width: 250, background: '#f2f3f4', borderRadius: 6, padding: 16 }} */}
+        <Sider className="w-60 bg-slate-50 rounded-md p-4">
+          <Title heading={5}>新建</Title>
+          <Title heading={5}>快捷入口</Title>
+        </Sider>
+      </Layout>
+
+      {/* <DataRender
+      loading={loading}
+      error={error}
+      empty={!loading && !data.length}
+      ></DataRender> */}
     </SingleColumnLayout>
   );
 };

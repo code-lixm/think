@@ -1,5 +1,5 @@
 import { IconChevronLeft } from '@douyinfe/semi-icons';
-import { Button, Modal, Select, Space, Tag, Timeline, Typography } from '@douyinfe/semi-ui';
+import { Button, Card, Modal, Select, Space, Tag, Timeline, Typography } from '@douyinfe/semi-ui';
 import { EditorContent, useEditor } from '@tiptap/react';
 import cls from 'classnames';
 import { DataRender } from 'components/data-render';
@@ -153,17 +153,42 @@ export const DocumentVersion: React.FC<Partial<IProps>> = ({ documentId, onSelec
           empty={!loading && !data.length}
           normalContent={() => (
             <div className={styles.contentWrap}>
-              <main className={cls('container', isMobile && styles.isMobile)}>
-                <div>
-                  {diffVersion ? (
-                    <div id="diff-visual" className="ProseMirror"></div>
-                  ) : (
-                    <EditorContent editor={editor} />
-                  )}
-                </div>
-              </main>
               <aside className={cls(isMobile && styles.isMobile)}>
-                <Timeline mode="left">
+                <Space vertical style={{ padding: '8px 0', width: '100%' }}>
+                  {data.map(({ version, data, createUser }, index) => {
+                    return (
+                      <div
+                        key={version}
+                        onClick={() => select({ version, data })}
+                        style={{ width: 'calc(100% - 16px)' }}
+                      >
+                        <Card
+                          className={cls(
+                            styles.item,
+                            isMobile && styles.isMobile,
+                            selectedVersion && selectedVersion.version === version && styles.selected
+                          )}
+                          bodyStyle={{ padding: '4px 8px' }}
+                        >
+                          <Space vertical spacing="tight" align="start">
+                            <Text size="small" ellipsis={{ showTooltip: true }} style={{ width: '100%' }}>
+                              <Space align="center">
+                                <Tag color="light-blue">{createUser && createUser.name}</Tag>
+                                <Text type="quaternary" size="small">
+                                  <LocaleTime date={+version} />
+                                </Text>
+                              </Space>
+                            </Text>
+                            <Text type="secondary" size="small">
+                              {new Date(+version).toLocaleString()}
+                            </Text>
+                          </Space>
+                        </Card>
+                      </div>
+                    );
+                  })}
+                </Space>
+                {/* <Timeline mode="left">
                   {data.map(({ version, data, createUser }, index) => {
                     return (
                       <Timeline.Item
@@ -175,7 +200,7 @@ export const DocumentVersion: React.FC<Partial<IProps>> = ({ documentId, onSelec
                         onClick={() => select({ version, data })}
                         type={selectedVersion && selectedVersion.version === version ? 'ongoing' : 'default'}
                         key={version}
-                        time={new Date(+version).toLocaleString()}
+                        time={}
                         extra={
                           <Text size="small" ellipsis={{ showTooltip: true }} style={{ width: '100%' }}>
                             <LocaleTime date={+version} />
@@ -186,8 +211,17 @@ export const DocumentVersion: React.FC<Partial<IProps>> = ({ documentId, onSelec
                       </Timeline.Item>
                     );
                   })}
-                </Timeline>
+                </Timeline> */}
               </aside>
+              <main className={cls(isMobile && styles.isMobile)}>
+                <div>
+                  {diffVersion ? (
+                    <div id="diff-visual" className="ProseMirror"></div>
+                  ) : (
+                    <EditorContent editor={editor} />
+                  )}
+                </div>
+              </main>
             </div>
           )}
         />

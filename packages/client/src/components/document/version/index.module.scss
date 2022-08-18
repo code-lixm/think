@@ -106,14 +106,18 @@
       &:hover {
         cursor: pointer;
 
-        .version {
-          color: var(--semi-color-primary) !important;
+        :global {
+          .semi-card-body {
+            background: var(--semi-color-fill-1);
+          }
         }
       }
 
       &.selected {
-        .version {
-          color: var(--semi-color-primary) !important;
+        :global {
+          .semi-card-body {
+            background: var(--semi-color-fill-1);
+          }
         }
       }
     }
