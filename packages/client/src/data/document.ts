@@ -30,6 +30,32 @@ export const useSearchDocuments = (organizationId) => {
 };
 
 /**
+ * 获取用户加入的组织内所有人的操作记录
+ * @returns
+ */
+// TODO: 获取用户加入的组织所有人的访问记录
+export const getRecentAllVisitedDocuments = (organizationId, cookie = null): Promise<IDocumentWithVisitedAt[]> => {
+  return HttpClient.request({
+    method: DocumentApiDefinition.recent.method,
+    url: DocumentApiDefinition.recent.client(organizationId),
+    cookie,
+  });
+};
+
+/**
+ * 获取当前用户所有的操作记录
+ * @returns
+ */
+// TODO: 获取当前用户所有的操作记录
+export const getRecentUserVisitedDocuments = (organizationId, cookie = null): Promise<IDocumentWithVisitedAt[]> => {
+  return HttpClient.request({
+    method: DocumentApiDefinition.recent.method,
+    url: DocumentApiDefinition.recent.client(organizationId),
+    cookie,
+  });
+};
+
+/**
  * 获取用户最近访问的文档
  * @returns
  */
