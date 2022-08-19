@@ -20,7 +20,7 @@ export const SingleColumnLayout: React.FC = ({ children }) => {
             backgroundColor: 'var(--semi-color-bg-0)',
           }}
         >
-          <div>{children}</div>
+          <div className="h-full w-full">{children}</div>
         </Content>
       </SemiLayout>
     </SemiLayout>

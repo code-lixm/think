@@ -57,11 +57,11 @@ export const SiderNavigation = () => {
           defaultOpenKeys={['space-list']}
           style={{ height: 'calc(100vh - 60px)', overflow: 'hidden' }}
           items={[
-            { itemKey: '/', text: '我的主页', icon: MenuIconHome },
-            { itemKey: '/favorite', text: '我的收藏', icon: MenuIconStar },
+            { itemKey: '/', text: '主页', icon: MenuIconHome },
+            { itemKey: '/favorite', text: '收藏', icon: MenuIconStar },
             {
               itemKey: '/app',
-              text: '我的空间',
+              text: '空间',
               icon: MenuIconFolder,
               items: organizations,
             },

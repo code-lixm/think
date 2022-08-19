@@ -134,7 +134,7 @@ export const DocumentEditor: React.FC<IProps> = ({ documentId }) => {
                   darkModeImage={<IllustrationNoAccessDark style={{ width: 250, height: 250 }} />}
                 />
                 <Button>
-                  <Link href="/">回到我的主页</Link>
+                  <Link href="/">回到主页</Link>
                 </Button>
               </div>
             );

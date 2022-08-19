@@ -134,7 +134,7 @@ export const CollaborationEditor = forwardRef((props: ICollaborationEditorProps,
                   {(error && (error as Error).message) || '未知错误'}
                 </Text>
                 <Button>
-                  <Link href="/">回到我的主页</Link>
+                  <Link href="/">回到主页</Link>
                 </Button>
               </Space>
             </div>

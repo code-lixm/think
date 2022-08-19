@@ -114,7 +114,7 @@ export const DocumentPublicReader: React.FC<IProps> = ({ documentId, hideLogo = 
             <Text style={{ marginTop: 12 }} type="danger">
               {(error && (error as Error).message) || '未知错误'}
             </Text>
-            <Button><Link href='/'>回到我的主页</Link></Button>
+            <Button><Link href='/'>回到主页</Link></Button>
           </Space>
         </div>
       );
