@@ -24,7 +24,7 @@ export class UserService {
     @InjectRepository(UserEntity)
     private readonly userRepo: Repository<UserEntity>,
 
-    private readonly confifgService: ConfigService,
+    private readonly configService: ConfigService,
 
     @Inject(forwardRef(() => JwtService))
     private readonly jwtService: JwtService,
@@ -58,7 +58,7 @@ export class UserService {
       return;
     }
 
-    const config = await this.confifgService.get('server.admin');
+    const config = await this.configService.get('server.admin');
 
     if (!config.name || !config.password || !config.email) {
       throw new Error(`请指定名称、密码和邮箱`);
@@ -153,7 +153,7 @@ export class UserService {
     const createdUser = await this.userRepo.save(res);
 
     await this.organizationService.createOrganization(createdUser, {
-      name: createdUser.name,
+      name: `${createdUser.name}的默认空间`,
       description: `${createdUser.name}的个人组织`,
       logo: ORGANIZATION_LOGOS[0],
       isPersonal: true,
@@ -227,7 +227,7 @@ export class UserService {
 
     const res = instanceToPlain(existUser) as IUser;
     const token = this.jwtService.sign(res);
-    const domain = this.confifgService.get('client.siteDomain');
+    const domain = this.configService.get('client.siteDomain');
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     const expiresIn = this.jwtService.decode(token, { complete: true }).payload.exp;
@@ -235,7 +235,7 @@ export class UserService {
   }
 
   async logout() {
-    const domain = this.confifgService.get('client.siteDomain');
+    const domain = this.configService.get('client.siteDomain');
     return { token: '', domain };
   }
 

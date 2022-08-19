@@ -11,7 +11,7 @@ import styles from './index.module.scss';
 
 const images = [
   {
-    key: 'placeholers',
+    key: 'placeholders',
     title: '图库',
     images: DOCUMENT_COVERS,
   },

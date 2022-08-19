@@ -3,7 +3,7 @@ import { IOrganization } from '@think/domains';
 import { DataRender } from 'components/data-render';
 import { LocaleTime } from 'components/locale-time';
 import { Seo } from 'components/seo';
-import { usePeronalOrganization, useUserOrganizations } from 'data/organization';
+import { usePersonalOrganization, useUserOrganizations } from 'data/organization';
 import { SingleColumnLayout } from 'layouts/single-column';
 import Link from 'next/link';
 import Router from 'next/router';
@@ -13,13 +13,12 @@ const { Title, Paragraph } = Typography;
 const { Column } = Table;
 
 const Page = () => {
-  const { data: organization } = usePeronalOrganization();
+  const { data: organization } = usePersonalOrganization();
   const {
     data: userOrganizations,
     loading: userOrganizationsLoading,
     error: userOrganizationsError,
   } = useUserOrganizations();
-
   const gotoCreate = useCallback(() => {
     Router.push({
       pathname: '/app/org/create',

@@ -11,7 +11,7 @@ export class SystemService {
     @InjectRepository(SystemEntity)
     private readonly systemRepo: Repository<SystemEntity>,
 
-    private readonly confifgService: ConfigService
+    private readonly configService: ConfigService
   ) {
     this.loadFromConfigFile();
   }
@@ -42,7 +42,7 @@ export class SystemService {
     const currentConfig = await this.getConfigFromDatabase();
 
     // 同步邮件服务配置
-    const emailConfigFromConfigFile = await this.confifgService.get('server.email');
+    const emailConfigFromConfigFile = await this.configService.get('server.email');
 
     let emailConfig = {};
 

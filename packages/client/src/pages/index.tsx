@@ -22,7 +22,6 @@ const { Content, Sider } = Layout;
 
 const Page: NextPage = () => {
   const { user } = useUser();
-  console.log('user: ', user);
 
   const start = useCallback(() => {
     if (user) {

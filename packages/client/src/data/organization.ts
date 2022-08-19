@@ -36,7 +36,7 @@ export const getPersonalOrganization = (cookie = null): Promise<IOrganization> =
  * 获取个人组织
  * @returns
  */
-export const usePeronalOrganization = () => {
+export const usePersonalOrganization = () => {
   const { data, error, isLoading, refetch } = useQuery(
     OrganizationApiDefinition.getPersonalOrganization.client(),
     getPersonalOrganization
