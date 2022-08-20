@@ -84,13 +84,13 @@ const Page: NextPage = () => {
       <Seo title="主页" />
       <Layout className="h-full">
         <Content className="pt-[24px] px-[24px] flex flex-col">
-          <div className="header flex mb-4">
+          <div className="flex mb-4 header">
             <Space spacing="loose" className="flex-auto">
               <Title
                 heading={5}
                 type={key === 1 ? 'primary' : 'quaternary'}
                 onClick={() => setKey(1)}
-                className="cursor-pointer select-none font-semibold"
+                className="font-semibold cursor-pointer select-none"
               >
                 最近编辑
               </Title>
@@ -98,12 +98,12 @@ const Page: NextPage = () => {
                 heading={5}
                 type={key === 2 ? 'primary' : 'quaternary'}
                 onClick={() => setKey(2)}
-                className="cursor-pointer select-none font-semibold"
+                className="font-semibold cursor-pointer select-none"
               >
                 最近浏览
               </Title>
             </Space>
-            <Space className="flex-auto cursor-pointer justify-end" spacing="loose">
+            <Space className="justify-end flex-auto cursor-pointer" spacing="loose">
               <Dropdown
                 trigger="hover"
                 showTick
@@ -138,7 +138,7 @@ const Page: NextPage = () => {
               </Dropdown>
             </Space>
           </div>
-          <div className="body flex-auto relative">
+          <div className="relative flex-auto body">
             <DataRender
               loading={loading}
               loadingContent={
@@ -167,10 +167,10 @@ const Page: NextPage = () => {
           <Title heading={5} className="font-semibold">
             新建
           </Title>
-          <button className="w-full mt-4 border px-4 py-1.5 rounded-md">
+          <button className="w-full mt-4 border border-[color:rgb(var(--semi-grey-2))] px-4 py-1.5 rounded-md bg-transparent cursor-pointer hover:border-[color: var(--semi-color-primary)]">
             <Text>模板中心</Text>
           </button>
-          <Space className="my-4 w-full h-12 text-center">
+          <Space className="w-full h-12 my-4 text-center">
             <div className="h-full cursor-pointer">
               <IconCreateDoc style={{ fontSize: 28 }} />
               <Text className="block mt-1" size="small">
@@ -185,7 +185,7 @@ const Page: NextPage = () => {
             <IconPlus className="cursor-pointer" />
           </div>
 
-          <Text type="quaternary" size="small" className="block text-center mt-4">
+          <Text type="quaternary" size="small" className="block mt-4 text-center">
             在这里
             <Text link size="small">
               添加

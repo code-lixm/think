@@ -2,6 +2,7 @@ import 'tiptap/fix-match-nodes';
 import 'viewerjs/dist/viewer.css';
 import 'styles/globals.scss';
 import 'tiptap/core/styles/index.scss';
+import 'uno.css';
 
 import { isMobile } from 'helpers/env';
 import { DocumentVersionControl } from 'hooks/use-document-version';
