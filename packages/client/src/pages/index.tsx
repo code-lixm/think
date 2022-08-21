@@ -8,6 +8,7 @@ import { DocumentActions } from 'components/document/actions';
 import { IconCreateDoc } from 'components/icons/IconCreateDoc';
 import { LocaleTime } from 'components/locale-time';
 import { Seo } from 'components/seo';
+import { Template } from 'components/template';
 import { useRecentDocuments } from 'data/document';
 import { toLogin, useUser } from 'data/user';
 import { useRouterQuery } from 'hooks/use-router-query';
@@ -167,9 +168,11 @@ const Page: NextPage = () => {
           <Title heading={5} className="font-semibold">
             新建
           </Title>
-          <button className="w-full mt-4 border border-[color:rgb(var(--semi-grey-2))] px-4 py-1.5 rounded-md bg-transparent cursor-pointer hover:border-[color: var(--semi-color-primary)]">
-            <Text>模板中心</Text>
-          </button>
+          <Template>
+            <button className="w-full mt-4 px-4 py-1.5 border border-solid border-[color:rgb(var(--semi-grey-2))] rounded-md cursor-pointer bg-transparent">
+              <Text>模板中心</Text>
+            </button>
+          </Template>
           <Space className="w-full h-12 my-4 text-center">
             <div className="h-full cursor-pointer">
               <IconCreateDoc style={{ fontSize: 28 }} />

@@ -4,7 +4,6 @@ import { Button, Empty, Input, Layout, Space, Table, Typography } from '@douyinf
 import { IDocument } from '@think/domains';
 import cls from 'classnames';
 import { DataRender } from 'components/data-render';
-import { DocumentActions } from 'components/document/actions';
 import { LocaleTime } from 'components/locale-time';
 import { Seo } from 'components/seo';
 import { useRecentDocuments } from 'data/document';
@@ -87,7 +86,12 @@ const Page: NextPage = () => {
                 回收站
               </Title>
             </Space>
-            <Input prefix={<IconSearch />} showClear placeholder="搜索" style={{ width: 200 }} />
+            <Input
+              prefix={<IconSearch />}
+              showClear
+              placeholder="搜索"
+              className="w-[200px] border-none bg-[color:var(--semi-color-fill-0)] hover:bg-[color:var(--semi-color-fill-0)]"
+            />
           </div>
           <div className="body flex-auto relative">
             <DataRender

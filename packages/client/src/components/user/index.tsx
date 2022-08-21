@@ -43,21 +43,21 @@ export const User: React.FC = () => {
         render={
           <Dropdown.Menu>
             <Dropdown.Item onClick={() => toggleVisible(true)}>
-              <Text>账户设置</Text>
+              <Text className="whitespace-nowrap">账户设置</Text>
             </Dropdown.Item>
             <Dropdown.Item onClick={toggleResetVisible}>
-              <Text>重置密码</Text>
+              <Text className="whitespace-nowrap">重置密码</Text>
             </Dropdown.Item>
-            {user.isSystemAdmin ? (
+            {user.isSystemAdmin && (
               <Dropdown.Item onClick={toAdmin}>
-                <Text>管理后台</Text>
+                <Text className="whitespace-nowrap">管理后台</Text>
               </Dropdown.Item>
-            ) : null}
+            )}
             <Dropdown.Divider />
             <Theme />
             <Dropdown.Divider />
             <Dropdown.Item onClick={logout}>
-              <Text>退出登录</Text>
+              <Text className="whitespace-nowrap">退出登录</Text>
             </Dropdown.Item>
           </Dropdown.Menu>
         }

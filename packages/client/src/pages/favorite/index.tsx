@@ -80,15 +80,20 @@ const Page: NextPage = () => {
       <Seo title="收藏" />
       <Layout className="h-full">
         <Content className="pt-[24px] px-[24px] flex flex-col">
-          <div className="header flex mb-6 items-center justify-between">
+          <div className="flex mb-6 items-center justify-between">
             <Space spacing="loose" className="flex-auto">
               <Title heading={5} className="cursor-pointer select-none font-semibold">
                 收藏
               </Title>
             </Space>
-            <Input prefix={<IconSearch />} showClear placeholder="搜索" style={{ width: 200 }} />
+            <Input
+              prefix={<IconSearch />}
+              showClear
+              placeholder="搜索"
+              className="w-[200px] border-none bg-[color:var(--semi-color-fill-0)] hover:bg-[color:var(--semi-color-fill-0)]"
+            />
           </div>
-          <div className="body flex-auto relative">
+          <div className="flex-auto relative">
             <DataRender
               loading={loading}
               loadingContent={

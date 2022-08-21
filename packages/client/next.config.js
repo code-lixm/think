@@ -1,11 +1,7 @@
-const UnoCSS = require('@unocss/webpack').default;
-const presetUno = require('@unocss/preset-uno').default;
-const presetAttributify = require('@unocss/preset-attributify').default;
-const transformerAttributifyJsx = require('@unocss/transformer-attributify-jsx');
-
 const semi = require('@douyinfe/semi-next').default({});
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 const withPWA = require('next-pwa');
+
 const { getConfig } = require('@think/config');
 const config = getConfig();
 const pwaRuntimeCaching = require('./pwa-cache');
@@ -28,13 +24,6 @@ const nextConfig = semi({
     SEO_KEYWORDS: config.client.seoKeywords,
   },
   webpack: (config, { dev, isServer, buildId }) => {
-    console.log('buildId: ', buildId);
-    config.plugins.push(
-      UnoCSS({
-        presets: [presetUno(), presetAttributify()],
-        transformers: [transformerAttributifyJsx()],
-      })
-    );
     if (buildId !== 'development') {
       config.cache = false;
     }

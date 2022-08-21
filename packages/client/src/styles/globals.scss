@@ -1,6 +1,7 @@
 @import './var.scss';
 @import './reset.scss';
 @import '~@semi-bot/semi-theme-universe-think/semi.min.css';
+@import './tailwind.css';
 
 .container {
   width: 100%;
@@ -18,6 +19,10 @@ body[theme-mode='dark'] {
 
 .semi-navigation-item-selected .semi-navigation-item-text {
   color: var(--semi-color-primary);
+}
+
+.semi-tabs-bar-line.semi-tabs-bar-top {
+  border: none;
 }
 
 @media (max-width: 768px) {
