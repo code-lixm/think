@@ -36,7 +36,7 @@ export const TemplateEditor: React.FC<IProps> = ({ templateId }) => {
     Router.back();
   }, []);
 
-  const handleDelte = useCallback(() => {
+  const handleDelete = useCallback(() => {
     deleteTemplate().then(() => {
       goback();
     });
@@ -67,18 +67,25 @@ export const TemplateEditor: React.FC<IProps> = ({ templateId }) => {
               </>
             }
             footer={
-              <Space>
+              <Space spacing="medium">
                 <DocumentStyle />
                 <Tooltip position="bottom" content={isPublic ? '公开模板' : '个人模板'}>
-                  <Switch checked={isPublic} onChange={(v) => updateTemplate({ isPublic: v })}></Switch>
+                  <Switch
+                    checked={isPublic}
+                    onChange={(v) => updateTemplate({ isPublic: v })}
+                    checkedText="私"
+                    uncheckedText="公"
+                  ></Switch>
                 </Tooltip>
                 <Popconfirm
                   style={{ width: 320 }}
                   title="删除模板"
                   content="模板删除后不可恢复，谨慎操作！"
-                  onConfirm={handleDelte}
+                  onConfirm={handleDelete}
                 >
-                  <Button type="danger">删除</Button>
+                  <Button type="danger" size="small">
+                    删除
+                  </Button>
                 </Popconfirm>
                 <User />
               </Space>

@@ -1,4 +1,4 @@
-import { IconChevronLeft } from '@douyinfe/semi-icons';
+import { IconChevronLeft, IconUser } from '@douyinfe/semi-icons';
 import { Button, Card, Modal, Select, Space, Tag, Timeline, Typography } from '@douyinfe/semi-ui';
 import { EditorContent, useEditor } from '@tiptap/react';
 import cls from 'classnames';
@@ -69,6 +69,11 @@ export const DocumentVersion: React.FC<Partial<IProps>> = ({ documentId, onSelec
     close();
   }, [selectedVersion, close, onSelect]);
 
+  const handlerRefresh = useCallback(() => {
+    refresh();
+    select(data[0]);
+  }, [data, select, refresh]);
+
   useEffect(() => {
     if (diffVersion && selectedVersion) {
       const historyVersion = data.find((item) => item.version === diffVersion);
@@ -135,7 +140,7 @@ export const DocumentVersion: React.FC<Partial<IProps>> = ({ documentId, onSelec
                 style={{ marginRight: 8 }}
                 disabled={loading || !!error}
                 loading={loading}
-                onClick={refresh}
+                onClick={handlerRefresh}
               >
                 刷新
               </Button>
@@ -153,7 +158,7 @@ export const DocumentVersion: React.FC<Partial<IProps>> = ({ documentId, onSelec
           empty={!loading && !data.length}
           normalContent={() => (
             <div className={styles.contentWrap}>
-              <aside className={cls(isMobile && styles.isMobile)}>
+              <aside className={cls(isMobile && styles.isMobile, 'light-scrollbar')}>
                 <Space vertical style={{ padding: '8px 0', width: '100%' }}>
                   {data.map(({ version, data, createUser }, index) => {
                     return (
@@ -170,16 +175,15 @@ export const DocumentVersion: React.FC<Partial<IProps>> = ({ documentId, onSelec
                           )}
                           bodyStyle={{ padding: '4px 8px' }}
                         >
-                          <Space vertical spacing="tight" align="start">
-                            <Text size="small" ellipsis={{ showTooltip: true }} style={{ width: '100%' }}>
-                              <Space align="center">
-                                <Tag color="light-blue">{createUser && createUser.name}</Tag>
-                                <Text type="quaternary" size="small">
-                                  <LocaleTime date={+version} />
-                                </Text>
-                              </Space>
-                            </Text>
-                            <Text type="secondary" size="small">
+                          <Space vertical spacing="tight" align="start" className="w-full">
+                            <div className="flex items-center justify-between w-full">
+                              <IconUser className="text-[12px] pr-[2px]" />
+                              <Text className="flex-auto">{createUser && createUser.name}</Text>
+                              <Text type="quaternary" size="small">
+                                <LocaleTime date={+version} />
+                              </Text>
+                            </div>
+                            <Text type="secondary" size="small" className="w-full">
                               {new Date(+version).toLocaleString()}
                             </Text>
                           </Space>
@@ -188,35 +192,11 @@ export const DocumentVersion: React.FC<Partial<IProps>> = ({ documentId, onSelec
                     );
                   })}
                 </Space>
-                {/* <Timeline mode="left">
-                  {data.map(({ version, data, createUser }, index) => {
-                    return (
-                      <Timeline.Item
-                        className={cls(
-                          styles.item,
-                          isMobile && styles.isMobile,
-                          selectedVersion && selectedVersion.version === version && styles.selected
-                        )}
-                        onClick={() => select({ version, data })}
-                        type={selectedVersion && selectedVersion.version === version ? 'ongoing' : 'default'}
-                        key={version}
-                        time={}
-                        extra={
-                          <Text size="small" ellipsis={{ showTooltip: true }} style={{ width: '100%' }}>
-                            <LocaleTime date={+version} />
-                          </Text>
-                        }
-                      >
-                        <Text className={styles.version}>{createUser && createUser.name}</Text>
-                      </Timeline.Item>
-                    );
-                  })}
-                </Timeline> */}
               </aside>
               <main className={cls(isMobile && styles.isMobile)}>
                 <div>
                   {diffVersion ? (
-                    <div id="diff-visual" className="ProseMirror"></div>
+                    <div id="diff-visual" className="ProseMirror light-scrollbar"></div>
                   ) : (
                     <EditorContent editor={editor} />
                   )}

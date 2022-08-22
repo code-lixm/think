@@ -17,7 +17,7 @@ export const TemplateReader: React.FC<IProps> = ({ templateId }) => {
       loading={loading}
       loadingContent={
         <div style={{ margin: 24 }}>
-          <Spin></Spin>
+          <Spin />
         </div>
       }
       error={error}

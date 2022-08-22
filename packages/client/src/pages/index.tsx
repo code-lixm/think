@@ -1,5 +1,5 @@
 import { IconChevronDown, IconCloudUploadStroked, IconPlus } from '@douyinfe/semi-icons';
-import { IllustrationConstruction } from '@douyinfe/semi-illustrations';
+import { IllustrationConstruction, IllustrationConstructionDark } from '@douyinfe/semi-illustrations';
 import { Dropdown, Empty, Layout, Space, Table, Typography } from '@douyinfe/semi-ui';
 import { IDocument } from '@think/domains';
 import cls from 'classnames';
@@ -156,7 +156,7 @@ const Page: NextPage = () => {
                 ) : (
                   <Empty
                     image={<IllustrationConstruction style={{ width: 150, height: 150 }} />}
-                    darkModeImage={<IconCloudUploadStroked style={{ width: 150, height: 150 }} />}
+                    darkModeImage={<IllustrationConstructionDark style={{ width: 150, height: 150 }} />}
                     description={<Text size="small">您最近还有没编辑过文档哦~</Text>}
                   />
                 )

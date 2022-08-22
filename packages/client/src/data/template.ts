@@ -99,6 +99,20 @@ export const getTemplateDetail = (templateId, cookie = null): Promise<ITemplate>
 };
 
 /**
+ * 删除指定模板
+ * @param templateId
+ * @param cookie
+ * @returns
+ */
+export const deleteTemplate = (templateId, cookie = null): Promise<ITemplate> => {
+  return HttpClient.request({
+    method: TemplateApiDefinition.deleteById.method,
+    url: TemplateApiDefinition.deleteById.client(templateId),
+    cookie,
+  });
+};
+
+/**
  * 获取模板详情
  * @param templateId
  * @returns

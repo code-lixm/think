@@ -12,7 +12,7 @@ export const OrganizationPublicSwitcher = () => {
 
   return (
     <span className={styles.nameWrap}>
-      <Space style={{ minWidth: '208px' }}>
+      <Space style={{ minWidth: 190 }}>
         <LogoImage />
         {width >= 768 && <LogoText />}
       </Space>

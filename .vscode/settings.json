@@ -1,3 +1,5 @@
 {
-  "unocss.root": "packages/client"
+  "cSpell.words": [
+    "Popconfirm"
+  ]
 }
