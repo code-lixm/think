@@ -23,7 +23,7 @@ export const TemplateReader: React.FC<IProps> = ({ templateId }) => {
       error={error}
       normalContent={() => {
         return (
-          <div id="js-template-reader" className="container">
+          <div id="js-template-reader" className="h-full px-5 pb-5 light-scrollbar">
             <Seo title={data.title} />
             <ReaderEditor content={data.content} />
           </div>

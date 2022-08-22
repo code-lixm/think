@@ -21,10 +21,11 @@ const Template: React.FC<IProps> = ({ children }) => {
   const [visible, toggleVisible] = useToggle(false);
 
   const handleAdd = useCallback(() => {
+    toggleVisible(false);
     addTemplate({ title: '未命名模板' }).then((res) => {
       Router.push(`/template/${res.id}`);
     });
-  }, [addTemplate]);
+  }, [addTemplate, toggleVisible]);
 
   const handleUseTemplate = useCallback(() => {
     toggleVisible(false);
@@ -33,7 +34,17 @@ const Template: React.FC<IProps> = ({ children }) => {
   return (
     <>
       <div onClick={toggleVisible}>{children}</div>
-      <Modal header={null} footer={null} visible={visible} height={680} width="70%" bodyStyle={{ padding: 0 }}>
+      <Modal
+        centered
+        header={null}
+        footer={null}
+        closeOnEsc
+        height="680px"
+        width="80%"
+        visible={visible}
+        bodyStyle={{ padding: 0 }}
+        onCancel={toggleVisible}
+      >
         <div className="flex mx-[-24px] h-full">
           <div className="flex-auto h-full relative">
             {templateId ? (
