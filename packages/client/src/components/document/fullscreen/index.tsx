@@ -129,7 +129,7 @@ export const DocumentFullscreen: React.FC<IProps> = ({ data }) => {
                 {data.title}
               </Title>
             </div>
-            <div className={styles.content}>
+            <div className={cls(styles.content, 'light-scrollbar')}>
               <div className={styles.title}>
                 {cover && (
                   <div className={styles.imgCover}>

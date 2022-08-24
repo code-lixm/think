@@ -61,10 +61,10 @@ export const SiderNavigation = () => {
             { itemKey: '/favorite', text: '收藏', icon: MenuIconStar },
             {
               itemKey: '/app',
-              text: '空间',
+              text: '我的组织',
               icon: MenuIconFolder,
-              items: organizations,
             },
+            ...organizations,
             {
               itemKey: '/trash',
               text: '回收站',

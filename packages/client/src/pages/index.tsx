@@ -1,8 +1,7 @@
-import { IconChevronDown, IconCloudUploadStroked, IconPlus } from '@douyinfe/semi-icons';
+import { IconChevronDown, IconPlus } from '@douyinfe/semi-icons';
 import { IllustrationConstruction, IllustrationConstructionDark } from '@douyinfe/semi-illustrations';
 import { Dropdown, Empty, Layout, Space, Table, Typography } from '@douyinfe/semi-ui';
 import { IDocument } from '@think/domains';
-import cls from 'classnames';
 import { DataRender } from 'components/data-render';
 import { DocumentActions } from 'components/document/actions';
 import { IconCreateDoc } from 'components/icons/IconCreateDoc';
@@ -168,41 +167,33 @@ const Page: NextPage = () => {
           <Title heading={5} className="font-semibold">
             新建
           </Title>
+          <Space className="w-full h-12 mt-4 text-center">
+            <div className="h-full cursor-pointer">
+              <IconCreateDoc style={{ fontSize: 28 }} />
+              <Text className="block mt-1">文档</Text>
+            </div>
+          </Space>
           <Template>
-            <button className="w-full mt-4 px-4 py-1.5 border border-solid border-[color:rgb(var(--semi-grey-2))] rounded-md cursor-pointer bg-transparent">
+            <button className="w-full my-4 px-3 py-1 border border-solid border-[color:rgb(var(--semi-grey-2))] hover:border-[color:rgb(var(--semi-color-primary))] rounded-md cursor-pointer bg-transparent">
               <Text>模板中心</Text>
             </button>
           </Template>
-          <Space className="w-full h-12 my-4 text-center">
-            <div className="h-full cursor-pointer">
-              <IconCreateDoc style={{ fontSize: 28 }} />
-              <Text className="block mt-1" size="small">
-                文档
-              </Text>
-            </div>
-          </Space>
           <div className="flex items-center justify-between">
             <Title heading={5} className="flex-1 font-semibold">
               快捷入口
             </Title>
-            <IconPlus className="cursor-pointer" />
+            <IconPlus className="cursor-pointer hover:bg-[color:var(--semi-color-fill-1)] p-1 rounded-sm" />
           </div>
 
-          <Text type="quaternary" size="small" className="block mt-4 text-center">
+          <Text type="quaternary" className="block mt-4 text-center">
             在这里
-            <Text link size="small">
+            <Text link className="px-[2px]">
               添加
             </Text>
             你的常用链接
           </Text>
         </Sider>
       </Layout>
-
-      {/* <DataRender
-      loading={loading}
-      error={error}
-      empty={!loading && !data.length}
-      ></DataRender> */}
     </SingleColumnLayout>
   );
 };

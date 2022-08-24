@@ -1,6 +1,6 @@
 import { Checkbox, Modal, TabPane, Tabs } from '@douyinfe/semi-ui';
 import { IDocument, IWiki } from '@think/domains';
-import { TemplateCardEmpty } from 'components/template/card';
+// import { TemplateCardEmpty } from 'components/template/card';
 import { TemplateList } from 'components/template/list';
 import { useCreateDocument } from 'data/document';
 import { useOwnTemplates, usePublicTemplates } from 'data/template';
@@ -77,7 +77,7 @@ export const DocumentCreator: React.FC<IProps> = ({ parentDocumentId, wikiId, vi
         }
       >
         <TabPane tab="公开模板" itemKey="all">
-          <TemplateList
+          {/* <TemplateList
             hook={usePublicTemplates}
             onClick={(id) => setTemplateId(id)}
             getClassNames={(id) => id === templateId && styles.isActive}
@@ -87,10 +87,10 @@ export const DocumentCreator: React.FC<IProps> = ({ parentDocumentId, wikiId, vi
                 onClick={() => setTemplateId('')}
               />
             }
-          />
+          /> */}
         </TabPane>
         <TabPane tab="我创建的" itemKey="own">
-          <TemplateList
+          {/* <TemplateList
             hook={useOwnTemplates}
             onClick={(id) => setTemplateId(id)}
             getClassNames={(id) => id === templateId && styles.isActive}
@@ -100,7 +100,7 @@ export const DocumentCreator: React.FC<IProps> = ({ parentDocumentId, wikiId, vi
                 onClick={() => setTemplateId('')}
               />
             }
-          />
+          /> */}
         </TabPane>
       </Tabs>
     </Modal>

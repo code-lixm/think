@@ -1,6 +1,7 @@
-import { Button, Layout as SemiLayout, Nav, Space } from '@douyinfe/semi-ui';
+import { Button, Layout as SemiLayout, Nav, Space, Typography } from '@douyinfe/semi-ui';
 import { Message } from 'components/message';
 import { OrganizationPublicSwitcher } from 'components/organization/public-switcher';
+import { Template } from 'components/template';
 import { User } from 'components/user';
 import { useUser } from 'data/user';
 import { IsOnMobile } from 'hooks/use-on-mobile';
@@ -10,15 +11,6 @@ import React, { useCallback } from 'react';
 const { Header: SemiHeader } = SemiLayout;
 
 const menus = [
-  // {
-  //   itemKey: '/',
-  //   text: '主页',
-  //   onClick: () => {
-  //     Router.push({
-  //       pathname: `/`,
-  //     });
-  //   },
-  // },
   {
     itemKey: '/find',
     text: '广场',
@@ -30,12 +22,7 @@ const menus = [
   },
   {
     itemKey: '/template',
-    text: '模板',
-    onClick: () => {
-      Router.push({
-        pathname: `/template`,
-      });
-    },
+    text: <Template>模板中心</Template>,
   },
 ];
 
@@ -63,7 +50,7 @@ export const RouterHeader: React.FC = () => {
             <Space>
               {/* {user && (
                 <Button theme="solid" onClick={gotoApp}>
-                  前往组织空间
+                  前往组织
                 </Button>
               )} */}
               <User />
@@ -85,7 +72,7 @@ export const RouterHeader: React.FC = () => {
             <Space>
               {user && (
                 <Button theme="solid" onClick={gotoApp}>
-                  前往组织空间
+                  前往组织
                 </Button>
               )}
               {user && <Message />}

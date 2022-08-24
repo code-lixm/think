@@ -5,6 +5,7 @@ import cls from 'classnames';
 import { DataRender } from 'components/data-render';
 import { IconCreateDoc } from 'components/icons/IconCreateDoc';
 import { deleteTemplate } from 'data/template';
+import Router from 'next/router';
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 
 import styles from './index.module.scss';
@@ -18,6 +19,9 @@ interface IProps {
 const { Text } = Typography;
 
 const PersonalListItem = ({ template, templateId, setTemplateId, handleDelete }) => {
+  const handleEdit = useCallback((templateId) => {
+    Router.push(`/template/${templateId}/`);
+  }, []);
   return (
     <List.Item
       className={cls(
@@ -35,7 +39,9 @@ const PersonalListItem = ({ template, templateId, setTemplateId, handleDelete })
         position="bottomRight"
         render={
           <Dropdown.Menu>
-            <Dropdown.Item icon={<IconEdit />}>编辑</Dropdown.Item>
+            <Dropdown.Item icon={<IconEdit />} onClick={() => handleEdit(template.id)}>
+              编辑
+            </Dropdown.Item>
             <Popconfirm
               position="leftBottom"
               style={{ width: 320 }}
