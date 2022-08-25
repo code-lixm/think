@@ -66,7 +66,7 @@ export const TitleWrapper = ({ editor, node }) => {
 
   return (
     <NodeViewWrapper className={cls(styles.wrap, 'title')}>
-      {cover ? (
+      {/* {cover ? (
         <div className={styles.coverWrap} contentEditable={false}>
           <LazyLoadImage src={cover} alt="请选择或移除封面" />
           {isEditable ? (
@@ -80,7 +80,7 @@ export const TitleWrapper = ({ editor, node }) => {
           ) : null}
         </div>
       ) : null}
-      {portals}
+      {portals} */}
       <NodeViewContent></NodeViewContent>
     </NodeViewWrapper>
   );

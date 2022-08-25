@@ -3,6 +3,7 @@
   max-height: 320px;
   overflow-x: hidden;
   overflow-y: auto;
+  background-color: var(--semi-color-bg-0);
   border-radius: var(--border-radius);
   box-shadow: rgb(9 30 66 / 31%) 0 0 1px, rgb(9 30 66 / 25%) 0 4px 8px -2px;
 }
@@ -10,13 +11,14 @@
 .item {
   display: flex;
   width: 100%;
-  padding: 12px 12px 11px;
+  padding: 6px;
+  margin: 6px;
   color: rgb(9 30 66);
   text-decoration: none;
   cursor: pointer;
   background-color: rgb(255 255 255);
   border: 0;
-  border-radius: 0;
+  border-radius: 2px;
   flex: 0 0 auto;
   align-items: center;
 

@@ -1,5 +1,5 @@
-import { IconCopy } from '@douyinfe/semi-icons';
-import { Button, Select, Tooltip } from '@douyinfe/semi-ui';
+// import { IconCopy } from '@douyinfe/semi-icons';
+import { Button, Select, Typography } from '@douyinfe/semi-ui';
 import { NodeViewContent, NodeViewWrapper } from '@tiptap/react';
 import cls from 'classnames';
 import { copy } from 'helpers/copy';
@@ -31,17 +31,13 @@ export const CodeBlockWrapper = ({ editor, node: { attrs }, updateAttributes, ex
             </Select.Option>
           ))}
         </Select>
-        <Tooltip content="复制" spacing={6}>
-          <Button
-            size="small"
-            type="tertiary"
-            theme="borderless"
-            icon={<IconCopy />}
-            onClick={() => copy($container.current.innerText)}
-          />
-        </Tooltip>
+        {!isEditable && (
+          <Button size="small" type="tertiary" theme="borderless" onClick={() => copy($container.current.innerText)}>
+            <Typography.Text style={{ fontWeight: 'normal' }}>复制代码</Typography.Text>
+          </Button>
+        )}
       </div>
-      <pre ref={$container}>
+      <pre ref={$container} className={styles.pre}>
         <NodeViewContent as="code" />
       </pre>
     </NodeViewWrapper>
