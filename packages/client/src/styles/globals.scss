@@ -3,12 +3,6 @@
 @import '~@semi-bot/semi-theme-universe-think/semi.min.css';
 @import './tailwind.css';
 
-.container {
-  width: 100%;
-  margin-right: auto;
-  margin-left: auto;
-}
-
 body[theme-mode='light'] {
   background-color: #fafafa;
 }
@@ -17,12 +11,45 @@ body[theme-mode='dark'] {
   background-color: var(--semi-color-bg-0);
 }
 
+.container {
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
 .semi-navigation-item-selected .semi-navigation-item-text {
   color: var(--semi-color-primary);
 }
 
 .semi-tabs-bar-line.semi-tabs-bar-top {
   border: none;
+}
+
+.light-scrollbar::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.light-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.light-scrollbar::-webkit-scrollbar-corner {
+  background-color: transparent;
+}
+
+.light-scrollbar::-webkit-scrollbar-thumb {
+  background: transparent;
+  border-radius: 6px;
+  transition: all 1s;
+}
+
+.light-scrollbar:hover::-webkit-scrollbar-thumb {
+  background: var(--semi-color-fill-2);
+}
+
+.light-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: var(--semi-color-fill-1);
 }
 
 @media (max-width: 768px) {

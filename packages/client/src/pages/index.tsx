@@ -83,7 +83,7 @@ const Page: NextPage = () => {
     <SingleColumnLayout>
       <Seo title="主页" />
       <Layout className="h-full">
-        <Content className="pt-[24px] px-[24px] flex flex-col">
+        <Content className="pt-[24px] px-[24px] flex flex-col light-scrollbar">
           <div className="flex mb-4 header">
             <Space spacing="loose" className="flex-auto">
               <Title

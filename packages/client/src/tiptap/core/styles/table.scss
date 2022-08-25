@@ -88,7 +88,7 @@
     .selectedCell {
       border-style: double;
       border-color: rgb(0 101 255);
-      background: var(--semi-color-info-light-hover);
+      background: var(--semi-color-primary-light-hover);
     }
 
     .grip-column {
@@ -105,7 +105,7 @@
 
       &:hover,
       &.selected {
-        background: var(--semi-color-info);
+        background: var(--semi-color-primary);
       }
     }
 
@@ -123,7 +123,7 @@
 
       &:hover,
       &.selected {
-        background: var(--semi-color-info);
+        background: var(--semi-color-primary);
       }
     }
 
@@ -141,7 +141,7 @@
 
       &:hover,
       &.selected {
-        background: var(--semi-color-info);
+        background: var(--semi-color-primary);
       }
     }
 

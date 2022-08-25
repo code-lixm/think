@@ -70,11 +70,11 @@ export const RouterHeader: React.FC = () => {
           items={menus}
           footer={
             <Space>
-              {user && (
+              {/* {user && (
                 <Button theme="solid" onClick={gotoApp}>
                   前往组织
                 </Button>
-              )}
+              )} */}
               {user && <Message />}
               <User />
             </Space>

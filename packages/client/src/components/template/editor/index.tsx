@@ -70,12 +70,7 @@ export const TemplateEditor: React.FC<IProps> = ({ templateId }) => {
               <Space spacing="medium">
                 <DocumentStyle />
                 <Tooltip position="bottom" content={isPublic ? '公开模板' : '个人模板'}>
-                  <Switch
-                    checked={isPublic}
-                    onChange={(v) => updateTemplate({ isPublic: v })}
-                    checkedText="私"
-                    uncheckedText="公"
-                  ></Switch>
+                  <Switch checked={isPublic} onChange={(v) => updateTemplate({ isPublic: v })}></Switch>
                 </Tooltip>
                 <Popconfirm
                   style={{ width: 320 }}

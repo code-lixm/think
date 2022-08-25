@@ -4,7 +4,7 @@ import { Button, Empty, Input, Modal, TabPane, Tabs, Typography } from '@douyinf
 import { useOwnTemplates, usePublicTemplates } from 'data/template';
 import { useToggle } from 'hooks/use-toggle';
 import Router from 'next/router';
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useState } from 'react';
 
 import { TemplateList } from './list';
 import { TemplateReader } from './reader';
