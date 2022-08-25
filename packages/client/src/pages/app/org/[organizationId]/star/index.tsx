@@ -1,8 +1,8 @@
-import { List, Typography } from '@douyinfe/semi-ui';
+import { IllustrationNoContent, IllustrationNoContentDark } from '@douyinfe/semi-illustrations';
+import { Empty, List, Typography } from '@douyinfe/semi-ui';
 import { StarApiDefinition } from '@think/domains';
 import { DataRender } from 'components/data-render';
 import { DocumentCard, DocumentCardPlaceholder } from 'components/document/card';
-import { Empty } from 'components/empty';
 import { Seo } from 'components/seo';
 import { WikiCard, WikiCardPlaceholder } from 'components/wiki/card';
 import {
@@ -58,7 +58,13 @@ const StarDocs = () => {
               <DocumentCard document={doc} />
             </List.Item>
           )}
-          emptyContent={<Empty message={'收藏的文档会出现在此处'} />}
+          emptyContent={
+            <Empty
+              image={<IllustrationNoContent style={{ width: 150, height: 150 }} />}
+              darkModeImage={<IllustrationNoContentDark style={{ width: 150, height: 150 }} />}
+              description={'暂无收藏的文档哦~'}
+            />
+          }
         />
       )}
     />
@@ -93,7 +99,13 @@ const StarWikis = () => {
               <WikiCard wiki={wiki} />
             </List.Item>
           )}
-          emptyContent={<Empty message={'收藏的知识库会出现在此处'} />}
+          emptyContent={
+            <Empty
+              image={<IllustrationNoContent style={{ width: 150, height: 150 }} />}
+              darkModeImage={<IllustrationNoContentDark style={{ width: 150, height: 150 }} />}
+              description={'暂无收藏的知识库哦~'}
+            />
+          }
         />
       )}
     />
