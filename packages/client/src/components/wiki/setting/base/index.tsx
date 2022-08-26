@@ -3,7 +3,7 @@ import { FormApi } from '@douyinfe/semi-ui/lib/es/form';
 import { WIKI_AVATARS } from '@think/constants';
 import type { IWiki } from '@think/domains';
 import { ImageUploader } from 'components/image-uploader';
-import { pick } from 'helpers/pick';
+import { pick } from 'lodash-es';
 import { useCallback, useEffect, useRef, useState } from 'react';
 
 import styles from './index.module.scss';

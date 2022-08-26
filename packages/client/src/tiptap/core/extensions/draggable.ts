@@ -4,10 +4,10 @@ import { NodeSelection } from 'prosemirror-state';
 import { __serializeForClipboard, EditorView } from 'prosemirror-view';
 import { ActiveNode, getNodeAtPos, removePossibleTable, selectRootNodeByDom } from 'tiptap/prose-utils';
 
-export const DragablePluginKey = new PluginKey('dragable');
+export const DraggablePluginKey = new PluginKey('draggable');
 
-export const Dragable = Extension.create({
-  name: 'dragable',
+export const Draggable = Extension.create({
+  name: 'draggable',
 
   addProseMirrorPlugins() {
     let editorView: EditorView;
@@ -41,6 +41,10 @@ export const Dragable = Extension.create({
       const targetNodeRect = (<HTMLElement>el).getBoundingClientRect();
       const rootRect = root.getBoundingClientRect();
       const handleRect = dragHandleDOM.getBoundingClientRect();
+
+      // el.style.border = '1px solid blue';
+      // root.style.border = '1px solid red';
+      // dragHandleDOM.style.border = '1px solid orange';
 
       const left = targetNodeRect.left - rootRect.left - handleRect.width - handleRect.width / 2;
       const top = targetNodeRect.top - rootRect.top + handleRect.height / 2 + root.scrollTop;
@@ -91,7 +95,7 @@ export const Dragable = Extension.create({
 
     return [
       new Plugin({
-        key: DragablePluginKey,
+        key: DraggablePluginKey,
         view: (view) => {
           if (view.editable) {
             dragHandleDOM = createDragHandleDOM();

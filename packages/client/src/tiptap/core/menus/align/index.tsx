@@ -33,25 +33,22 @@ export const Align: React.FC<{ editor: Editor }> = ({ editor }) => {
 
   return (
     <Dropdown
-      trigger="click"
+      trigger="hover"
       render={
-        <>
-          <Tooltip content="左对齐">
-            <Button onClick={toggle('left')} icon={<IconAlignLeft />} type="tertiary" theme="borderless" />
-          </Tooltip>
-
-          <Tooltip content="居中">
-            <Button onClick={toggle('center')} icon={<IconAlignCenter />} type="tertiary" theme="borderless" />
-          </Tooltip>
-
-          <Tooltip content="右对齐">
-            <Button onClick={toggle('right')} icon={<IconAlignRight />} type="tertiary" theme="borderless" />
-          </Tooltip>
-
-          <Tooltip content="两端对齐">
-            <Button onClick={toggle('justify')} icon={<IconAlignJustify />} type="tertiary" theme="borderless" />
-          </Tooltip>
-        </>
+        <Dropdown.Menu>
+          <Dropdown.Item icon={<IconAlignLeft />} onClick={toggle('left')}>
+            左对齐
+          </Dropdown.Item>
+          <Dropdown.Item icon={<IconAlignCenter />} onClick={toggle('center')}>
+            居中
+          </Dropdown.Item>
+          <Dropdown.Item icon={<IconAlignRight />} onClick={toggle('right')}>
+            右对齐
+          </Dropdown.Item>
+          <Dropdown.Item icon={<IconAlignJustify />} onClick={toggle('justify')}>
+            两端对齐
+          </Dropdown.Item>
+        </Dropdown.Menu>
       }
     >
       <span>

@@ -68,7 +68,9 @@ export const Search: React.FC<{ editor: Editor }> = ({ editor }) => {
   const content = (
     <div style={{ padding: isMobile ? '24px 0' : 0 }}>
       <div style={{ marginBottom: 12 }}>
-        <Text type="tertiary">查找</Text>
+        <Text type="tertiary" style={{ display: 'block', marginBottom: 6 }}>
+          查找
+        </Text>
         <Input
           autofocus
           value={searchValue}
@@ -77,24 +79,23 @@ export const Search: React.FC<{ editor: Editor }> = ({ editor }) => {
         />
       </div>
       <div style={{ marginBottom: 12 }}>
-        <Text type="tertiary">替换为</Text>
+        <Text type="tertiary" style={{ display: 'block', marginBottom: 6 }}>
+          替换为
+        </Text>
         <Input value={replaceValue} onChange={setReplaceValue} />
       </div>
       <div>
         <Space>
-          <Button disabled={!results.length} onClick={editor.commands.replaceAll}>
+          <Button size="small" disabled={!results.length} onClick={editor.commands.replaceAll}>
             全部替换
           </Button>
-
-          <Button disabled={!results.length} onClick={editor.commands.replace}>
+          <Button size="small" disabled={!results.length} onClick={editor.commands.replace}>
             替换
           </Button>
-
-          <Button disabled={!results.length} onClick={editor.commands.goToPrevSearchResult}>
+          <Button size="small" disabled={!results.length} onClick={editor.commands.goToPrevSearchResult}>
             上一个
           </Button>
-
-          <Button disabled={!results.length} onClick={editor.commands.goToNextSearchResult}>
+          <Button size="small" disabled={!results.length} onClick={editor.commands.goToNextSearchResult}>
             下一个
           </Button>
         </Space>

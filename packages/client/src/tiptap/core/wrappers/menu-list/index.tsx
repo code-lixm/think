@@ -1,4 +1,4 @@
-import { Space } from '@douyinfe/semi-ui';
+import { Typography } from '@douyinfe/semi-ui';
 import { Editor } from '@tiptap/core';
 import cls from 'classnames';
 import { useUser } from 'data/user';
@@ -8,6 +8,7 @@ import { ILabelRenderCommand } from 'tiptap/core/menus/commands';
 
 import styles from './index.module.scss';
 
+const { Text } = Typography;
 interface IProps {
   editor: Editor;
   items: ILabelRenderCommand[];
@@ -81,10 +82,10 @@ export const MenuList: React.FC<IProps> = forwardRef((props, ref) => {
                 key={index}
                 onClick={() => selectItem(index)}
               >
-                <Space>
-                  {item.icon}
+                <Text icon={item.icon} className={styles.label}>
                   {item.label}
-                </Space>
+                </Text>
+                <Text className={styles.shortcut}>{item.shortcut}</Text>
               </span>
             );
           })

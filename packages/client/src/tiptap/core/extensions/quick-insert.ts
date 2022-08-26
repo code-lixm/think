@@ -1,6 +1,7 @@
 import { Node } from '@tiptap/core';
 import { ReactRenderer } from '@tiptap/react';
 import Suggestion from '@tiptap/suggestion';
+import { uniqBy } from 'lodash-es';
 import { Plugin, PluginKey } from 'prosemirror-state';
 import tippy from 'tippy.js';
 import { EXTENSION_PRIORITY_HIGHEST } from 'tiptap/core/constants';
@@ -73,9 +74,11 @@ export const QuickInsert = Node.create({
       const restCommands = QUICK_INSERT_COMMANDS.filter((command) => {
         return !('title' in command) && !('custom' in command) && !recentUsed.includes(command.label);
       });
-      return [...transformToCommands(QUICK_INSERT_COMMANDS, recentUsed), ...restCommands].filter(
-        (command) => !('title' in command) && command.label && command.label.startsWith(query)
+      const target = [...transformToCommands(QUICK_INSERT_COMMANDS, recentUsed), ...restCommands].filter(
+        (command) =>
+          !('title' in command) && (command.label.startsWith(query) || command.shortcut.startsWith(`/${query}`))
       );
+      return uniqBy(target, 'label');
     },
     render: () => {
       let component;
@@ -105,7 +108,7 @@ export const QuickInsert = Node.create({
 
         onUpdate(props) {
           if (!isEditable) return;
-
+          console.log('props: ', props);
           component.updateProps(props);
 
           props.editor.storage[extensionName].rect = props.clientRect();

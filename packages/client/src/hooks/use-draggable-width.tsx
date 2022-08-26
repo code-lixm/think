@@ -5,7 +5,7 @@ import { useQuery } from 'react-query';
 
 import { IsOnMobile } from './use-on-mobile';
 
-const key = 'dragable-menu-width';
+const key = 'draggable-menu-width';
 
 const DEFAULT_PC_MIN_WIDTH = 240;
 const DEFAULT_PC_MAX_WIDTH = 600;
@@ -16,7 +16,7 @@ const DEFAULT_MOBILE_MAX_WIDTH = 240;
 // 收起宽度：24
 const COLLAPSED_WIDTH = 24;
 
-export const useDragableWidth = () => {
+export const useDraggableWidth = () => {
   const { isMobile } = IsOnMobile.useHook();
   const [minWidth, maxWidth] = useMemo(
     () =>

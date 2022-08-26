@@ -27,11 +27,14 @@ export type ITitle = {
   title: string;
 };
 
+// type ICommandShortcut = {};
+
 type IBaseCommand = {
   isBlock?: boolean;
   icon: React.ReactNode;
   label: string;
   user?: IUser;
+  shortcut: string;
 };
 
 type IAction = (editor: Editor, user?: IUser) => void;
@@ -51,17 +54,19 @@ export const insertMenuLRUCache = createKeysLocalStorageLRUCache('TIPTAP_INSERT_
 export const COMMANDS: ICommand[] = [
   {
     title: '通用',
+    shortcut: '/ty',
   },
-
   {
     icon: <IconTableOfContents />,
     label: '目录',
+    shortcut: '/ml',
     action: (editor) => editor.chain().focus().setTableOfContents().run(),
   },
   {
     isBlock: true,
     icon: <IconTable />,
     label: '表格',
+    shortcut: '/bg',
     custom: (editor, runCommand) => (
       <Popover
         key="table"
@@ -92,6 +97,7 @@ export const COMMANDS: ICommand[] = [
     isBlock: true,
     icon: <IconLink />,
     label: '外链',
+    shortcut: '/wl',
     action: (editor, user) =>
       editor.chain().focus().setIframe({ url: '', defaultShowPicker: true, createUser: user.id }).run(),
   },
@@ -99,6 +105,7 @@ export const COMMANDS: ICommand[] = [
     isBlock: true,
     icon: <IconLayout />,
     label: '布局',
+    shortcut: '/bj',
     custom: (editor, runCommand) => (
       <Popover
         key="table"
@@ -131,44 +138,52 @@ export const COMMANDS: ICommand[] = [
     isBlock: true,
     icon: <IconCodeBlock />,
     label: '代码块',
+    shortcut: '/dmk',
     action: (editor) => editor.chain().focus().toggleCodeBlock().run(),
   },
   {
     isBlock: true,
     icon: <IconImage />,
     label: '图片',
+    shortcut: '/tp',
     action: (editor) => editor.chain().focus().setEmptyImage({ width: '100%' }).run(),
   },
   {
     isBlock: true,
     icon: <IconAttachment />,
     label: '附件',
+    shortcut: '/fj',
     action: (editor) => editor.chain().focus().setAttachment().run(),
   },
   {
     isBlock: true,
     icon: <IconCountdown />,
     label: '倒计时',
+    shortcut: '/djs',
     action: (editor) => createCountdown(editor),
   },
   {
     isBlock: true,
     icon: <IconCodeBlock />,
     label: '代码块',
+    shortcut: '/dmk',
     action: (editor) => editor.chain().focus().toggleCodeBlock().run(),
   },
   {
     title: '卡片',
+    shortcut: '/kp',
   },
   {
     icon: <IconStatus />,
     label: '状态',
+    shortcut: '/zt',
     action: (editor, user) => editor.chain().focus().setStatus({ defaultShowPicker: true, createUser: user.id }).run(),
   },
   {
     isBlock: true,
     icon: <IconDrawPanel />,
     label: '画板',
+    shortcut: '/hb',
     action: (editor, user) => {
       editor.chain().focus().setExcalidraw({ width: '100%', defaultShowPicker: true, createUser: user.id }).run();
     },
@@ -177,12 +192,14 @@ export const COMMANDS: ICommand[] = [
     isBlock: true,
     icon: <IconCallout />,
     label: '高亮块',
+    shortcut: '/glk',
     action: (editor) => editor.chain().focus().setCallout().run(),
   },
   {
     isBlock: true,
     icon: <IconFlow />,
     label: '流程图',
+    shortcut: '/lct',
     action: (editor, user) => {
       editor.chain().focus().setFlow({ width: '100%', defaultShowPicker: true, createUser: user.id }).run();
     },
@@ -191,6 +208,7 @@ export const COMMANDS: ICommand[] = [
     isBlock: true,
     icon: <IconMind />,
     label: '思维导图',
+    shortcut: '/swdt',
     action: (editor, user) => {
       editor.chain().focus().setMind({ width: '100%', defaultShowPicker: true, createUser: user.id }).run();
     },
@@ -199,15 +217,18 @@ export const COMMANDS: ICommand[] = [
     isBlock: true,
     icon: <IconMath />,
     label: '数学公式',
+    shortcut: '/sxgs',
     action: (editor, user) => editor.chain().focus().setKatex({ defaultShowPicker: true, createUser: user.id }).run(),
   },
   {
     title: '内容引用',
+    shortcut: '/nryy',
   },
   {
     isBlock: true,
     icon: <IconDocument />,
     label: '文档',
+    shortcut: '/wd',
     action: (editor, user) =>
       editor.chain().focus().setDocumentReference({ defaultShowPicker: true, createUser: user.id }).run(),
   },
@@ -215,21 +236,24 @@ export const COMMANDS: ICommand[] = [
     isBlock: true,
     icon: <IconDocument />,
     label: '子文档',
+    shortcut: '/zwd',
     action: (editor) => editor.chain().focus().setDocumentChildren().run(),
   },
 ];
 
-export const QUICK_INSERT_COMMANDS = [
+export const QUICK_INSERT_COMMANDS: ICommand[] = [
   ...COMMANDS.slice(0, 1),
   {
     icon: <IconTable />,
     label: '表格',
+    shortcut: '/bg',
     action: (editor: Editor) => editor.chain().focus().insertTable({ rows: 3, cols: 3, withHeaderRow: true }).run(),
   },
   {
     isBlock: true,
     icon: <IconLayout />,
     label: '布局',
+    shortcut: '/bj',
     action: (editor) => editor.chain().focus().setColumns({ type: 'left-right', columns: 2 }).run(),
   },
   ...COMMANDS.slice(4),

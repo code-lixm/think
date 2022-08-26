@@ -2,7 +2,7 @@ import { IconChevronLeft, IconChevronRight } from '@douyinfe/semi-icons';
 import { Button, Layout as SemiLayout } from '@douyinfe/semi-ui';
 import cls from 'classnames';
 import { throttle } from 'helpers/throttle';
-import { useDragableWidth } from 'hooks/use-dragable-width';
+import { useDraggableWidth } from 'hooks/use-draggable-width';
 import React, { useMemo } from 'react';
 import SplitPane from 'react-split-pane';
 
@@ -16,7 +16,7 @@ interface IProps {
 }
 
 export const PublicDoubleColumnLayout: React.FC<IProps> = ({ leftNode, rightNode }) => {
-  const { minWidth, maxWidth, width, isCollapsed, updateWidth, toggleCollapsed } = useDragableWidth();
+  const { minWidth, maxWidth, width, isCollapsed, updateWidth, toggleCollapsed } = useDraggableWidth();
   const debounceUpdate = useMemo(() => throttle(updateWidth, 200), [updateWidth]);
 
   return (
