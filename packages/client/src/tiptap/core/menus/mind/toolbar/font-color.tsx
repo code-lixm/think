@@ -27,7 +27,7 @@ export const FontColor = ({ selectedNode, setFontColor, textColor }) => {
                 style={{
                   width: 12,
                   height: 2,
-                  backgroundColor: textColor,
+                  backgroundColor: textColor || 'var(--semi-color-text-0)',
                 }}
               ></span>
             </div>

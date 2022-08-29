@@ -5,7 +5,7 @@ export const TaskList = BuiltInTaskList.extend({
   parseHTML() {
     return [
       {
-        tag: 'ul.task-list',
+        tag: 'ul[data-type="${this.name}" class="task-list"]',
         priority: PARSE_HTML_PRIORITY_HIGHEST,
       },
     ];
