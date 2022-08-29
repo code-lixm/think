@@ -168,25 +168,7 @@ export const DocumentActions: React.FC<IProps> = ({
                 }}
               />
             )}
-            {/* 文档排版 */}
-            {!hideDocumentVersion && (
-              <DocumentStyle
-                key="style"
-                render={({ onClick }) => {
-                  return (
-                    <Dropdown.Item onClick={onClick}>
-                      <Text>
-                        <Space>
-                          <IconArticle />
-                          文档排版
-                        </Space>
-                      </Text>
-                    </Dropdown.Item>
-                  );
-                }}
-              />
-            )}
-            {/* 文档导出 */}
+
             {document && (
               <DocumentExporter
                 document={document}

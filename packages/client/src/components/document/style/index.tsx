@@ -33,15 +33,9 @@ export const DocumentStyle: React.FC<IProps> = ({ render }) => {
       visible={visible}
       clickToHide={false}
       onVisibleChange={toggleVisible}
-      onClickOutSide={toggleVisible}
       stopPropagation
       content={
-        <div
-          className={styles.wrap}
-          onClick={(e) => {
-            e.stopPropagation();
-          }}
-        >
+        <div className={styles.wrap}>
           <div className={styles.item}>
             <Text>正文大小</Text>
             <Text style={{ fontSize: '0.8em' }}> {fontSize}px</Text>
