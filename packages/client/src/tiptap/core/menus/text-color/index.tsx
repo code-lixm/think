@@ -42,7 +42,7 @@ export const TextColor: React.FC<{ editor: Editor }> = ({ editor }) => {
                 style={{
                   width: 12,
                   height: 2,
-                  backgroundColor: color,
+                  backgroundColor: color || 'var(--semi-color-text-0)',
                 }}
               ></span>
             </span>

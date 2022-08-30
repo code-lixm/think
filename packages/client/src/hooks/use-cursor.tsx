@@ -20,15 +20,15 @@ class Particle {
   constructor() {
     this.lifeSpan = 20; //ms
     this.initialStyles = {
-      'position': 'fixed',
-      'display': 'block',
       'width': '12px',
       'height': '12px',
+      'display': 'block',
+      'position': 'fixed',
+      'z-index': '99999',
       'border-radius': '50%',
       'pointer-events': 'none',
-      'backgroundColor': '#D61C11',
       'will-change': 'transform',
-      'z-index': '9999999',
+      'backgroundColor': 'rgba(var(--semi-red-5), 1)',
     };
   }
   init(x, y) {

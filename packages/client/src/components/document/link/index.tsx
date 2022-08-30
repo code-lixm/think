@@ -14,7 +14,7 @@ interface IProps {
 
 const { Text } = Typography;
 
-export const DocumentLinkCopyer: React.FC<IProps> = ({ organizationId, wikiId, documentId, render }) => {
+export const DocumentLinkCopper: React.FC<IProps> = ({ organizationId, wikiId, documentId, render }) => {
   const handle = useCallback(() => {
     copy(buildUrl(`/app/org/${organizationId}/wiki/${wikiId}/doc/${documentId}`));
   }, [organizationId, wikiId, documentId]);

@@ -14,7 +14,7 @@ interface IProps {
 
 const { Text } = Typography;
 
-export const DocumentDeletor: React.FC<IProps> = ({ wikiId, documentId, render, onDelete }) => {
+export const DocumentDeletion: React.FC<IProps> = ({ wikiId, documentId, render, onDelete }) => {
   const {
     organizationId,
     wikiId: currentWikiId,

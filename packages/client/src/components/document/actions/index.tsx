@@ -4,9 +4,9 @@ import { ButtonProps } from '@douyinfe/semi-ui/button/Button';
 import { IDocument, IOrganization, IWiki } from '@think/domains';
 import cls from 'classnames';
 import { DocumentCreator } from 'components/document/create';
-import { DocumentDeletor } from 'components/document/delete';
+import { DocumentDeletion } from 'components/document/delete';
 import { DocumentExporter } from 'components/document/export';
-import { DocumentLinkCopyer } from 'components/document/link';
+import { DocumentLinkCopper } from 'components/document/link';
 import { DocumentShare } from 'components/document/share';
 import { DocumentStar } from 'components/document/star';
 import { DocumentStyle } from 'components/document/style';
@@ -132,7 +132,7 @@ export const DocumentActions: React.FC<IProps> = ({
               )}
             />
             {/* 复制链接 */}
-            <DocumentLinkCopyer
+            <DocumentLinkCopper
               organizationId={organizationId}
               wikiId={wikiId}
               documentId={documentId}
@@ -189,12 +189,12 @@ export const DocumentActions: React.FC<IProps> = ({
 
             <Dropdown.Divider />
 
-            <DocumentDeletor
+            <DocumentDeletion
               wikiId={wikiId}
               documentId={documentId}
               onDelete={wrappedOnDelete}
               render={({ children }) => {
-                return <Dropdown.Item>{children}</Dropdown.Item>;
+                return <Dropdown.Item>{children as any}</Dropdown.Item>;
               }}
             />
           </Dropdown.Menu>

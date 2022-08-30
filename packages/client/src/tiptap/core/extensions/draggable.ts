@@ -42,12 +42,14 @@ export const Draggable = Extension.create({
       const rootRect = root.getBoundingClientRect();
       const handleRect = dragHandleDOM.getBoundingClientRect();
 
+      // 调试模式
       // el.style.border = '1px solid blue';
       // root.style.border = '1px solid red';
       // dragHandleDOM.style.border = '1px solid orange';
 
       const left = targetNodeRect.left - rootRect.left - handleRect.width - handleRect.width / 2;
-      const top = targetNodeRect.top - rootRect.top + handleRect.height / 2 + root.scrollTop;
+      const top =
+        targetNodeRect.top + targetNodeRect.height / 2 - rootRect.top - handleRect.height / 2 + root.scrollTop;
 
       dragHandleDOM.style.left = `${left}px`;
       dragHandleDOM.style.top = `${top}px`;
@@ -57,6 +59,7 @@ export const Draggable = Extension.create({
 
     const handleMouseDown = () => {
       if (!activeNode) return null;
+      console.log('activeNode: ', activeNode);
 
       if (NodeSelection.isSelectable(activeNode.node)) {
         const nodeSelection = NodeSelection.create(editorView.state.doc, activeNode.$pos.pos - activeNode.offset);
