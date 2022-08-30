@@ -72,8 +72,9 @@ export const DocumentShare: React.FC<IProps> = ({ documentId, disabled = false, 
         ) : (
           <Input
             ref={ref}
+            maxLength={8}
             mode="password"
-            placeholder="您可以设置访问密码或者直接分享"
+            placeholder="您可以直接分享或者设置访问密码（最长8位）"
             value={sharePassword}
             onChange={setSharePassword}
           ></Input>

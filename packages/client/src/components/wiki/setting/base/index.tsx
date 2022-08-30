@@ -53,7 +53,7 @@ export const Base: React.FC<IProps> = ({ wiki, update }) => {
   return (
     <Form
       initValues={getFormValueFromWiki(wiki)}
-      style={{ width: '100%' }}
+      style={{ width: 500 }}
       getFormApi={(formApi) => ($form.current = formApi)}
       onSubmit={onSubmit}
     >

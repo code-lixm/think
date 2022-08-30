@@ -79,7 +79,7 @@ export const DocumentActions: React.FC<IProps> = ({
         visible={popoverVisible}
         onVisibleChange={wrapOnVisibleChange}
         content={
-          <Dropdown.Menu>
+          <Dropdown.Menu style={{ minWidth: 120 }}>
             {showCreateDocument && (
               <Dropdown.Item onClick={create}>
                 <Text>

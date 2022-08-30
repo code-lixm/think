@@ -72,7 +72,7 @@ export const MenuList: React.FC<IProps> = forwardRef((props, ref) => {
   }));
 
   return (
-    <div className={cls(styles.items, 'light-scrollbar')}>
+    <div className={styles.items}>
       <div ref={$container}>
         {props.items.length ? (
           props.items.map((item, index) => {

@@ -13,13 +13,16 @@
   display: flex;
   width: 100%;
   padding: 6px;
-  margin: 6px 0;
   text-decoration: none;
   cursor: pointer;
   border: 0;
   border-radius: 2px;
   flex: 0 0 auto;
   align-items: center;
+
+  &:not(:first-child) {
+    margin-top: 6px;
+  }
 
   &:hover {
     background-color: var(--semi-color-primary-light-hover);

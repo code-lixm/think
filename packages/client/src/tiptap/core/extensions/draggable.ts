@@ -47,7 +47,7 @@ export const Draggable = Extension.create({
       // root.style.border = '1px solid red';
       // dragHandleDOM.style.border = '1px solid orange';
 
-      const left = targetNodeRect.left - rootRect.left - handleRect.width - handleRect.width / 2;
+      const left = targetNodeRect.left - rootRect.left - handleRect.width - handleRect.width / 2 - 10;
       const top =
         targetNodeRect.top + targetNodeRect.height / 2 - rootRect.top - handleRect.height / 2 + root.scrollTop;
 

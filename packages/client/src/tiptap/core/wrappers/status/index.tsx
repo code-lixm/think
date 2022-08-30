@@ -19,6 +19,7 @@ export const STATUS_COLORS = [
 ];
 
 export const StatusWrapper = ({ editor, node, updateAttributes }) => {
+  const defaultValue = new Date().toLocaleString();
   const isEditable = editor.isEditable;
   const { color: currentTextColor, bgcolor, borderColor, text, defaultShowPicker, createUser } = node.attrs;
   const { user } = useUser();
@@ -83,7 +84,13 @@ export const StatusWrapper = ({ editor, node, updateAttributes }) => {
           content={
             <div style={{ width: 184, height: 65 }}>
               <div style={{ marginBottom: 8 }}>
-                <Input ref={ref} placeholder="输入状态" value={currentText} onChange={setCurrentText} />
+                <Input
+                  ref={ref}
+                  placeholder="输入状态"
+                  defaultValue={defaultValue}
+                  value={currentText}
+                  onChange={setCurrentText}
+                />
               </div>
               <Space>
                 {STATUS_COLORS.map((color) => {

@@ -1,9 +1,9 @@
 import { IconSearch as SemiIconSearch } from '@douyinfe/semi-icons';
-import { Button, Dropdown, Input, Modal, Spin, Typography } from '@douyinfe/semi-ui';
+import { IllustrationNoResult, IllustrationNoResultDark } from '@douyinfe/semi-illustrations';
+import { Button, Dropdown, Empty, Input, Modal, Spin, Typography } from '@douyinfe/semi-ui';
 import { IDocument } from '@think/domains';
 import { DataRender } from 'components/data-render';
 import { DocumentStar } from 'components/document/star';
-import { Empty } from 'components/empty';
 import { IconSearch } from 'components/icons';
 import { IconDocumentFill } from 'components/icons/IconDocumentFill';
 import { LocaleTime } from 'components/locale-time';
@@ -61,7 +61,12 @@ const List: React.FC<{ data: IDocument[] }> = ({ data }) => {
           );
         })
       ) : (
-        <Empty message="暂无搜索结果" />
+        <Empty
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+          image={<IllustrationNoResult style={{ width: 150, height: 150 }} />}
+          darkModeImage={<IllustrationNoResultDark style={{ width: 150, height: 150 }} />}
+          description={'暂无搜索结果'}
+        />
       )}
     </div>
   );
