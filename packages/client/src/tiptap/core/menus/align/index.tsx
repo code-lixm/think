@@ -33,7 +33,8 @@ export const Align: React.FC<{ editor: Editor }> = ({ editor }) => {
 
   return (
     <Dropdown
-      trigger="hover"
+      trigger="click"
+      position="bottomLeft"
       render={
         <Dropdown.Menu>
           <Dropdown.Item icon={<IconAlignLeft />} onClick={toggle('left')}>

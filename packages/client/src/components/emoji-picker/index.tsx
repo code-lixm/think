@@ -123,7 +123,6 @@ export const EmojiPicker: React.FC<IProps> = ({ showClear = false, onSelectEmoji
         </>
       ) : (
         <Popover
-          showArrow
           zIndex={10000}
           trigger="click"
           position="bottomLeft"

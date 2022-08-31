@@ -77,7 +77,8 @@ export const DocumentActions: React.FC<IProps> = ({
         position="bottomLeft"
         visible={popoverVisible}
         onVisibleChange={wrapOnVisibleChange}
-        content={
+        onClickOutSide={togglePopoverVisible}
+        render={
           <Dropdown.Menu style={{ minWidth: 120 }}>
             {showCreateDocument && (
               <Dropdown.Item onClick={create}>
@@ -199,16 +200,17 @@ export const DocumentActions: React.FC<IProps> = ({
           </Dropdown.Menu>
         }
       >
-        <Button
-          onClick={(e) => {
-            e.stopPropagation();
-          }}
-          type="tertiary"
-          size={size}
-          className={cls(hoverVisible && styles.hoverVisible, popoverVisible && styles.isActive)}
-          theme={popoverVisible ? 'solid' : 'borderless'}
-          icon={<IconMore />}
-        />
+        <span>
+          <Tooltip content="更多" position="bottom" className="whitespace-nowrap">
+            <Button
+              type="tertiary"
+              size={size}
+              className={cls(hoverVisible && styles.hoverVisible, popoverVisible && styles.isActive)}
+              theme={popoverVisible ? 'solid' : 'borderless'}
+              icon={<IconMore />}
+            />
+          </Tooltip>
+        </span>
       </Dropdown>
       {showCreateDocument && (
         <DocumentCreator

@@ -127,7 +127,7 @@ export const DocumentVersion: React.FC<Partial<IProps>> = ({ documentId, onSelec
                   })}
                 </Select>
                 <div style={{ paddingLeft: '8px' }}>对比</div>
-                <Space style={{ position: 'absolute', right: '240px' }}>
+                <Space style={{ marginLeft: 50 }}>
                   <Tag style={{ backgroundColor: '#e9ffe9' }}>增加的内容</Tag>
                   <Tag style={{ backgroundColor: '#ffeaea' }}>删除的内容</Tag>
                 </Space>
@@ -158,7 +158,7 @@ export const DocumentVersion: React.FC<Partial<IProps>> = ({ documentId, onSelec
           empty={!loading && !data.length}
           normalContent={() => (
             <div className={styles.contentWrap}>
-              <aside className={cls(isMobile && styles.isMobile, 'light-scrollbar')}>
+              <aside className={cls(isMobile && styles.isMobile)}>
                 <Space vertical style={{ padding: '8px 0', width: '100%' }}>
                   {data.map(({ version, data, createUser }, index) => {
                     return (

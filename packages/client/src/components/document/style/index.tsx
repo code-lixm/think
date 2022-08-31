@@ -1,5 +1,5 @@
 import { IconArticle } from '@douyinfe/semi-icons';
-import { Button, Dropdown, Radio, RadioGroup, Slider, Typography } from '@douyinfe/semi-ui';
+import { Button, Dropdown, Radio, RadioGroup, Slider, Tooltip, Typography } from '@douyinfe/semi-ui';
 import { throttle } from 'helpers/throttle';
 import { useDocumentStyle } from 'hooks/use-document-style';
 import { IsOnMobile } from 'hooks/use-on-mobile';
@@ -33,6 +33,7 @@ export const DocumentStyle: React.FC<IProps> = ({ render }) => {
       visible={visible}
       clickToHide={false}
       onVisibleChange={toggleVisible}
+      onClickOutSide={toggleVisible}
       stopPropagation
       content={
         <div className={styles.wrap}>
@@ -62,7 +63,11 @@ export const DocumentStyle: React.FC<IProps> = ({ render }) => {
       {render ? (
         render({ onClick: toggleVisible })
       ) : (
-        <Button icon={<IconArticle />} theme="borderless" type="tertiary" onMouseDown={toggleVisible} />
+        <span>
+          <Tooltip content="文档排版" position="bottom">
+            <Button icon={<IconArticle />} theme="borderless" type="tertiary" />
+          </Tooltip>
+        </span>
       )}
     </Dropdown>
   );

@@ -45,7 +45,7 @@ export const AppRouterHeader: React.FC = () => {
       },
       {
         itemKey: '/app/org/[organizationId]/star',
-        text: '星标',
+        text: '收藏',
         onClick: () => {
           Router.push({
             pathname: `/app/org/${organizationId}/star`,

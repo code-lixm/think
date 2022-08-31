@@ -258,7 +258,7 @@ export const WikiTocs: React.FC<IProps> = ({
             normalContent={() => (
               <div className={styles.title}>
                 <Text type="tertiary" size="small">
-                  已加星标
+                  已收藏
                 </Text>
               </div>
             )}

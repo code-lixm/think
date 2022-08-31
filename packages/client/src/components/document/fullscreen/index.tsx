@@ -50,7 +50,7 @@ const FullscreenController = ({ handle: fullscreenHandler, isDrawing, toggleDraw
         </button>
         <div className={styles.divider}></div>
         <button type="button" className={styles.customButton} onClick={close}>
-          <IconShrinkScreenStroked style={{ rotate: '90deg' }} />
+          <IconShrinkScreenStroked />
         </button>
       </Space>
     </div>
