@@ -25,7 +25,7 @@ export const ImageBubbleMenu = ({ editor }) => {
   const shouldShow = useCallback(() => editor.isActive(Image.name) && !!editor.getAttributes(Image.name).src, [editor]);
   const getRenderContainer = useCallback((node) => {
     try {
-      const inner = node.querySelector('#js-resizeable-container');
+      const inner = node.querySelector('#js-resizable-container');
       return inner as HTMLElement;
     } catch (e) {
       return node;

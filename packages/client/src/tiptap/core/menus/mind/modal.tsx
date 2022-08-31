@@ -1,7 +1,7 @@
 import { Modal, Spin, Typography } from '@douyinfe/semi-ui';
 import { useToggle } from 'hooks/use-toggle';
 import { useCallback, useEffect, useState } from 'react';
-import { load, renderMind } from 'thirtypart/kityminder';
+import { load, renderMind } from 'thirty-part/kityminder';
 import { Editor } from 'tiptap/core';
 
 import { cancelSubject, OPEN_MIND_SETTING_MODAL, subject } from '../_event';

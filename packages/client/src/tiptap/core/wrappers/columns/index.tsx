@@ -2,7 +2,7 @@ import { Space, Spin, Typography } from '@douyinfe/semi-ui';
 import { NodeViewContent, NodeViewWrapper } from '@tiptap/react';
 import cls from 'classnames';
 import { IconMind } from 'components/icons';
-import { Resizeable } from 'components/resizeable';
+import { Resizable } from 'components/resizable';
 import { useToggle } from 'hooks/use-toggle';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import VisibilitySensor from 'react-visibility-sensor';

@@ -1,6 +1,7 @@
 .items {
   width: 160px;
   max-height: 320px;
+  padding: 6px;
   overflow-x: hidden;
   overflow-y: auto;
   border-radius: var(--border-radius);
@@ -10,15 +11,19 @@
 .item {
   display: flex;
   width: 100%;
-  padding: 12px 12px 11px;
+  padding: 6px;
   color: rgb(9 30 66);
   text-decoration: none;
   cursor: pointer;
   background-color: rgb(255 255 255);
   border: 0;
-  border-radius: 0;
+  border-radius: 2px;
   flex: 0 0 auto;
   align-items: center;
+
+  &:not(:first-child) {
+    margin-top: 6px;
+  }
 
   &:hover {
     background-color: #f4f5f7;

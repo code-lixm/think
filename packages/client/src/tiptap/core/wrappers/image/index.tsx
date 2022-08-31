@@ -1,6 +1,6 @@
 import { Spin, Typography } from '@douyinfe/semi-ui';
 import { NodeViewWrapper } from '@tiptap/react';
-import { Resizeable } from 'components/resizeable';
+import { Resizable } from 'components/resizable';
 import { useToggle } from 'hooks/use-toggle';
 import { useCallback, useEffect, useRef } from 'react';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
@@ -70,7 +70,7 @@ export const ImageWrapper = ({ editor, node, updateAttributes }) => {
 
   return (
     <NodeViewWrapper style={{ textAlign, fontSize: 0, maxWidth: '100%' }}>
-      <Resizeable
+      <Resizable
         className={'render-wrapper'}
         width={width || maxWidth}
         height={height}
@@ -92,7 +92,7 @@ export const ImageWrapper = ({ editor, node, updateAttributes }) => {
         ) : (
           <LazyLoadImage src={src} alt={alt} width={'100%'} height={'100%'} />
         )}
-      </Resizeable>
+      </Resizable>
     </NodeViewWrapper>
   );
 };

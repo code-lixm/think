@@ -32,7 +32,7 @@ export const MindBubbleMenu = ({ editor }) => {
   const shouldShow = useCallback(() => editor.isActive(Mind.name), [editor]);
   const getRenderContainer = useCallback((node) => {
     try {
-      const inner = node.querySelector('#js-resizeable-container');
+      const inner = node.querySelector('#js-resizable-container');
       return inner as HTMLElement;
     } catch (e) {
       return node;

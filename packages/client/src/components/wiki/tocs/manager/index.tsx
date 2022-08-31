@@ -1,6 +1,6 @@
 import { Banner, Button, Toast, Tree, Typography } from '@douyinfe/semi-ui';
 import { DataRender } from 'components/data-render';
-import { Resizeable } from 'components/resizeable';
+import { Resizable } from 'components/resizable';
 import { useWikiTocs } from 'data/wiki';
 import React, { useCallback, useEffect, useState } from 'react';
 

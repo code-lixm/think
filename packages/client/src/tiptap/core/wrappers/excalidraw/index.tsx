@@ -2,7 +2,7 @@ import { Space, Spin, Typography } from '@douyinfe/semi-ui';
 import { NodeViewWrapper } from '@tiptap/react';
 import cls from 'classnames';
 import { IconMind } from 'components/icons';
-import { Resizeable } from 'components/resizeable';
+import { Resizable } from 'components/resizable';
 import deepEqual from 'deep-equal';
 import { useToggle } from 'hooks/use-toggle';
 import React from 'react';
@@ -71,7 +71,7 @@ export const _ExcalidrawWrapper = ({ editor, node, updateAttributes }) => {
   return (
     <NodeViewWrapper className={cls(styles.wrap, isActive && styles.isActive)}>
       <VisibilitySensor onChange={onViewportChange}>
-        <Resizeable isEditable={isEditable} width={width} height={height} maxWidth={maxWidth} onChangeEnd={onResize}>
+        <Resizable isEditable={isEditable} width={width} height={height} maxWidth={maxWidth} onChangeEnd={onResize}>
           <div
             className={cls(styles.renderWrap, 'render-wrapper')}
             style={{ ...INHERIT_SIZE_STYLE, overflow: 'hidden' }}
@@ -108,7 +108,7 @@ export const _ExcalidrawWrapper = ({ editor, node, updateAttributes }) => {
               </Space>
             </div>
           </div>
-        </Resizeable>
+        </Resizable>
       </VisibilitySensor>
     </NodeViewWrapper>
   );

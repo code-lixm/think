@@ -36,7 +36,7 @@ function calcWidth(width, minWidth, maxWidth) {
   return val === maxWidth ? '100%' : val;
 }
 
-export const Resizeable: React.FC<IProps> = ({
+export const Resizable: React.FC<IProps> = ({
   width,
   height,
   maxWidth,
@@ -126,7 +126,7 @@ export const Resizeable: React.FC<IProps> = ({
 
   return (
     <div
-      id="js-resizeable-container"
+      id="js-resizable-container"
       className={cls(className, styles.resizable)}
       ref={$container}
       style={{ ...style, width, height }}

@@ -1,7 +1,7 @@
 import { Typography } from '@douyinfe/semi-ui';
 import { NodeViewWrapper } from '@tiptap/react';
 import cls from 'classnames';
-import { Resizeable } from 'components/resizeable';
+import { Resizable } from 'components/resizable';
 import { useCallback } from 'react';
 import { getEditorContainerDOMSize } from 'tiptap/prose-utils';
 
@@ -23,7 +23,7 @@ export const IframeWrapper = ({ editor, node, updateAttributes }) => {
 
   return (
     <NodeViewWrapper>
-      <Resizeable width={width} maxWidth={maxWidth} height={height} isEditable={isEditable} onChangeEnd={onResize}>
+      <Resizable width={width} maxWidth={maxWidth} height={height} isEditable={isEditable} onChangeEnd={onResize}>
         <div className={cls(styles.wrap, 'render-wrapper')}>
           {url ? (
             <div className={styles.innerWrap} style={{ pointerEvents: !isEditable ? 'auto' : 'none' }}>
@@ -35,7 +35,7 @@ export const IframeWrapper = ({ editor, node, updateAttributes }) => {
             </div>
           )}
         </div>
-      </Resizeable>
+      </Resizable>
     </NodeViewWrapper>
   );
 };

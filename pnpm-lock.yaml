@@ -50,7 +50,7 @@ importers:
       '@react-pdf-viewer/core': 3.7.0
       '@react-pdf-viewer/default-layout': 3.7.0
       '@react-pdf-viewer/locales': ^1.0.0
-      '@semi-bot/semi-theme-universe-think': ^1.1.5
+      '@semi-bot/semi-theme-universe-think': ^1.1.6
       '@think/config': workspace:^1.0.0
       '@think/constants': workspace:^1.0.0
       '@think/domains': workspace:^1.0.0
@@ -173,7 +173,7 @@ importers:
       '@react-pdf-viewer/core': 3.7.0_2vj3zozgbzfehrv2inzxxqn2wq
       '@react-pdf-viewer/default-layout': 3.7.0_2vj3zozgbzfehrv2inzxxqn2wq
       '@react-pdf-viewer/locales': 1.0.0
-      '@semi-bot/semi-theme-universe-think': 1.1.5
+      '@semi-bot/semi-theme-universe-think': 1.1.6
       '@think/config': link:../config
       '@think/constants': link:../constants
       '@think/domains': link:../domains
@@ -3125,8 +3125,8 @@ packages:
       rollup: 2.74.1
     dev: false
 
-  /@semi-bot/semi-theme-universe-think/1.1.5:
-    resolution: {integrity: sha512-nXCvzGK7Ra6Ll/7vuLoUOKhnlhfzqZVCM4SNPn4RNvE+5ojaneS/rchi994X/11Uiy84srel0NlSyExNaFykSw==}
+  /@semi-bot/semi-theme-universe-think/1.1.6:
+    resolution: {integrity: sha512-zBk5rokCpw7tr+F99fw0+zKyCRu97w+2sVdpLDTur5+iwSZsHBtdJLrJTbgcP+5D81MHnubDIQI+Hfd3EB+lnw==}
     dev: false
 
   /@sinonjs/commons/1.8.3:
@@ -8446,7 +8446,7 @@ packages:
     dependencies:
       universalify: 2.0.0
     optionalDependencies:
-      graceful-fs: 4.2.9
+      graceful-fs: 4.2.10
 
   /jsonpointer/5.0.0:
     resolution: {integrity: sha512-PNYZIdMjVIvVgDSYKTT63Y+KZ6IZvGRNNWcxwD+GNnUz1MKPfv30J8ueCjdwcN0nDx2SlshgyB7Oy0epAzVRRg==}

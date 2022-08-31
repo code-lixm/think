@@ -2,13 +2,13 @@ import { Button, Space, Spin, Typography } from '@douyinfe/semi-ui';
 import { NodeViewWrapper } from '@tiptap/react';
 import cls from 'classnames';
 import { IconMind, IconMindCenter, IconZoomIn, IconZoomOut } from 'components/icons';
-import { Resizeable } from 'components/resizeable';
+import { Resizable } from 'components/resizable';
 import { Tooltip } from 'components/tooltip';
 import deepEqual from 'deep-equal';
 import { useToggle } from 'hooks/use-toggle';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import VisibilitySensor from 'react-visibility-sensor';
-import { load, renderMind } from 'thirtypart/kityminder';
+import { load, renderMind } from 'thirty-part/kityminder';
 import { MAX_ZOOM, MIN_ZOOM, ZOOM_STEP } from 'tiptap/core/menus/mind/constant';
 import { clamp, getEditorContainerDOMSize } from 'tiptap/prose-utils';
 
@@ -108,7 +108,7 @@ export const _MindWrapper = ({ editor, node, updateAttributes }) => {
   return (
     <NodeViewWrapper className={cls(styles.wrap)}>
       <VisibilitySensor onChange={onViewportChange}>
-        <Resizeable isEditable={isEditable} width={width} height={height} maxWidth={maxWidth} onChangeEnd={onResize}>
+        <Resizable isEditable={isEditable} width={width} height={height} maxWidth={maxWidth} onChangeEnd={onResize}>
           <div
             className={cls(styles.renderWrap, 'render-wrapper')}
             style={{ ...INHERIT_SIZE_STYLE, overflow: 'hidden' }}
@@ -158,7 +158,7 @@ export const _MindWrapper = ({ editor, node, updateAttributes }) => {
               </Tooltip>
             </div>
           </div>
-        </Resizeable>
+        </Resizable>
       </VisibilitySensor>
     </NodeViewWrapper>
   );

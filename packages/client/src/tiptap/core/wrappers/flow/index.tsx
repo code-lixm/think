@@ -2,13 +2,13 @@ import { Button, Space, Spin, Typography } from '@douyinfe/semi-ui';
 import { NodeViewWrapper } from '@tiptap/react';
 import cls from 'classnames';
 import { IconFlow, IconMindCenter, IconZoomIn, IconZoomOut } from 'components/icons';
-import { Resizeable } from 'components/resizeable';
+import { Resizable as Resizable } from 'components/resizable';
 import deepEqual from 'deep-equal';
 import { useToggle } from 'hooks/use-toggle';
 import React from 'react';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import VisibilitySensor from 'react-visibility-sensor';
-import { load, renderXml } from 'thirtypart/diagram';
+import { load, renderXml } from 'thirty-part/diagram';
 import { Flow } from 'tiptap/core/extensions/flow';
 import { getEditorContainerDOMSize } from 'tiptap/prose-utils';
 
@@ -99,7 +99,7 @@ export const _FlowWrapper = ({ editor, node, updateAttributes }) => {
   return (
     <NodeViewWrapper className={cls(styles.wrap, isActive && styles.isActive)}>
       <VisibilitySensor onChange={onViewportChange}>
-        <Resizeable isEditable={isEditable} width={width} height={height} maxWidth={maxWidth} onChangeEnd={onResize}>
+        <Resizable isEditable={isEditable} width={width} height={height} maxWidth={maxWidth} onChangeEnd={onResize}>
           <div
             className={cls(styles.renderWrap, 'render-wrapper')}
             style={{ ...INHERIT_SIZE_STYLE, overflow: 'hidden', backgroundColor: bgColor }}
@@ -134,7 +134,7 @@ export const _FlowWrapper = ({ editor, node, updateAttributes }) => {
               <Button type="tertiary" theme="borderless" size="small" onClick={zoomIn} icon={<IconZoomIn />} />
             </Space>
           </div>
-        </Resizeable>
+        </Resizable>
       </VisibilitySensor>
     </NodeViewWrapper>
   );
