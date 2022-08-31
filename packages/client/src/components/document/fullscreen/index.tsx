@@ -139,6 +139,7 @@ export const DocumentFullscreen: React.FC<IProps> = ({ data }) => {
                 <p>{data.title || '未命名文档'}</p>
               </div>
               <EditorContent editor={editor} />
+              <div className="py-[100px]"></div>
             </div>
             <DrawingCursor isDrawing={isDrawing} />
             <FullscreenController handle={fullscreenHandler} isDrawing={isDrawing} toggleDrawing={toggleDrawing} />

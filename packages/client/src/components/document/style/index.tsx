@@ -29,7 +29,7 @@ export const DocumentStyle: React.FC<IProps> = ({ render }) => {
       key="style"
       trigger="click"
       zIndex={1061}
-      position={isMobile ? 'topRight' : 'leftBottom'}
+      position={isMobile ? 'topRight' : 'bottomLeft'}
       visible={visible}
       clickToHide={false}
       onVisibleChange={toggleVisible}

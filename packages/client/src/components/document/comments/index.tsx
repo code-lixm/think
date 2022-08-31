@@ -154,42 +154,38 @@ export const CommentEditor: React.FC<IProps> = ({ documentId }) => {
         />
       )}
       <div className={styles.editorOuterWrap}>
-        <div className={styles.leftWrap}>
-          {user && (
-            <Avatar size="small" src={user.avatar}>
-              {user.name.charAt(0)}
-            </Avatar>
-          )}
+        <div className={styles.commentTipsWrap}>
+          <Text type="tertiary" className={styles.text}>
+            文章到底啦
+          </Text>
+          <div className={styles.line}></div>
         </div>
-
-        <div className={styles.rightWrap}>
-          {isEdit ? (
-            <>
-              <div className={styles.editorWrap}>
-                <div style={{ width: '100%', overflow: 'auto' }}>
-                  <CommentMenuBar editor={editor} />
-                </div>
-                <div className={styles.innerWrap}>
-                  <EditorContent autoFocus editor={editor} />
-                </div>
+        {isEdit ? (
+          <>
+            <div className={styles.editorWrap}>
+              <div style={{ width: '100%', overflow: 'auto' }}>
+                <CommentMenuBar editor={editor} />
               </div>
-              <div className={styles.btnWrap}>
-                <Space>
-                  <Button theme="solid" type="primary" onClick={save}>
-                    保存
-                  </Button>
-                  <Button theme="borderless" type="tertiary" onClick={handleClose}>
-                    取消
-                  </Button>
-                </Space>
+              <div className={styles.innerWrap}>
+                <EditorContent autoFocus editor={editor} />
               </div>
-            </>
-          ) : (
-            <div className={styles.placeholderWrap} onClick={openEditor}>
-              <Text type="tertiary"> 写下评论...</Text>
             </div>
-          )}
-        </div>
+            <div className={styles.btnWrap}>
+              <Space>
+                <Button theme="solid" type="primary" onClick={save}>
+                  保存
+                </Button>
+                <Button theme="borderless" type="tertiary" onClick={handleClose}>
+                  取消
+                </Button>
+              </Space>
+            </div>
+          </>
+        ) : (
+          <div className={styles.placeholderWrap} onClick={openEditor}>
+            <Text type="tertiary"> 评论全文</Text>
+          </div>
+        )}
       </div>
     </div>
   );

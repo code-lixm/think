@@ -10,34 +10,60 @@
 }
 
 .editorOuterWrap {
-  display: flex;
-  padding-top: 24px;
+  width: 100%;
 
-  .rightWrap {
-    flex: 1;
-    margin-left: 16px;
-    overflow: auto;
+  .commentTipsWrap {
+    position: relative;
+    width: 100%;
+    margin-bottom: 24px;
+    text-align: center;
 
-    .placeholderWrap {
-      padding: 12px 16px;
-      border: 1px solid var(--semi-color-border);
-      border-radius: var(--semi-border-radius-small);
+    .text {
+      position: relative;
+      z-index: 2;
+      padding: 0 8px;
+      background-color: var(--semi-color-bg-1);
     }
 
-    .editorWrap {
-      padding: 12px 16px;
-      border: 1px solid var(--semi-color-border);
-      border-radius: var(--semi-border-radius-small);
-
-      .innerWrap {
-        max-height: 240px;
-        padding: 16px 0;
-        overflow: auto;
-      }
+    .line {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      z-index: 1;
+      width: 50%;
+      height: 1px;
+      text-align: center;
+      background:
+        linear-gradient(
+          to left,
+          var(--semi-color-bg-0) -4%,
+          var(--semi-color-primary) 50%,
+          var(--semi-color-bg-0) 100%
+        );
+      transform: translate(-50%, -50%);
     }
+  }
 
-    .btnWrap {
-      margin-top: 16px;
+  .placeholderWrap {
+    padding: 12px 16px;
+    border: 1px solid var(--semi-color-border);
+    border-radius: var(--semi-border-radius-small);
+  }
+
+  .editorWrap {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid var(--semi-color-border);
+    border-radius: var(--semi-border-radius-small);
+
+    .innerWrap {
+      max-height: 240px;
+      padding: 16px 0;
+      overflow: auto;
     }
+  }
+
+  .btnWrap {
+    margin-top: 16px;
   }
 }

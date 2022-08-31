@@ -90,6 +90,7 @@ export const StatusWrapper = ({ editor, node, updateAttributes }) => {
                   defaultValue={defaultValue}
                   value={currentText}
                   onChange={setCurrentText}
+                  onEnterPress={() => toggleVisible(false)}
                 />
               </div>
               <Space>

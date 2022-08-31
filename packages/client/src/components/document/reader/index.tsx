@@ -64,40 +64,31 @@ export const DocumentReader: React.FC<IProps> = ({ documentId }) => {
   }, [document]);
 
   const actions = useMemo(() => {
-    return (
+    return document ? (
       <Space>
-        {document && (
-          <DocumentCollaboration
-            disabled={!readable}
-            key={documentId}
-            wikiId={document.wikiId}
-            documentId={documentId}
-          />
-        )}
-        {document && !isMobile && <DocumentFullscreen data={document} />}
-        {document && (
-          <DocumentStar
-            disabled={!readable}
-            key="star"
-            organizationId={document.organizationId}
-            wikiId={document.wikiId}
-            documentId={documentId}
-          />
-        )}
-        <DocumentStyle key="style" />
+        <DocumentCollaboration disabled={!readable} key={documentId} wikiId={document.wikiId} documentId={documentId} />
+        {!isMobile && <DocumentFullscreen data={document} />}
+        <DocumentStar
+          disabled={!readable}
+          key="star"
+          organizationId={document.organizationId}
+          wikiId={document.wikiId}
+          documentId={documentId}
+        />
+        <DocumentStyle />
         <Tooltip key="edit" content="编辑" position="bottom">
           <Button disabled={!editable} icon={<IconEdit />} onMouseDown={gotoEdit} />
         </Tooltip>
-        {document && (
-          <DocumentActions
-            organizationId={document.organizationId}
-            wikiId={document.wikiId}
-            documentId={documentId}
-            document={document}
-          />
-        )}
+        <DocumentActions
+          organizationId={document.organizationId}
+          wikiId={document.wikiId}
+          documentId={documentId}
+          document={document}
+        />
         <DocumentVersion documentId={documentId} />
       </Space>
+    ) : (
+      <></>
     );
   }, [document, documentId, readable, editable, gotoEdit, isMobile]);
 

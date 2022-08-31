@@ -9,7 +9,6 @@ import { DocumentExporter } from 'components/document/export';
 import { DocumentLinkCopper } from 'components/document/link';
 import { DocumentShare } from 'components/document/share';
 import { DocumentStar } from 'components/document/star';
-import { DocumentStyle } from 'components/document/style';
 import { DocumentVersionTrigger } from 'components/document/version';
 import { useToggle } from 'hooks/use-toggle';
 import React, { useCallback } from 'react';

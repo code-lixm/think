@@ -65,8 +65,8 @@ export const User: React.FC = () => {
         {user.avatar ? (
           <Avatar size="small" src={user.avatar}></Avatar>
         ) : (
-          <Avatar size="small" color="blue">
-            {user && user.name && user.name.slice(1, 3)}
+          <Avatar size="small" color="light-blue">
+            {user.name.charAt(0).toUpperCase()}
           </Avatar>
         )}
       </Dropdown>

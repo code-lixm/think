@@ -6,6 +6,8 @@ import React, { useRef } from 'react';
 
 import styles from './index.module.scss';
 
+const { Text } = Typography;
+
 export const CodeBlockWrapper = ({ editor, node: { attrs }, updateAttributes, extension }) => {
   const isEditable = editor.isEditable;
   const isPrint = editor?.options?.editorProps?.print;
@@ -34,20 +36,12 @@ export const CodeBlockWrapper = ({ editor, node: { attrs }, updateAttributes, ex
         )}
         {!isEditable && (
           <>
-            <Tag color="grey" size="small">
-              {defaultLanguage || 'null'}
-            </Tag>
-            <Tag
-              className="cursor-pointer"
-              color="grey"
-              size="small"
-              onClick={() => copy($container.current.innerText)}
-            >
-              复制代码
-            </Tag>
-            {/* <Button size="small" type="tertiary" theme="borderless" >
-              <Typography.Text style={{ fontWeight: 'normal' }}>复制代码</Typography.Text>
-            </Button> */}
+            <Button size="small" type="tertiary" theme="borderless">
+              <Text style={{ fontWeight: 'normal' }}>{defaultLanguage || '默认格式'}</Text>
+            </Button>
+            <Button size="small" type="tertiary" theme="borderless" onClick={() => copy($container.current.innerText)}>
+              <Text style={{ fontWeight: 'normal' }}>复制代码</Text>
+            </Button>
           </>
         )}
       </div>

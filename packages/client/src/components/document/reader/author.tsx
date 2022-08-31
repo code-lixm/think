@@ -14,27 +14,29 @@ export const Author: React.FC<IProps> = ({ document }) => {
       style={{
         borderTop: '1px solid var(--semi-color-border)',
         marginTop: '0.75em',
-        padding: '16px 0',
+        padding: '8px 0',
         fontSize: 13,
         fontWeight: 'normal',
         color: 'var(--semi-color-text-0)',
       }}
     >
       <Space>
-        <Avatar size="small" src={document && document.createUser && document.createUser.avatar}>
-          <IconUser />
+        <Avatar size="extra-small" src={document && document.createUser && document.createUser.avatar}>
+          {document.createUser.name.charAt(0).toUpperCase()}
         </Avatar>
         <div>
           <p style={{ margin: 0 }}>
-            创建者：
             {document && document.createUser && document.createUser.name}
+            {' ⦁ '}
+            <LocaleTime date={document && document.updatedAt} />
+            更新
           </p>
-          <p style={{ margin: '8px 0 0' }}>
+          {/* <p style={{ margin: '8px 0 0' }}>
             最近更新日期：
             <LocaleTime date={document && document.updatedAt} />
             {' ⦁ '}阅读量：
             {document && document.views}
-          </p>
+          </p> */}
         </div>
       </Space>
     </div>

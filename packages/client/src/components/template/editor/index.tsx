@@ -32,15 +32,15 @@ export const TemplateEditor: React.FC<IProps> = ({ templateId }) => {
     return width === 'standardWidth' ? styles.isStandardWidth : styles.isFullWidth;
   }, [width]);
 
-  const goback = useCallback(() => {
+  const goBack = useCallback(() => {
     Router.back();
   }, []);
 
   const handleDelete = useCallback(() => {
     deleteTemplate().then(() => {
-      goback();
+      goBack();
     });
-  }, [deleteTemplate, goback]);
+  }, [deleteTemplate, goBack]);
 
   useEffect(() => {
     if (!data) return;
@@ -59,7 +59,7 @@ export const TemplateEditor: React.FC<IProps> = ({ templateId }) => {
             header={
               <>
                 <Tooltip content="返回" position="bottom">
-                  <Button onClick={goback} icon={<IconChevronLeft />} style={{ marginRight: 16 }} />
+                  <Button onClick={goBack} icon={<IconChevronLeft />} style={{ marginRight: 16 }} />
                 </Tooltip>
                 <Text strong ellipsis={{ showTooltip: true }} style={{ width: ~~(windowWidth / 4) }}>
                   {title}

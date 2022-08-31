@@ -41,10 +41,10 @@ importers:
 
   packages/client:
     specifiers:
-      '@douyinfe/semi-icons': ^2.18.0
-      '@douyinfe/semi-illustrations': ^2.18.0
-      '@douyinfe/semi-next': ^2.18.0
-      '@douyinfe/semi-ui': ^2.18.0
+      '@douyinfe/semi-icons': ^2.18.2
+      '@douyinfe/semi-illustrations': ^2.18.2
+      '@douyinfe/semi-next': ^2.18.2
+      '@douyinfe/semi-ui': ^2.18.2
       '@excalidraw/excalidraw': ^0.12.0
       '@hocuspocus/provider': ^1.0.0-alpha.29
       '@react-pdf-viewer/core': 3.7.0
@@ -164,10 +164,10 @@ importers:
       viewerjs: ^1.10.4
       yjs: ^13.5.24
     dependencies:
-      '@douyinfe/semi-icons': 2.18.1_react@17.0.2
-      '@douyinfe/semi-illustrations': 2.18.1_react@17.0.2
-      '@douyinfe/semi-next': 2.18.1
-      '@douyinfe/semi-ui': 2.18.1_sfoxds7t5ydpegc3knd667wn6m
+      '@douyinfe/semi-icons': 2.18.2_react@17.0.2
+      '@douyinfe/semi-illustrations': 2.18.2_react@17.0.2
+      '@douyinfe/semi-next': 2.18.2
+      '@douyinfe/semi-ui': 2.18.2_sfoxds7t5ydpegc3knd667wn6m
       '@excalidraw/excalidraw': 0.12.0_sfoxds7t5ydpegc3knd667wn6m
       '@hocuspocus/provider': 1.0.0-alpha.29
       '@react-pdf-viewer/core': 3.7.0_2vj3zozgbzfehrv2inzxxqn2wq
@@ -641,6 +641,15 @@ packages:
       '@jridgewell/gen-mapping': 0.3.2
       jsesc: 2.5.2
 
+  /@babel/generator/7.18.13:
+    resolution: {integrity: sha512-CkPg8ySSPuHTYPJYo7IRALdqyjM9HCbt/3uOBEFbzyGVP6Mn8bwFPB0jX6982JVNBlYzM1nnPkfjuXSOPtQeEQ==}
+    engines: {node: '>=6.9.0'}
+    dependencies:
+      '@babel/types': 7.18.13
+      '@jridgewell/gen-mapping': 0.3.2
+      jsesc: 2.5.2
+    dev: false
+
   /@babel/helper-annotate-as-pure/7.16.7:
     resolution: {integrity: sha512-s6t2w/IPQVTAET1HitoowRGXooX8mCgtuP5195wD/QJPV6wYjpujCGF7JuMODVX2ZAJOf1GT6DT9MHEZvLOFSw==}
     engines: {node: '>=6.9.0'}
@@ -969,6 +978,14 @@ packages:
     hasBin: true
     dependencies:
       '@babel/types': 7.18.10
+
+  /@babel/parser/7.18.13:
+    resolution: {integrity: sha512-dgXcIfMuQ0kgzLB2b9tRZs7TTFFaGM2AbtA4fJgUUYukzGH4jwsS7hzQHEGs67jdehpm22vkgKwvbU+aEflgwg==}
+    engines: {node: '>=6.0.0'}
+    hasBin: true
+    dependencies:
+      '@babel/types': 7.18.13
+    dev: false
 
   /@babel/plugin-bugfix-safari-id-destructuring-collision-in-function-expression/7.17.12_@babel+core@7.16.12:
     resolution: {integrity: sha512-xCJQXl4EeQ3J9C4yOmpTrtVGmzpm2iSzyxbkZHw7UCnZBftHpF/hpII80uWVyVrc40ytIClHjgWGTG1g/yB+aw==}
@@ -1855,6 +1872,24 @@ packages:
     transitivePeerDependencies:
       - supports-color
 
+  /@babel/traverse/7.18.13:
+    resolution: {integrity: sha512-N6kt9X1jRMLPxxxPYWi7tgvJRH/rtoU+dbKAPDM44RFHiMH8igdsaSBgFeskhSl/kLWLDUvIh1RXCrTmg0/zvA==}
+    engines: {node: '>=6.9.0'}
+    dependencies:
+      '@babel/code-frame': 7.18.6
+      '@babel/generator': 7.18.13
+      '@babel/helper-environment-visitor': 7.18.9
+      '@babel/helper-function-name': 7.18.9
+      '@babel/helper-hoist-variables': 7.18.6
+      '@babel/helper-split-export-declaration': 7.18.6
+      '@babel/parser': 7.18.13
+      '@babel/types': 7.18.13
+      debug: 4.3.4
+      globals: 11.12.0
+    transitivePeerDependencies:
+      - supports-color
+    dev: false
+
   /@babel/types/7.16.8:
     resolution: {integrity: sha512-smN2DQc5s4M7fntyjGtyIPbRJv6wW4rU/94fmYJ7PKQuZkC0qGMHXJbg6sNGt12JmVr4k5YaptI/XtiLJBnmIg==}
     engines: {node: '>=6.9.0'}
@@ -1879,6 +1914,15 @@ packages:
       '@babel/helper-validator-identifier': 7.18.6
       to-fast-properties: 2.0.0
 
+  /@babel/types/7.18.13:
+    resolution: {integrity: sha512-ePqfTihzW0W6XAU+aMw2ykilisStJfDnsejDCXRchCcMJ4O0+8DhPXf2YUbZ6wjBlsEmZwLK/sPweWtu8hcJYQ==}
+    engines: {node: '>=6.9.0'}
+    dependencies:
+      '@babel/helper-string-parser': 7.18.10
+      '@babel/helper-validator-identifier': 7.18.6
+      to-fast-properties: 2.0.0
+    dev: false
+
   /@bcoe/v8-coverage/0.2.3:
     resolution: {integrity: sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==}
     dev: true
@@ -1895,17 +1939,17 @@ packages:
       '@cspotcode/source-map-consumer': 0.8.0
     dev: true
 
-  /@douyinfe/semi-animation-react/2.18.1:
-    resolution: {integrity: sha512-TzMq1z+eu2/8aTdCv+P1Ghtvsxd+9LOuM2oKvVOhYGWqvnXaa/gSfPv7FTr0hG8Xx6dpQbHCD2J9OLZs/ISaow==}
+  /@douyinfe/semi-animation-react/2.18.2:
+    resolution: {integrity: sha512-OUo5a59vG3L28iKrcAQ/ENjSYHlJKiAWKk8IusR1GldLSgj4PIP8b/sl80tUJQWJSnp6TwSULc0JR8vIH/zs8w==}
     dependencies:
       '@babel/runtime-corejs3': 7.16.8
       '@douyinfe/semi-animation': 2.12.0
-      '@douyinfe/semi-animation-styled': 2.18.1
+      '@douyinfe/semi-animation-styled': 2.18.2
       classnames: 2.3.1
     dev: false
 
-  /@douyinfe/semi-animation-styled/2.18.1:
-    resolution: {integrity: sha512-wcX6S+NT/+0+0LBEB8y8io9RzaNrjzBuSAUu0OBO7iKXGOdxECUg6fA/fKwSM+9cFleOYTlzVA6fXXOS79NB9g==}
+  /@douyinfe/semi-animation-styled/2.18.2:
+    resolution: {integrity: sha512-y62aVQ0//pObTa8quPBVJtCcZ6XZCppr0h1Ms+xc1mHVd7E7ddWDqaeW3X8/zsfcX9IzT66bM4GBlzQlciLbig==}
     dependencies:
       '@babel/runtime-corejs3': 7.16.8
     dev: false
@@ -1917,8 +1961,8 @@ packages:
       bezier-easing: 2.1.0
     dev: false
 
-  /@douyinfe/semi-foundation/2.18.1:
-    resolution: {integrity: sha512-D4WRyJ6A9maZudR+2lTyBQ7NYbm0/hs4cDWdt8v6hmXttAvDDvMNHw3FUT+tY+n7fQaQn4BYSVGE4/fH2utVGQ==}
+  /@douyinfe/semi-foundation/2.18.2:
+    resolution: {integrity: sha512-r32i0fIL0DYpHRILCN/KJ4B8PEpfjxnoSAkG5RYxUqydLwACUwfBEbYtFvdftEbq1pMSlB2zcxoYCVGJQBa1xQ==}
     dependencies:
       '@babel/runtime-corejs3': 7.16.8
       '@douyinfe/semi-animation': 2.12.0
@@ -1931,8 +1975,8 @@ packages:
       scroll-into-view-if-needed: 2.2.29
     dev: false
 
-  /@douyinfe/semi-icons/2.18.1_react@17.0.2:
-    resolution: {integrity: sha512-a+wpcs6rHDAYo/wu2k6SQkrwv6tCHwnFGHLtPwc0H7AOswQJ7y9jSNq215eeLavMai0ShA2WfOZfO/IbjVB7lg==}
+  /@douyinfe/semi-icons/2.18.2_react@17.0.2:
+    resolution: {integrity: sha512-d+OBgn34xrGLEhNdKC5kvAhJVpNGD65tG/ibNhxoC7esxW9hhOYpq77r3n+Pv7pDd2mIM9q4JoKWLTlcc/hJcw==}
     peerDependencies:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
     dependencies:
@@ -1950,18 +1994,18 @@ packages:
       react: 17.0.2
     dev: false
 
-  /@douyinfe/semi-illustrations/2.18.1_react@17.0.2:
-    resolution: {integrity: sha512-f21wkohUHz+18U9Q1wdbWMz/8q28ado3L5HjFkBt+ev477BORRWoZgVxhaTW7So3ugDHgQPBJOrbvYdj+Ly9aA==}
+  /@douyinfe/semi-illustrations/2.18.2_react@17.0.2:
+    resolution: {integrity: sha512-m75KuvFbbxIqn6EtPyN2NxF4fHjVmgGETvzECMBSNqob/V1M0WeLAmYuTu31t//vEiQnubguu0rzeFMb6XLVng==}
     peerDependencies:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
     dependencies:
       react: 17.0.2
     dev: false
 
-  /@douyinfe/semi-next/2.18.1:
-    resolution: {integrity: sha512-jw0vi6I51pqAp7EDgvigaNl0FvNbXHKda6Dp1HDMrb+IbJAVLJSaDHTZF3wzEmvQFaqA+ZsqvKEJgwu3FfhiVg==}
+  /@douyinfe/semi-next/2.18.2:
+    resolution: {integrity: sha512-tpM0i2NLY/f2Mw/GbYK4AFmVD7h2dqaYDFz+UNyR0E877TvU11gaslDnJ5iksRVizYLvKbB3p29UJS10gZXEfg==}
     dependencies:
-      '@douyinfe/semi-webpack-plugin': 2.18.1
+      '@douyinfe/semi-webpack-plugin': 2.18.2
     transitivePeerDependencies:
       - fibers
       - node-sass
@@ -1969,25 +2013,25 @@ packages:
       - webpack
     dev: false
 
-  /@douyinfe/semi-theme-default/2.18.1:
-    resolution: {integrity: sha512-G8+gpC2nsRAAqQzjGtODcUBVnnONwmUjR2xiTTezYX5WvXjOp4vbmRW0JCDlG8Y/q6ADYh1HJ+EWK5p/rY5q3w==}
+  /@douyinfe/semi-theme-default/2.18.2:
+    resolution: {integrity: sha512-p64ocgajnetGgsfHPkxTZ2fP36CG3MXuGmvo9L9J6K3bwk5cQITCxYAht84JQtoLPXaeRL7hgBPh7Jtd90WieA==}
     dependencies:
       glob: 7.2.3
     dev: false
 
-  /@douyinfe/semi-ui/2.18.1_sfoxds7t5ydpegc3knd667wn6m:
-    resolution: {integrity: sha512-uyRIZidDtNJqDGkTPD4Tq+SXAQUjzOk9XfeJellXUfIw4ImgX0Unr/BQUhXFgL0eXiCrmyOckgFHsIOgt4asdA==}
+  /@douyinfe/semi-ui/2.18.2_sfoxds7t5ydpegc3knd667wn6m:
+    resolution: {integrity: sha512-RFgrFkg1n3Srs6z7y9r2vfn698KgjzxjeIHCSonr8QiVTJR12q/5NcZjvY66iHaDRPP5yHWXp0C+FUIUYBczNA==}
     peerDependencies:
       react: '>=16.0.0'
       react-dom: '>=16.0.0'
     dependencies:
       '@babel/runtime-corejs3': 7.16.8
       '@douyinfe/semi-animation': 2.12.0
-      '@douyinfe/semi-animation-react': 2.18.1
-      '@douyinfe/semi-foundation': 2.18.1
-      '@douyinfe/semi-icons': 2.18.1_react@17.0.2
+      '@douyinfe/semi-animation-react': 2.18.2
+      '@douyinfe/semi-foundation': 2.18.2
+      '@douyinfe/semi-icons': 2.18.2_react@17.0.2
       '@douyinfe/semi-illustrations': 2.15.0_react@17.0.2
-      '@douyinfe/semi-theme-default': 2.18.1
+      '@douyinfe/semi-theme-default': 2.18.2
       async-validator: 3.5.2
       classnames: 2.3.1
       copy-text-to-clipboard: 2.2.0
@@ -2005,14 +2049,14 @@ packages:
       utility-types: 3.10.0
     dev: false
 
-  /@douyinfe/semi-webpack-plugin/2.18.1:
-    resolution: {integrity: sha512-VGfUrxZqqP51QeJFDlPk3DRijW9uf9isLk7LJ3bQDLxmAknOETxYlEB+bVtZjz7vl13T0b3dlCFbYR3reSd3sg==}
+  /@douyinfe/semi-webpack-plugin/2.18.2:
+    resolution: {integrity: sha512-TC67eacEqA1DbvH5aLmlr/5qDOOfCvy5BB1GvnSwDy3gDFq0V1qiFwntTsNYxEmUrKCp28Ak6FG0oyxYVA5OBQ==}
     peerDependencies:
       webpack: ^4 || ^5
     dependencies:
-      '@babel/generator': 7.18.12
-      '@babel/parser': 7.18.11
-      '@babel/traverse': 7.18.11
+      '@babel/generator': 7.18.13
+      '@babel/parser': 7.18.13
+      '@babel/traverse': 7.18.13
       css-loader: 4.3.0
       enhanced-resolve: 5.10.0
       loader-utils: 2.0.0
@@ -5476,7 +5520,7 @@ packages:
       camelcase: 6.3.0
       cssesc: 3.0.0
       icss-utils: 4.1.1
-      loader-utils: 2.0.2
+      loader-utils: 2.0.0
       postcss: 7.0.39
       postcss-modules-extract-imports: 2.0.0
       postcss-modules-local-by-default: 3.0.3
@@ -5484,7 +5528,7 @@ packages:
       postcss-modules-values: 3.0.0
       postcss-value-parser: 4.2.0
       schema-utils: 2.7.1
-      semver: 7.3.5
+      semver: 7.3.2
     dev: false
 
   /cssesc/3.0.0:
@@ -8402,7 +8446,7 @@ packages:
     dependencies:
       universalify: 2.0.0
     optionalDependencies:
-      graceful-fs: 4.2.10
+      graceful-fs: 4.2.9
 
   /jsonpointer/5.0.0:
     resolution: {integrity: sha512-PNYZIdMjVIvVgDSYKTT63Y+KZ6IZvGRNNWcxwD+GNnUz1MKPfv30J8ueCjdwcN0nDx2SlshgyB7Oy0epAzVRRg==}
@@ -10813,11 +10857,11 @@ packages:
         optional: true
     dependencies:
       klona: 2.0.5
-      loader-utils: 2.0.2
+      loader-utils: 2.0.0
       neo-async: 2.6.2
       sass: 1.32.2
       schema-utils: 3.1.1
-      semver: 7.3.5
+      semver: 7.3.2
     dev: false
 
   /sass/1.32.2:
@@ -11368,7 +11412,7 @@ packages:
     peerDependencies:
       webpack: ^4.0.0 || ^5.0.0
     dependencies:
-      loader-utils: 2.0.2
+      loader-utils: 2.0.0
       schema-utils: 2.7.1
     dev: false
 

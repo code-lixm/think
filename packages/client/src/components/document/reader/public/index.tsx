@@ -159,8 +159,7 @@ export const DocumentPublicReader: React.FC<IProps> = ({ documentId, hideLogo = 
               {data && <Tooltip content={currentWikiId ? '独立模式' : '嵌入模式'}>
                 <Button theme="borderless" type="tertiary" icon={<IconRoute />} onClick={toPublicWikiOrDocumentURL} />
               </Tooltip>}
-
-              {data && <DocumentStyle />}
+              {data && <Tooltip content="文档排版"><DocumentStyle /></Tooltip>}
               <User />
             </Space>
           }

@@ -114,9 +114,6 @@ export const useUser = () => {
         data,
       }).then((res) => {
         const user = res as unknown as ILoginUser;
-        if (!user.avatar) {
-          user.avatar = '/avatar/avatar-16.svg';
-        }
         refetch();
         setStorage('user', JSON.stringify(user));
         user.token && setStorage('token', user.token);
