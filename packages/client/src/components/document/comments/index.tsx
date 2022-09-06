@@ -1,4 +1,4 @@
-import { Avatar, Banner, Button, Pagination, Space, Spin, Typography } from '@douyinfe/semi-ui';
+import { Banner, Button, Pagination, Space, Typography } from '@douyinfe/semi-ui';
 import { DataRender } from 'components/data-render';
 import { useComments } from 'data/comment';
 import { useUser } from 'data/user';
@@ -186,6 +186,7 @@ export const CommentEditor: React.FC<IProps> = ({ documentId }) => {
             <Text type="tertiary"> 评论全文</Text>
           </div>
         )}
+        <div className="h-[100px]"></div>
       </div>
     </div>
   );
