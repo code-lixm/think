@@ -8,7 +8,7 @@ import Link from 'next/link';
 // import { SecureDocumentIllustration } from 'illustrations/secure-document';
 import React, { forwardRef, useEffect, useImperativeHandle, useMemo, useRef, useState } from 'react';
 import { Editor } from 'tiptap/core';
-import { IndexeddbPersistence } from 'tiptap/core/thritypart/y-indexeddb';
+import { IndexeddbPersistence } from 'tiptap/core/thirty-part/y-indexeddb';
 
 import { EditorInstance } from './editor';
 import styles from './index.module.scss';
