@@ -115,6 +115,7 @@ export const DocumentShare: React.FC<IProps> = ({ documentId, disabled = false, 
   );
 
   useEffect(() => {
+    console.log('chufale');
     if (loading || !data) return;
     setSharePassword(data.document && data.document.sharePassword);
   }, [loading, data]);

@@ -4,7 +4,7 @@ import React from 'react';
 import { Editor } from 'tiptap/core';
 import { BackgroundColor } from 'tiptap/core/menus/background-color';
 import { Bold } from 'tiptap/core/menus/bold';
-import { CleadrNodeAndMarks } from 'tiptap/core/menus/clear-node-and-marks';
+import { ClearNodeAndMarks } from 'tiptap/core/menus/clear-node-and-marks';
 import { Code } from 'tiptap/core/menus/code';
 import { Heading } from 'tiptap/core/menus/heading';
 import { Italic } from 'tiptap/core/menus/italic';
@@ -22,7 +22,7 @@ const _CommentMenuBar: React.FC<{ editor: Editor }> = ({ editor }) => {
       <Space spacing={2}>
         <Undo editor={editor} />
         <Redo editor={editor} />
-        <CleadrNodeAndMarks editor={editor} />
+        <ClearNodeAndMarks editor={editor} />
 
         <Divider />
 

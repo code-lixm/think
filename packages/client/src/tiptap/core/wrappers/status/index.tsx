@@ -69,7 +69,8 @@ export const StatusWrapper = ({ editor, node, updateAttributes }) => {
         ref.current?.focus();
       }, 200);
     } else {
-      updateAttributes({ text: currentText });
+      const text = currentText || new Date().toLocaleDateString() + new Date().toLocaleTimeString();
+      updateAttributes({ text });
     }
   }, [visible, updateAttributes, currentText]);
 
@@ -78,7 +79,7 @@ export const StatusWrapper = ({ editor, node, updateAttributes }) => {
       {isEditable ? (
         <Popover
           showArrow
-          position="bottomLeft"
+          position="right"
           visible={visible}
           onVisibleChange={onVisibleChange}
           content={

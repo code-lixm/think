@@ -108,7 +108,6 @@ export const QuickInsert = Node.create({
 
         onUpdate(props) {
           if (!isEditable) return;
-          console.log('props: ', props);
           component.updateProps(props);
 
           props.editor.storage[extensionName].rect = props.clientRect();

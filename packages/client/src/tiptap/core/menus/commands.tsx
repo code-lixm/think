@@ -44,7 +44,11 @@ export type ILabelRenderCommand = IBaseCommand & {
 };
 
 type ICustomRenderCommand = IBaseCommand & {
-  custom: (editor: Editor, runCommand: (arg: { label: string; action: IAction }) => any) => React.ReactNode;
+  custom: (
+    editor: Editor,
+    runCommand: (arg: { label: string; action: IAction }) => any,
+    key: string
+  ) => React.ReactNode;
 };
 
 export type ICommand = ITitle | ILabelRenderCommand | ICustomRenderCommand;
@@ -54,7 +58,6 @@ export const insertMenuLRUCache = createKeysLocalStorageLRUCache('TIPTAP_INSERT_
 export const COMMANDS: ICommand[] = [
   {
     title: '通用',
-    shortcut: '/ty',
   },
   {
     icon: <IconTableOfContents />,
@@ -67,9 +70,9 @@ export const COMMANDS: ICommand[] = [
     icon: <IconTable />,
     label: '表格',
     shortcut: '/bg',
-    custom: (editor, runCommand) => (
+    custom: (editor, runCommand, key = 'table') => (
       <Popover
-        key="table"
+        key={key + 'tooltip-table'}
         showArrow
         position="rightTop"
         zIndex={10000}
@@ -86,7 +89,7 @@ export const COMMANDS: ICommand[] = [
           </div>
         }
       >
-        <Dropdown.Item>
+        <Dropdown.Item key={key}>
           <IconTable />
           表格
         </Dropdown.Item>
@@ -106,9 +109,9 @@ export const COMMANDS: ICommand[] = [
     icon: <IconLayout />,
     label: '布局',
     shortcut: '/bj',
-    custom: (editor, runCommand) => (
+    custom: (editor, runCommand, key = 'layout') => (
       <Popover
-        key="table"
+        key={key + 'tooltip-layout'}
         showArrow
         position="rightTop"
         zIndex={10000}
@@ -127,7 +130,7 @@ export const COMMANDS: ICommand[] = [
           </div>
         }
       >
-        <Dropdown.Item>
+        <Dropdown.Item key={key}>
           <IconLayout />
           布局
         </Dropdown.Item>

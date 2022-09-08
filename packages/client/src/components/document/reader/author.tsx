@@ -14,7 +14,7 @@ export const Author: React.FC<IProps> = ({ document }) => {
       style={{
         borderTop: '1px solid var(--semi-color-border)',
         marginTop: '0.75em',
-        padding: '8px 0',
+        paddingTop: 8,
         fontSize: 13,
         fontWeight: 'normal',
         color: 'var(--semi-color-text-0)',

@@ -1,5 +1,6 @@
-import { Spin, Typography } from '@douyinfe/semi-ui';
+import { Space, Spin, Typography } from '@douyinfe/semi-ui';
 import { NodeViewWrapper } from '@tiptap/react';
+import { IconImage } from 'components/icons';
 import { Resizable } from 'components/resizable';
 import { useToggle } from 'hooks/use-toggle';
 import { useCallback, useEffect, useRef } from 'react';
@@ -85,7 +86,10 @@ export const ImageWrapper = ({ editor, node, updateAttributes }) => {
         ) : !src ? (
           <div className={styles.wrap} onClick={selectFile}>
             <Spin spinning={loading}>
-              <Text style={{ cursor: 'pointer' }}>{loading ? '正在上传中' : '请选择图片'}</Text>
+              <Space>
+                <IconImage />
+                <Text style={{ cursor: 'pointer' }}>{loading ? '正在上传中' : '点击上传图片'}</Text>
+              </Space>
               <input ref={$upload} accept="image/*" type="file" hidden onChange={handleFile} />
             </Spin>
           </div>

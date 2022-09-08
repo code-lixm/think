@@ -4,7 +4,7 @@ import { Tooltip } from 'components/tooltip';
 import React, { useCallback } from 'react';
 import { Editor } from 'tiptap/core';
 
-export const CleadrNodeAndMarks: React.FC<{ editor: Editor }> = ({ editor }) => {
+export const ClearNodeAndMarks: React.FC<{ editor: Editor }> = ({ editor }) => {
   const clear = useCallback(() => {
     editor.chain().focus().unsetAllMarks().run();
     editor.chain().focus().clearNodes().run();

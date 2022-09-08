@@ -37,7 +37,7 @@ export const DocumentEditor: React.FC<IProps> = ({ documentId }) => {
   const { data: documentAndAuth, loading: docAuthLoading, error: docAuthError } = useDocumentDetail(documentId);
   const { document, authority } = documentAndAuth || {};
 
-  const goback = useCallback(() => {
+  const goBack = useCallback(() => {
     Router.push({
       pathname: `/app/org/[organizationId]/wiki/[wikiId]/doc/[documentId]`,
       query: { organizationId: document.organizationId, wikiId: document.wikiId, documentId: document.id },
@@ -86,7 +86,7 @@ export const DocumentEditor: React.FC<IProps> = ({ documentId }) => {
           header={
             <>
               <Tooltip content="返回" position="bottom">
-                <Button onMouseDown={goback} icon={<IconChevronLeft />} style={{ marginRight: 16 }} />
+                <Button onMouseDown={goBack} icon={<IconChevronLeft />} style={{ marginRight: 16 }} />
               </Tooltip>
               <DataRender
                 loading={docAuthLoading}

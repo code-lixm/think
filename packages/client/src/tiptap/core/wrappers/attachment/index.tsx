@@ -3,6 +3,7 @@ import { Button, Collapsible, Progress, Space, Spin, Toast, Typography } from '@
 import { FILE_CHUNK_SIZE } from '@think/domains';
 import { NodeViewWrapper } from '@tiptap/react';
 import cls from 'classnames';
+import { IconAttachment } from 'components/icons';
 import { Tooltip } from 'components/tooltip';
 import { useToggle } from 'hooks/use-toggle';
 import { useCallback, useEffect, useRef, useState } from 'react';
@@ -75,24 +76,27 @@ export const AttachmentWrapper = ({ editor, node, updateAttributes }) => {
     if (isEditable && !url) {
       return (
         <div className={cls(styles.wrap, 'render-wrapper')}>
-          <Spin spinning={loading}>
-            <Text style={{ cursor: 'pointer' }} onClick={selectFile}>
-              {loading ? (
-                showProgress ? (
-                  <Progress
-                    percent={uploadProgress}
-                    showInfo
-                    style={{
-                      margin: '10px 0',
-                    }}
-                  />
+          <Spin spinning={loading} style={{ lineHeight: 1 }}>
+            <Space>
+              <IconAttachment />
+              <Text style={{ cursor: 'pointer' }} onClick={selectFile}>
+                {loading ? (
+                  showProgress ? (
+                    <Progress
+                      percent={uploadProgress}
+                      showInfo
+                      style={{
+                        margin: '10px 0',
+                      }}
+                    />
+                  ) : (
+                    '正在上传中'
+                  )
                 ) : (
-                  '正在上传中'
-                )
-              ) : (
-                '请选择文件'
-              )}
-            </Text>
+                  '点击上传文件'
+                )}
+              </Text>
+            </Space>
             <input ref={$upload} type="file" hidden onChange={handleFile} />
           </Spin>
         </div>

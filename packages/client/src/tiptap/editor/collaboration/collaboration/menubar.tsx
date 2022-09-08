@@ -9,11 +9,11 @@ import { Blockquote } from 'tiptap/core/menus/blockquote';
 import { Bold } from 'tiptap/core/menus/bold';
 import { BulletList } from 'tiptap/core/menus/bullet-list';
 import { Callout } from 'tiptap/core/menus/callout';
-import { CleadrNodeAndMarks } from 'tiptap/core/menus/clear-node-and-marks';
+import { ClearNodeAndMarks } from 'tiptap/core/menus/clear-node-and-marks';
 import { Code } from 'tiptap/core/menus/code';
 import { CodeBlock } from 'tiptap/core/menus/code-block';
 import { Columns } from 'tiptap/core/menus/columns';
-import { Countdonw } from 'tiptap/core/menus/countdown';
+import { Countdown } from 'tiptap/core/menus/countdown';
 import { DocumentChildren } from 'tiptap/core/menus/document-children';
 import { DocumentReference } from 'tiptap/core/menus/document-reference';
 import { Emoji } from 'tiptap/core/menus/emoji';
@@ -63,7 +63,7 @@ const _MenuBar: React.FC<{ editor: Editor }> = ({ editor }) => {
 
         <Undo editor={editor} />
         <Redo editor={editor} />
-        <CleadrNodeAndMarks editor={editor} />
+        <ClearNodeAndMarks editor={editor} />
 
         <Divider />
 
@@ -101,7 +101,7 @@ const _MenuBar: React.FC<{ editor: Editor }> = ({ editor }) => {
         <Attachment editor={editor} />
         <Callout editor={editor} />
         <CodeBlock editor={editor} />
-        <Countdonw editor={editor} />
+        <Countdown editor={editor} />
         <DocumentChildren editor={editor} />
         <DocumentReference editor={editor} />
         <Flow editor={editor} />

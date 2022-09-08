@@ -78,7 +78,7 @@ const DocumentWithTitle = Document.extend({
 
 export { Document };
 
-const placeholders = ['输入 / 唤起更多', '使用 markdown 语法进行输入', '输入 @ 来提及他人', '输入 : 来插入表情'];
+const placeholders = ['输入 / 唤起更多', '支持 MD 语法', '输入 @ 来提及他人', '输入 : 来插入表情'];
 
 const getCreateUserId = () => safeJSONParse(window.localStorage.getItem('user')).id;
 
