@@ -17,7 +17,7 @@
     "@react-pdf-viewer/core": "3.7.0",
     "@react-pdf-viewer/default-layout": "3.7.0",
     "@react-pdf-viewer/locales": "^1.0.0",
-    "@semi-bot/semi-theme-universe-think": "^1.1.6",
+    "@semi-bot/semi-theme-universe-think": "^1.1.7",
     "@think/config": "workspace:^1.0.0",
     "@think/constants": "workspace:^1.0.0",
     "@think/domains": "workspace:^1.0.0",

@@ -6,10 +6,9 @@ import {
   IconDelete,
   IconLineHeight,
 } from '@douyinfe/semi-icons';
-import { Button, Space } from '@douyinfe/semi-ui';
+import { Button, Space, Tooltip } from '@douyinfe/semi-ui';
 import { Divider } from 'components/divider';
 import { SizeSetter } from 'components/size-setter';
-import { Tooltip } from 'components/tooltip';
 import React, { useCallback, useEffect, useState } from 'react';
 import { BubbleMenu } from 'tiptap/core/bubble-menu';
 import { Image } from 'tiptap/core/extensions/image';
@@ -75,8 +74,8 @@ export const ImageBubbleMenu = ({ editor }) => {
   );
 
   useEffect(() => {
-    setWidth(parseInt(currentWidth));
-    setHeight(parseInt(currentHeight));
+    setWidth(currentWidth);
+    setHeight(currentHeight);
   }, [currentWidth, currentHeight]);
 
   return (
@@ -115,7 +114,7 @@ export const ImageBubbleMenu = ({ editor }) => {
 
         <Divider />
 
-        <Tooltip content="删除" hideOnClick>
+        <Tooltip content="删除">
           <Button size="small" type="tertiary" theme="borderless" icon={<IconDelete />} onClick={deleteMe} />
         </Tooltip>
       </Space>

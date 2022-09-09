@@ -1,7 +1,7 @@
-import { IconEdit, IconExternalOpen, IconUnlink } from '@douyinfe/semi-icons';
-import { Button, Space } from '@douyinfe/semi-ui';
+import { IconExternalOpen, IconUnlink } from '@douyinfe/semi-icons';
+import { Button, Space, Tooltip } from '@douyinfe/semi-ui';
 import { Divider } from 'components/divider';
-import { Tooltip } from 'components/tooltip';
+import { IconPencil } from 'components/icons/IconPencil';
 import { useCallback, useEffect, useState } from 'react';
 import { BubbleMenu } from 'tiptap/core/bubble-menu';
 import { Link } from 'tiptap/core/extensions/link';
@@ -88,12 +88,12 @@ export const LinkBubbleMenu = ({ editor }) => {
         </Tooltip>
 
         <Tooltip content="编辑链接">
-          <Button size="small" type="tertiary" theme="borderless" icon={<IconEdit />} onClick={openEditLinkModal} />
+          <Button size="small" type="tertiary" theme="borderless" icon={<IconPencil />} onClick={openEditLinkModal} />
         </Tooltip>
 
         <Divider />
 
-        <Tooltip content="去除链接" hideOnClick>
+        <Tooltip content="去除链接">
           <Button onClick={unsetLink} icon={<IconUnlink />} type="tertiary" theme="borderless" size="small" />
         </Tooltip>
       </Space>

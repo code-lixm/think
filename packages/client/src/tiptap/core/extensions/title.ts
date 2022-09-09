@@ -130,6 +130,7 @@ export const Title = Node.create<TitleOptions>({
               const titleNode = $head.node($head.depth);
               const endPos = ((titleNode.firstChild && titleNode.firstChild.nodeSize) || 0) + 1;
 
+              // const nextNode = getNodeAtPos(state, Math.min(endPos + 2, state.doc.content.size));
               const nextNode = getNodeAtPos(state, endPos + 2);
 
               if (!nextNode) {

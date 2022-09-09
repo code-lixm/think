@@ -1,9 +1,11 @@
-import { IconCopy, IconDelete, IconEdit, IconExternalOpen, IconLineHeight } from '@douyinfe/semi-icons';
-import { Button, Form, Modal, Space, Typography } from '@douyinfe/semi-ui';
+import { IconExternalOpen, IconLineHeight } from '@douyinfe/semi-icons';
+import { Button, Form, Modal, Space, Tooltip, Typography } from '@douyinfe/semi-ui';
 import { FormApi } from '@douyinfe/semi-ui/lib/es/form';
 import { Divider } from 'components/divider';
+import { IconDuplicate } from 'components/icons/IconDuplicate';
+import { IconPencil } from 'components/icons/IconPencil';
+import { IconTrash } from 'components/icons/IconTrash';
 import { SizeSetter } from 'components/size-setter';
-import { Tooltip } from 'components/tooltip';
 import { useUser } from 'data/user';
 import { useToggle } from 'hooks/use-toggle';
 import { useCallback, useEffect, useRef } from 'react';
@@ -114,7 +116,7 @@ export const IframeBubbleMenu = ({ editor }) => {
 
       <Space spacing={4}>
         <Tooltip content="复制">
-          <Button onClick={copyMe} icon={<IconCopy />} type="tertiary" theme="borderless" size="small" />
+          <Button onClick={copyMe} icon={<IconDuplicate />} type="tertiary" theme="borderless" size="small" />
         </Tooltip>
 
         <Tooltip content="访问链接">
@@ -122,7 +124,7 @@ export const IframeBubbleMenu = ({ editor }) => {
         </Tooltip>
 
         <Tooltip content="编辑链接">
-          <Button size="small" type="tertiary" theme="borderless" icon={<IconEdit />} onClick={openEditLinkModal} />
+          <Button size="small" type="tertiary" theme="borderless" icon={<IconPencil />} onClick={openEditLinkModal} />
         </Tooltip>
 
         <SizeSetter width={width} height={height} onOk={setSize}>
@@ -133,8 +135,8 @@ export const IframeBubbleMenu = ({ editor }) => {
 
         <Divider />
 
-        <Tooltip content="删除节点" hideOnClick>
-          <Button onClick={deleteMe} icon={<IconDelete />} type="tertiary" theme="borderless" size="small" />
+        <Tooltip content="删除">
+          <Button onClick={deleteMe} icon={<IconTrash />} type="tertiary" theme="borderless" size="small" />
         </Tooltip>
       </Space>
     </BubbleMenu>

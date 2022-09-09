@@ -1,9 +1,10 @@
-import { IconCopy, IconDelete, IconEdit } from '@douyinfe/semi-icons';
-import { Button, List, Popover, Space, Typography } from '@douyinfe/semi-ui';
+import { Button, List, Popover, Space, Tooltip, Typography } from '@douyinfe/semi-ui';
 import { DataRender } from 'components/data-render';
 import { Divider } from 'components/divider';
 import { IconDocument } from 'components/icons';
-import { Tooltip } from 'components/tooltip';
+import { IconDuplicate } from 'components/icons/IconDuplicate';
+import { IconPencil } from 'components/icons/IconPencil';
+import { IconTrash } from 'components/icons/IconTrash';
 import { useUser } from 'data/user';
 import { useWikiTocs } from 'data/wiki';
 import { useToggle } from 'hooks/use-toggle';
@@ -64,7 +65,7 @@ export const DocumentReferenceBubbleMenu = ({ editor }) => {
     >
       <Space spacing={4}>
         <Tooltip content="复制">
-          <Button onClick={copyMe} icon={<IconCopy />} type="tertiary" theme="borderless" size="small" />
+          <Button onClick={copyMe} icon={<IconDuplicate />} type="tertiary" theme="borderless" size="small" />
         </Tooltip>
 
         <Popover
@@ -108,13 +109,13 @@ export const DocumentReferenceBubbleMenu = ({ editor }) => {
           showArrow
           style={{ padding: 0 }}
         >
-          <Button size="small" type="tertiary" theme="borderless" icon={<IconEdit />} />
+          <Button size="small" type="tertiary" theme="borderless" icon={<IconPencil />} />
         </Popover>
 
         <Divider />
 
-        <Tooltip content="删除节点" hideOnClick>
-          <Button onClick={deleteMe} icon={<IconDelete />} type="tertiary" theme="borderless" size="small" />
+        <Tooltip content="删除">
+          <Button onClick={deleteMe} icon={<IconTrash />} type="tertiary" theme="borderless" size="small" />
         </Tooltip>
       </Space>
     </BubbleMenu>

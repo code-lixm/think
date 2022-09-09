@@ -1,10 +1,9 @@
 import { IconClose, IconDownload, IconPlayCircle } from '@douyinfe/semi-icons';
-import { Button, Collapsible, Progress, Space, Spin, Toast, Typography } from '@douyinfe/semi-ui';
+import { Button, Collapsible, Progress, Space, Spin, Toast, Tooltip, Typography } from '@douyinfe/semi-ui';
 import { FILE_CHUNK_SIZE } from '@think/domains';
 import { NodeViewWrapper } from '@tiptap/react';
 import cls from 'classnames';
 import { IconAttachment } from 'components/icons';
-import { Tooltip } from 'components/tooltip';
 import { useToggle } from 'hooks/use-toggle';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { uploadFile } from 'services/file';
@@ -147,7 +146,7 @@ export const AttachmentWrapper = ({ editor, node, updateAttributes }) => {
       );
     }
 
-    if (error !== 'null') {
+    if (error) {
       return (
         <div className={cls(styles.wrap, 'render-wrapper')} onClick={selectFile}>
           <Space>

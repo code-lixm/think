@@ -181,5 +181,5 @@ export const CollaborationKit = [
   }),
   Title,
   DocumentWithTitle,
-  Draggable,
+  // Draggable,
 ];

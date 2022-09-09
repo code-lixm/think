@@ -1,6 +1,5 @@
-import { Button, Space } from '@douyinfe/semi-ui';
+import { Button, Space, Tooltip } from '@douyinfe/semi-ui';
 import { IconAddRowAfter, IconAddRowBefore, IconDeleteRow } from 'components/icons';
-import { Tooltip } from 'components/tooltip';
 import React, { useCallback } from 'react';
 import { BubbleMenu } from 'tiptap/core/bubble-menu';
 import { Table } from 'tiptap/core/extensions/table';
@@ -50,7 +49,7 @@ export const TableRowBubbleMenu = ({ editor }) => {
           <Button onClick={addRowAfter} icon={<IconAddRowAfter />} type="tertiary" theme="borderless" size="small" />
         </Tooltip>
 
-        <Tooltip content="删除当前行" position="left" hideOnClick>
+        <Tooltip content="删除当前行" position="left">
           <Button onClick={deleteRow} icon={<IconDeleteRow />} type="tertiary" theme="borderless" size="small" />
         </Tooltip>
       </Space>

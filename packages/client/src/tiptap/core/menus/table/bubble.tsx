@@ -1,5 +1,4 @@
-import { IconCopy } from '@douyinfe/semi-icons';
-import { Button, Space } from '@douyinfe/semi-ui';
+import { Button, Space, Tooltip } from '@douyinfe/semi-ui';
 import { Divider } from 'components/divider';
 import {
   IconAddColumnAfter,
@@ -15,7 +14,7 @@ import {
   IconTableHeaderColumn,
   IconTableHeaderRow,
 } from 'components/icons';
-import { Tooltip } from 'components/tooltip';
+import { IconDuplicate } from 'components/icons/IconDuplicate';
 import React, { useCallback } from 'react';
 import { BubbleMenu } from 'tiptap/core/bubble-menu';
 import { Table } from 'tiptap/core/extensions/table';
@@ -66,7 +65,7 @@ export const TableBubbleMenu = ({ editor }) => {
     >
       <Space spacing={4}>
         <Tooltip content="复制">
-          <Button onClick={copyMe} icon={<IconCopy />} type="tertiary" theme="borderless" size="small" />
+          <Button onClick={copyMe} icon={<IconDuplicate />} type="tertiary" theme="borderless" size="small" />
         </Tooltip>
 
         <Divider />
@@ -90,7 +89,7 @@ export const TableBubbleMenu = ({ editor }) => {
             size="small"
           />
         </Tooltip>
-        <Tooltip content="删除当前列" hideOnClick>
+        <Tooltip content="删除当前列">
           <Button onClick={deleteColumn} icon={<IconDeleteColumn />} type="tertiary" theme="borderless" size="small" />
         </Tooltip>
 
@@ -104,7 +103,7 @@ export const TableBubbleMenu = ({ editor }) => {
           <Button onClick={addRowAfter} icon={<IconAddRowAfter />} type="tertiary" theme="borderless" size="small" />
         </Tooltip>
 
-        <Tooltip content="删除当前行" hideOnClick>
+        <Tooltip content="删除当前行">
           <Button onClick={deleteRow} icon={<IconDeleteRow />} type="tertiary" theme="borderless" size="small" />
         </Tooltip>
 
@@ -152,7 +151,7 @@ export const TableBubbleMenu = ({ editor }) => {
 
         <Divider />
 
-        <Tooltip content="删除表格" hideOnClick>
+        <Tooltip content="删除表格">
           <Button size="small" type="tertiary" theme="borderless" icon={<IconDeleteTable />} onClick={deleteMe} />
         </Tooltip>
       </Space>

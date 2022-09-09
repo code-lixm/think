@@ -1,8 +1,8 @@
-import { IconCopy, IconDelete } from '@douyinfe/semi-icons';
-import { Button, Popover, Space, Typography } from '@douyinfe/semi-ui';
+import { Button, Popover, Space, Tooltip, Typography } from '@douyinfe/semi-ui';
 import { Divider } from 'components/divider';
 import { IconDrawBoard } from 'components/icons';
-import { Tooltip } from 'components/tooltip';
+import { IconDuplicate } from 'components/icons/IconDuplicate';
+import { IconTrash } from 'components/icons/IconTrash';
 import { useCallback } from 'react';
 import { Editor } from 'tiptap/core';
 import { BubbleMenu } from 'tiptap/core/bubble-menu';
@@ -60,7 +60,7 @@ export const CalloutBubbleMenu: React.FC<{ editor: Editor }> = ({ editor }) => {
     >
       <Space spacing={4}>
         <Tooltip content="复制">
-          <Button onClick={copyMe} icon={<IconCopy />} type="tertiary" theme="borderless" size="small" />
+          <Button onClick={copyMe} icon={<IconDuplicate />} type="tertiary" theme="borderless" size="small" />
         </Tooltip>
 
         <Popover
@@ -118,8 +118,8 @@ export const CalloutBubbleMenu: React.FC<{ editor: Editor }> = ({ editor }) => {
 
         <Divider />
 
-        <Tooltip content="删除" hideOnClick>
-          <Button size="small" type="tertiary" theme="borderless" icon={<IconDelete />} onClick={deleteMe} />
+        <Tooltip content="删除">
+          <Button size="small" type="tertiary" theme="borderless" icon={<IconTrash />} onClick={deleteMe} />
         </Tooltip>
       </Space>
     </BubbleMenu>

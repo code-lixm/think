@@ -1,9 +1,8 @@
-import { Button, Space, Spin, Typography } from '@douyinfe/semi-ui';
+import { Button, Space, Spin, Tooltip, Typography } from '@douyinfe/semi-ui';
 import { NodeViewWrapper } from '@tiptap/react';
 import cls from 'classnames';
 import { IconMind, IconMindCenter, IconZoomIn, IconZoomOut } from 'components/icons';
 import { Resizable } from 'components/resizable';
-import { Tooltip } from 'components/tooltip';
 import deepEqual from 'deep-equal';
 import { useToggle } from 'hooks/use-toggle';
 import React, { useCallback, useEffect, useRef, useState } from 'react';

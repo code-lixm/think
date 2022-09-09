@@ -83,18 +83,20 @@ export const ImageWrapper = ({ editor, node, updateAttributes }) => {
           <div className={styles.wrap}>
             <Text>{error}</Text>
           </div>
-        ) : !src ? (
-          <div className={styles.wrap} onClick={selectFile}>
-            <Spin spinning={loading}>
-              <Space>
-                <IconImage />
-                <Text style={{ cursor: 'pointer' }}>{loading ? '正在上传中' : '点击上传图片'}</Text>
-              </Space>
-              <input ref={$upload} accept="image/*" type="file" hidden onChange={handleFile} />
-            </Spin>
-          </div>
-        ) : (
+        ) : src ? (
           <LazyLoadImage src={src} alt={alt} width={'100%'} height={'100%'} />
+        ) : (
+          isEditable && (
+            <div className={styles.wrap} onClick={selectFile}>
+              <Spin spinning={loading}>
+                <Space>
+                  <IconImage />
+                  <Text style={{ cursor: 'pointer' }}>{loading ? '正在上传中' : '点击上传图片'}</Text>
+                </Space>
+                <input ref={$upload} accept="image/*" type="file" hidden onChange={handleFile} />
+              </Spin>
+            </div>
+          )
         )}
       </Resizable>
     </NodeViewWrapper>

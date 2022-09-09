@@ -1,7 +1,8 @@
-import { IconCopy, IconDelete, IconEdit } from '@douyinfe/semi-icons';
-import { Button, Space } from '@douyinfe/semi-ui';
+import { Button, Space, Tooltip } from '@douyinfe/semi-ui';
 import { Divider } from 'components/divider';
-import { Tooltip } from 'components/tooltip';
+import { IconDuplicate } from 'components/icons/IconDuplicate';
+import { IconPencil } from 'components/icons/IconPencil';
+import { IconTrash } from 'components/icons/IconTrash';
 import { useCallback } from 'react';
 import { BubbleMenu } from 'tiptap/core/bubble-menu';
 import { Countdown } from 'tiptap/core/extensions/countdown';
@@ -30,17 +31,17 @@ export const CountdownBubbleMenu = ({ editor }) => {
     >
       <Space spacing={4}>
         <Tooltip content="复制">
-          <Button onClick={copyMe} icon={<IconCopy />} type="tertiary" theme="borderless" size="small" />
+          <Button onClick={copyMe} icon={<IconDuplicate />} type="tertiary" theme="borderless" size="small" />
         </Tooltip>
 
         <Tooltip content="编辑">
-          <Button size="small" type="tertiary" theme="borderless" icon={<IconEdit />} onClick={openEditLinkModal} />
+          <Button size="small" type="tertiary" theme="borderless" icon={<IconPencil />} onClick={openEditLinkModal} />
         </Tooltip>
 
         <Divider />
 
-        <Tooltip content="删除节点" hideOnClick>
-          <Button onClick={deleteMe} icon={<IconDelete />} type="tertiary" theme="borderless" size="small" />
+        <Tooltip content="删除">
+          <Button onClick={deleteMe} icon={<IconTrash />} type="tertiary" theme="borderless" size="small" />
         </Tooltip>
       </Space>
     </BubbleMenu>
