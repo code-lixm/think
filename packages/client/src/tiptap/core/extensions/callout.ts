@@ -20,6 +20,9 @@ export const Callout = Node.create({
 
   addAttributes() {
     return {
+      emoji: {
+        default: '🎯',
+      },
       textColor: {
         default: '#d83931',
       },
