@@ -7,7 +7,6 @@ services:
     container_name: think
     volumes:
       - ./config:/app/config
-      - ./runtime/.next:/app/packages/client/.next
       - ./runtime/static:/app/packages/server/static
     environment:
       - TZ=Asia/Shanghai
