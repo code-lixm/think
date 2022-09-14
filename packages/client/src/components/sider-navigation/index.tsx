@@ -14,10 +14,8 @@ import { IconUsersFilled } from 'components/icons/IconUsersFilled';
 import { useUserOrganizations } from 'data/organization';
 import Router, { useRouter } from 'next/router';
 import React, { useCallback, useMemo } from 'react';
-const { Text } = Typography;
 export const SiderNavigation = () => {
   const { pathname } = useRouter();
-  console.log('pathname: ', pathname.includes('/app'));
 
   const { data: userOrganizations } = useUserOrganizations();
 
