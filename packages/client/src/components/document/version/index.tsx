@@ -31,16 +31,19 @@ export const DocumentVersion: React.FC<Partial<IProps>> = ({ documentId, onSelec
   const [selectedVersion, setSelectedVersion] = useState(null);
   const [diffVersion, setDiffVersion] = useState(null);
 
-  const editor = useEditor({
-    editable: false,
-    editorProps: {
-      attributes: {
-        class: 'is-editable',
+  const editor = useEditor(
+    {
+      editable: false,
+      editorProps: {
+        attributes: {
+          class: 'is-editable',
+        },
       },
+      extensions: CollaborationKit,
+      content: { type: 'doc', content: [] },
     },
-    extensions: CollaborationKit,
-    content: { type: 'doc', content: [] },
-  });
+    []
+  );
 
   const close = useCallback(() => {
     toggleVisible(false);
@@ -128,8 +131,8 @@ export const DocumentVersion: React.FC<Partial<IProps>> = ({ documentId, onSelec
                 </Select>
                 <div style={{ paddingLeft: '8px' }}>对比</div>
                 <Space style={{ marginLeft: 50 }}>
-                  <Tag style={{ backgroundColor: '#e9ffe9' }}>增加的内容</Tag>
-                  <Tag style={{ backgroundColor: '#ffeaea' }}>删除的内容</Tag>
+                  <Tag style={{ backgroundColor: '#e9ffe9', color: '#333' }}>增加的内容</Tag>
+                  <Tag style={{ backgroundColor: '#ffeaea', color: '#333' }}>删除的内容</Tag>
                 </Space>
               </div>
             )}

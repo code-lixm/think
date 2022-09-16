@@ -42,10 +42,10 @@ export const Status = Node.create({
         default: STATUS_COLORS[0][2],
         parseHTML: getDatasetAttribute('bgcolor'),
       },
-      borderColor: {
-        default: STATUS_COLORS[0][3],
-        parseHTML: getDatasetAttribute('borderColor'),
-      },
+      // borderColor: {
+      //   default: STATUS_COLORS[0][2],
+      //   parseHTML: getDatasetAttribute('borderColor'),
+      // },
       text: {
         default: '',
         parseHTML: getDatasetAttribute('text'),

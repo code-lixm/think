@@ -1,6 +1,6 @@
-import { IconLineHeight } from '@douyinfe/semi-icons';
 import { Button, Space, Tooltip } from '@douyinfe/semi-ui';
 import { Divider } from 'components/divider';
+import { IconAdjust } from 'components/icons/IconAdjust';
 import { IconDuplicate } from 'components/icons/IconDuplicate';
 import { IconPencil } from 'components/icons/IconPencil';
 import { IconTrash } from 'components/icons/IconTrash';
@@ -73,7 +73,7 @@ export const MindBubbleMenu = ({ editor }) => {
 
         <SizeSetter width={width} maxWidth={maxWidth} height={height} onOk={setSize}>
           <Tooltip content="设置宽高">
-            <Button icon={<IconLineHeight />} type="tertiary" theme="borderless" size="small" />
+            <Button icon={<IconAdjust />} type="tertiary" theme="borderless" size="small" />
           </Tooltip>
         </SizeSetter>
 

@@ -21,7 +21,7 @@ export const STATUS_COLORS = [
 export const StatusWrapper = ({ editor, node, updateAttributes }) => {
   const defaultValue = new Date().toLocaleString();
   const isEditable = editor.isEditable;
-  const { color: currentTextColor, bgcolor, borderColor, text, defaultShowPicker, createUser } = node.attrs;
+  const { color: currentTextColor, bgcolor, text, defaultShowPicker, createUser } = node.attrs;
   const { user } = useUser();
   const ref = useRef<HTMLInputElement>();
   const [visible, toggleVisible] = useToggle(false);
@@ -29,11 +29,11 @@ export const StatusWrapper = ({ editor, node, updateAttributes }) => {
 
   const content = useMemo(
     () => (
-      <Tag className="render-wrapper" style={{ backgroundColor: bgcolor, border: `1px solid ${borderColor}` }}>
+      <Tag className="render-wrapper" style={{ backgroundColor: bgcolor, border: `1px solid ${bgcolor}` }}>
         <span style={{ color: currentTextColor }}>{currentText || '点击设置状态'}</span>
       </Tag>
     ),
-    [bgcolor, borderColor, currentTextColor, currentText]
+    [bgcolor, currentTextColor, currentText]
   );
 
   const onVisibleChange = useCallback(
@@ -104,7 +104,8 @@ export const StatusWrapper = ({ editor, node, updateAttributes }) => {
                         height: 24,
                         cursor: 'pointer',
                         background: color[0],
-                        border: `1px solid ${color[3]}`,
+                        // border: `1px solid ${color[2]}`,
+                        border: 'none',
                       }}
                       type="solid"
                       onClick={setColor(color)}

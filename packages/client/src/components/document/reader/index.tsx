@@ -29,6 +29,14 @@ interface IProps {
   documentId: string;
 }
 
+const loadingStyle = {
+  minHeight: 240,
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  margin: 'auto',
+};
+
 export const DocumentReader: React.FC<IProps> = ({ documentId }) => {
   const { isMobile } = IsOnMobile.useHook();
   const mounted = useMount();
@@ -123,15 +131,7 @@ export const DocumentReader: React.FC<IProps> = ({ documentId }) => {
         <DataRender
           loading={docAuthLoading}
           loadingContent={
-            <div
-              style={{
-                minHeight: 240,
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                margin: 'auto',
-              }}
-            >
+            <div style={loadingStyle}>
               <Spin />
             </div>
           }
