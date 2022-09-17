@@ -189,6 +189,7 @@ export const EditorInstance = forwardRef((props: IProps, ref) => {
         id={'js-tocs-container'}
         style={{
           padding: isMobile ? `0 24px 50px` : `0 6rem 50px`,
+          zIndex: 1,
         }}
       >
         <div className={cls(styles.contentWrap, editorWrapClassNames)}>

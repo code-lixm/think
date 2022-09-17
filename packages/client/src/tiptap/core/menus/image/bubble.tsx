@@ -1,7 +1,11 @@
-import { IconAlignCenter, IconAlignLeft, IconAlignRight, IconCopy, IconDelete } from '@douyinfe/semi-icons';
 import { Button, Space, Tooltip } from '@douyinfe/semi-ui';
 import { Divider } from 'components/divider';
 import { IconAdjust } from 'components/icons/IconAdjust';
+import { IconBarsCenter } from 'components/icons/IconBarsCenter';
+import { IconBarsLeft } from 'components/icons/IconBarsLeft';
+import { IconBarsRight } from 'components/icons/IconBarsRight';
+import { IconDuplicate } from 'components/icons/IconDuplicate';
+import { IconTrash } from 'components/icons/IconTrash';
 import { SizeSetter } from 'components/size-setter';
 import React, { useCallback, useEffect, useState } from 'react';
 import { BubbleMenu } from 'tiptap/core/bubble-menu';
@@ -85,19 +89,19 @@ export const ImageBubbleMenu = ({ editor }) => {
     >
       <Space spacing={4}>
         <Tooltip content="复制">
-          <Button onClick={copyMe} icon={<IconCopy />} type="tertiary" theme="borderless" size="small" />
+          <Button onClick={copyMe} icon={<IconDuplicate />} type="tertiary" theme="borderless" size="small" />
         </Tooltip>
 
         <Tooltip content="左对齐">
-          <Button onClick={alignLeft} icon={<IconAlignLeft />} type="tertiary" theme="borderless" size="small" />
+          <Button onClick={alignLeft} icon={<IconBarsLeft />} type="tertiary" theme="borderless" size="small" />
         </Tooltip>
 
         <Tooltip content="居中">
-          <Button onClick={alignCenter} icon={<IconAlignCenter />} type="tertiary" theme="borderless" size="small" />
+          <Button onClick={alignCenter} icon={<IconBarsCenter />} type="tertiary" theme="borderless" size="small" />
         </Tooltip>
 
         <Tooltip content="右对齐">
-          <Button onClick={alignRight} icon={<IconAlignRight />} type="tertiary" theme="borderless" size="small" />
+          <Button onClick={alignRight} icon={<IconBarsRight />} type="tertiary" theme="borderless" size="small" />
         </Tooltip>
 
         <SizeSetter width={width} maxWidth={maxWidth} height={height} onOk={updateSize}>
@@ -109,7 +113,7 @@ export const ImageBubbleMenu = ({ editor }) => {
         <Divider />
 
         <Tooltip content="删除">
-          <Button size="small" type="tertiary" theme="borderless" icon={<IconDelete />} onClick={deleteMe} />
+          <Button size="small" type="tertiary" theme="borderless" icon={<IconTrash />} onClick={deleteMe} />
         </Tooltip>
       </Space>
     </BubbleMenu>

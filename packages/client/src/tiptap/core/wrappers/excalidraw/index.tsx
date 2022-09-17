@@ -1,7 +1,7 @@
 import { Space, Spin, Typography } from '@douyinfe/semi-ui';
 import { NodeViewWrapper } from '@tiptap/react';
 import cls from 'classnames';
-import { IconMind } from 'components/icons';
+import { IconDrawPanel } from 'components/icons/IconDrawPanel';
 import { Resizable } from 'components/resizable';
 import deepEqual from 'deep-equal';
 import { useToggle } from 'hooks/use-toggle';
@@ -102,7 +102,7 @@ export const _ExcalidrawWrapper = ({ editor, node, updateAttributes }) => {
             <div className={styles.title}>
               <Space>
                 <span className={styles.icon}>
-                  <IconMind />
+                  <IconDrawPanel />
                 </span>
                 画板
               </Space>

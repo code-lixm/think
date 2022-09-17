@@ -79,7 +79,6 @@ export const ExcalidrawSettingModal: React.FC<IProps> = ({ editor }) => {
 
   return (
     <Modal
-      centered
       title="画板"
       fullScreen
       visible={visible}
@@ -87,7 +86,9 @@ export const ExcalidrawSettingModal: React.FC<IProps> = ({ editor }) => {
       onOk={save}
       okText="保存"
       cancelText="退出"
-      motion={false}
+      // motion={false}
+      footer={null}
+      header={null}
     >
       <div style={{ height: '100%', margin: '0 -24px', border: '1px solid var(--semi-color-border)' }}>
         {loading && (
