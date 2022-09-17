@@ -24,7 +24,6 @@ import { Dropcursor } from 'tiptap/core/extensions/dropcursor';
 import { Emoji } from 'tiptap/core/extensions/emoji';
 import { EventEmitter } from 'tiptap/core/extensions/event-emitter';
 import { Excalidraw } from 'tiptap/core/extensions/excalidraw';
-import { Flow } from 'tiptap/core/extensions/flow';
 import { Focus } from 'tiptap/core/extensions/focus';
 import { FontSize } from 'tiptap/core/extensions/font-size';
 import { Gapcursor } from 'tiptap/core/extensions/gapcursor';
@@ -160,9 +159,6 @@ export const CollaborationKit = [
   DocumentChildren,
   DocumentReference,
   Emoji,
-  Flow.configure({
-    getCreateUserId,
-  }),
   Iframe,
   Katex.configure({
     getCreateUserId,

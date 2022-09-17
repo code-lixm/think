@@ -7,7 +7,6 @@ import {
   IconCodeBlock,
   IconCountdown,
   IconDocument,
-  IconFlow,
   IconImage,
   IconLayout,
   IconLink,
@@ -197,15 +196,6 @@ export const COMMANDS: ICommand[] = [
     label: '高亮块',
     shortcut: '/glk',
     action: (editor) => editor.chain().focus().setCallout().run(),
-  },
-  {
-    isBlock: true,
-    icon: <IconFlow />,
-    label: '流程图',
-    shortcut: '/lct',
-    action: (editor, user) => {
-      editor.chain().focus().setFlow({ width: '100%', defaultShowPicker: true, createUser: user.id }).run();
-    },
   },
   {
     isBlock: true,

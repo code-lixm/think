@@ -15,7 +15,6 @@ export * from './IconDocument';
 export * from './IconDocumentFill';
 export * from './IconDrawBoard';
 export * from './IconEmoji';
-export * from './IconFlow';
 export * from './IconFont';
 export * from './IconFull';
 export * from './IconGlobe';

@@ -18,7 +18,6 @@ import { DocumentChildren } from 'tiptap/core/menus/document-children';
 import { DocumentReference } from 'tiptap/core/menus/document-reference';
 import { Emoji } from 'tiptap/core/menus/emoji';
 import { Excalidraw } from 'tiptap/core/menus/excalidraw';
-import { Flow } from 'tiptap/core/menus/flow';
 import { FontSize } from 'tiptap/core/menus/fontsize';
 import { Heading } from 'tiptap/core/menus/heading';
 import { HorizontalRule } from 'tiptap/core/menus/horizontal-rule';
@@ -104,7 +103,6 @@ const _MenuBar: React.FC<{ editor: Editor }> = ({ editor }) => {
         <Countdown editor={editor} />
         <DocumentChildren editor={editor} />
         <DocumentReference editor={editor} />
-        <Flow editor={editor} />
         <Image editor={editor} />
         <Iframe editor={editor} />
         <Table editor={editor} />

@@ -8,7 +8,6 @@ import { Countdown } from 'tiptap/core/extensions/countdown';
 import { DocumentChildren } from 'tiptap/core/extensions/document-children';
 import { DocumentReference } from 'tiptap/core/extensions/document-reference';
 import { Excalidraw } from 'tiptap/core/extensions/excalidraw';
-import { Flow } from 'tiptap/core/extensions/flow';
 import { HorizontalRule } from 'tiptap/core/extensions/horizontal-rule';
 import { Iframe } from 'tiptap/core/extensions/iframe';
 import { Image } from 'tiptap/core/extensions/image';
@@ -39,7 +38,6 @@ const OTHER_BUBBLE_MENU_TYPES = [
   Callout.name,
   CodeBlock.name,
   Iframe.name,
-  Flow.name,
   Mind.name,
   Table.name,
   TableOfContents.name,
