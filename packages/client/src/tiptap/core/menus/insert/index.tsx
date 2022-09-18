@@ -11,6 +11,29 @@ import { useActive } from 'tiptap/core/hooks/use-active';
 
 import { COMMANDS, insertMenuLRUCache, transformToCommands } from '../commands';
 
+const _CommandRender = ({ commands, editor, runCommand }) => {
+  return (
+    <Dropdown.Menu>
+      {commands.map((command, index) => {
+        return command.title ? (
+          <Dropdown.Title key={'title' + index}>{command.title}</Dropdown.Title>
+        ) : command.custom ? (
+          command.custom(editor, runCommand)
+        ) : (
+          <Dropdown.Item key={index + '-' + command.label} onClick={runCommand(command)}>
+            {command.icon}
+            {command.label}
+          </Dropdown.Item>
+        );
+      })}
+    </Dropdown.Menu>
+  );
+};
+
+const CommandRender = React.memo(_CommandRender, (prevProps, nextProps) => {
+  return prevProps.commands.length === nextProps.commands.length;
+});
+
 export const Insert: React.FC<{ editor: Editor }> = ({ editor }) => {
   const { user } = useUser();
   const [recentUsed, setRecentUsed] = useState([]);
@@ -55,23 +78,7 @@ export const Insert: React.FC<{ editor: Editor }> = ({ editor }) => {
         maxHeight: 'calc(90vh - 120px)',
         overflowY: 'auto',
       }}
-      render={
-        <Dropdown.Menu>
-          {renderedCommands.map((command, index) => {
-            const key = index + '-' + command?.label;
-            return command.title ? (
-              <Dropdown.Title key={'title' + index}>{command.title}</Dropdown.Title>
-            ) : command.custom ? (
-              command.custom(editor, runCommand, key)
-            ) : (
-              <Dropdown.Item key={key} onClick={runCommand(command)}>
-                {command.icon}
-                {command.label}
-              </Dropdown.Item>
-            );
-          })}
-        </Dropdown.Menu>
-      }
+      render={visible ? <CommandRender commands={renderedCommands} editor={editor} runCommand={runCommand} /> : null}
     >
       <div>
         <Tooltip content="插入">

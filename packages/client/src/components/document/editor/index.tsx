@@ -29,6 +29,20 @@ interface IProps {
   documentId: string;
 }
 
+const ErrorContent = () => {
+  return (
+    <div style={{ margin: '10vh', textAlign: 'center' }}>
+      <Empty
+        image={<IllustrationNoAccess style={{ width: 250, height: 250 }} />}
+        darkModeImage={<IllustrationNoAccessDark style={{ width: 250, height: 250 }} />}
+      />
+      <Button>
+        <Link href="/">回到主页</Link>
+      </Button>
+    </div>
+  );
+};
+
 export const DocumentEditor: React.FC<IProps> = ({ documentId }) => {
   const { isMobile } = IsOnMobile.useHook();
   const { width: windowWith } = useWindowSize();
@@ -125,20 +139,7 @@ export const DocumentEditor: React.FC<IProps> = ({ documentId }) => {
         <DataRender
           loading={docAuthLoading}
           error={docAuthError}
-          errorContent={() => {
-            return (
-              <div style={{ margin: '10vh', textAlign: 'center' }}>
-                {/* <SecureDocumentIllustration /> */}
-                <Empty
-                  image={<IllustrationNoAccess style={{ width: 250, height: 250 }} />}
-                  darkModeImage={<IllustrationNoAccessDark style={{ width: 250, height: 250 }} />}
-                />
-                <Button>
-                  <Link href="/">回到主页</Link>
-                </Button>
-              </div>
-            );
-          }}
+          errorContent={<ErrorContent />}
           normalContent={() => {
             return (
               <>

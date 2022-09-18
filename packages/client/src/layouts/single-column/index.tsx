@@ -6,6 +6,11 @@ import { RouterHeader } from '../router-header';
 
 const { Sider, Content } = SemiLayout;
 
+const style = {
+  padding: '16px 24px',
+  backgroundColor: 'var(--semi-color-bg-0)',
+};
+
 export const SingleColumnLayout: React.FC = ({ children }) => {
   return (
     <SemiLayout>
@@ -14,13 +19,8 @@ export const SingleColumnLayout: React.FC = ({ children }) => {
         <Sider>
           <SiderNavigation />
         </Sider>
-        <Content
-          style={{
-            padding: '16px 24px',
-            backgroundColor: 'var(--semi-color-bg-0)',
-          }}
-        >
-          <div className="h-full w-full">{children}</div>
+        <Content style={style}>
+          <div className="w-full h-full">{children}</div>
         </Content>
       </SemiLayout>
     </SemiLayout>

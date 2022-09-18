@@ -81,7 +81,10 @@ export const COMMANDS: ICommand[] = [
               onSelect={({ rows, cols }) => {
                 return runCommand({
                   label: '表格',
-                  action: () => editor.chain().focus().insertTable({ rows, cols, withHeaderRow: true }).run(),
+                  action: () => {
+                    editor.chain().focus().run();
+                    editor.chain().insertTable({ rows, cols, withHeaderRow: true }).focus().run();
+                  },
                 })();
               }}
             />
@@ -122,7 +125,10 @@ export const COMMANDS: ICommand[] = [
               onSelect={({ cols }) => {
                 return runCommand({
                   label: '布局',
-                  action: () => editor.chain().focus().setColumns({ type: 'left-right', columns: cols }).run(),
+                  action: () => {
+                    editor.chain().focus().run();
+                    editor.chain().setColumns({ type: 'left-right', columns: cols }).focus().run();
+                  },
                 })();
               }}
             />

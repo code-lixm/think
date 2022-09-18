@@ -58,7 +58,7 @@ export const ResetPassword = ({ onSuccess, status = 'large' }) => {
   return (
     <Form
       className={isNormal ? '' : styles.form}
-      initValues={{ email: user?.email ?? '', password: '', confirmPassword: '' }}
+      initValues={{ email: user ? user.email : '', password: '', confirmPassword: '' }}
       onChange={onFormChange}
       onSubmit={onFinish}
     >
