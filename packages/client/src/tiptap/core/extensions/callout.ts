@@ -26,9 +26,9 @@ export const Callout = Node.create({
       textColor: {
         default: '#d83931',
       },
-      borderColor: {
-        default: '#fbbfbc',
-      },
+      // borderColor: {
+      //   default: '#fbbfbc',
+      // },
       backgroundColor: {
         default: '#fef1f1',
       },

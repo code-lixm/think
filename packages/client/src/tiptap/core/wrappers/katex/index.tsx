@@ -10,7 +10,7 @@ export const KatexWrapper = ({ node, editor }) => {
   const { text } = node.attrs;
   const { theme } = Theme.useHook();
   const backgroundColor = useMemo(() => {
-    const color = `rgb(254, 242, 237)`;
+    const color = `#2b2f360d`;
     if (theme === ThemeEnum.dark) return convertColorToRGBA(color, 0.75);
     return color;
   }, [theme]);

@@ -1,9 +1,9 @@
-import { IconExternalOpen } from '@douyinfe/semi-icons';
 import { Button, Form, Modal, Space, Tooltip, Typography } from '@douyinfe/semi-ui';
 import { FormApi } from '@douyinfe/semi-ui/lib/es/form';
 import { Divider } from 'components/divider';
 import { IconAdjust } from 'components/icons/IconAdjust';
 import { IconDuplicate } from 'components/icons/IconDuplicate';
+import { IconOpenLink } from 'components/icons/IconOpenLink';
 import { IconPencil } from 'components/icons/IconPencil';
 import { IconTrash } from 'components/icons/IconTrash';
 import { SizeSetter } from 'components/size-setter';
@@ -121,7 +121,7 @@ export const IframeBubbleMenu = ({ editor }) => {
         </Tooltip>
 
         <Tooltip content="访问链接">
-          <Button size="small" type="tertiary" theme="borderless" icon={<IconExternalOpen />} onClick={visitLink} />
+          <Button size="small" type="tertiary" theme="borderless" icon={<IconOpenLink />} onClick={visitLink} />
         </Tooltip>
 
         <Tooltip content="编辑链接">

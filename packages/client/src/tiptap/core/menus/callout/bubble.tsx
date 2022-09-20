@@ -14,7 +14,7 @@ import styles from './bubble.module.scss';
 const { Text } = Typography;
 
 const TEXT_COLORS = ['#d83931', '#de7802', '#dc9b04', '#2ea121', '#245bdb', '#6425d0', '#646a73'];
-const BORDER_COLORS = ['#fbbfbc', '#fed4a4', '#fff67a', '#b7edb1', '#bacefd', '#cdb2fa', '#dee0e3'];
+// const BORDER_COLORS = ['#fbbfbc', '#fed4a4', '#fff67a', '#b7edb1', '#bacefd', '#cdb2fa', '#dee0e3'];
 const BACKGROUND_COLORS = ['#fef1f1', '#feead2', '#ffc', '#d9f5d6', '#e1eaff', '#ece2fe', '#f2f3f5'];
 
 export const CalloutBubbleMenu: React.FC<{ editor: Editor }> = ({ editor }) => {
@@ -83,7 +83,7 @@ export const CalloutBubbleMenu: React.FC<{ editor: Editor }> = ({ editor }) => {
                   ))}
                 </div>
               </section>
-              <section className={styles.colorWrap}>
+              {/* <section className={styles.colorWrap}>
                 <Text type="secondary">边框颜色</Text>
 
                 <div>
@@ -96,7 +96,7 @@ export const CalloutBubbleMenu: React.FC<{ editor: Editor }> = ({ editor }) => {
                     ></div>
                   ))}
                 </div>
-              </section>
+              </section> */}
               <section className={styles.colorWrap}>
                 <Text type="secondary">背景颜色</Text>
                 <div>

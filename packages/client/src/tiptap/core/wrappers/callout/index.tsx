@@ -9,7 +9,7 @@ import styles from './index.module.scss';
 
 export const CalloutWrapper = ({ editor, node, updateAttributes }) => {
   const { isEditable } = editor;
-  const { emoji, textColor, borderColor, backgroundColor } = node.attrs;
+  const { emoji, textColor, backgroundColor } = node.attrs;
   const { theme } = Theme.useHook();
   const backgroundColorOpacity = useMemo(() => {
     if (!backgroundColor) return backgroundColor;
@@ -29,7 +29,6 @@ export const CalloutWrapper = ({ editor, node, updateAttributes }) => {
       <div
         className={cls(styles.innerWrap, 'render-wrapper')}
         style={{
-          borderColor,
           backgroundColor: backgroundColorOpacity,
         }}
       >

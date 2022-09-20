@@ -1,6 +1,7 @@
-import { IconExternalOpen, IconUnlink } from '@douyinfe/semi-icons';
+import { IconUnlink } from '@douyinfe/semi-icons';
 import { Button, Space, Tooltip } from '@douyinfe/semi-ui';
 import { Divider } from 'components/divider';
+import { IconOpenLink } from 'components/icons/IconOpenLink';
 import { IconPencil } from 'components/icons/IconPencil';
 import { useCallback, useEffect, useState } from 'react';
 import { BubbleMenu } from 'tiptap/core/bubble-menu';
@@ -84,7 +85,7 @@ export const LinkBubbleMenu = ({ editor }) => {
     >
       <Space spacing={4}>
         <Tooltip content="访问链接">
-          <Button size="small" type="tertiary" theme="borderless" icon={<IconExternalOpen />} onClick={visitLink} />
+          <Button size="small" type="tertiary" theme="borderless" icon={<IconOpenLink />} onClick={visitLink} />
         </Tooltip>
 
         <Tooltip content="编辑链接">
