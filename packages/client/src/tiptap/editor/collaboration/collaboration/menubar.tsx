@@ -17,7 +17,6 @@ import { Countdown } from 'tiptap/core/menus/countdown';
 import { DocumentChildren } from 'tiptap/core/menus/document-children';
 import { DocumentReference } from 'tiptap/core/menus/document-reference';
 import { Emoji } from 'tiptap/core/menus/emoji';
-import { Excalidraw } from 'tiptap/core/menus/excalidraw';
 import { FontSize } from 'tiptap/core/menus/fontsize';
 import { Heading } from 'tiptap/core/menus/heading';
 import { HorizontalRule } from 'tiptap/core/menus/horizontal-rule';
@@ -39,6 +38,7 @@ import { Table } from 'tiptap/core/menus/table';
 import { TaskList } from 'tiptap/core/menus/task-list';
 import { Text } from 'tiptap/core/menus/text';
 import { TextColor } from 'tiptap/core/menus/text-color';
+import { Tldraw } from 'tiptap/core/menus/tldraw';
 import { Underline } from 'tiptap/core/menus/underline';
 import { Undo } from 'tiptap/core/menus/undo';
 
@@ -108,7 +108,7 @@ const _MenuBar: React.FC<{ editor: Editor }> = ({ editor }) => {
         <Table editor={editor} />
         <Katex editor={editor} />
         <Mind editor={editor} />
-        <Excalidraw editor={editor} />
+        <Tldraw editor={editor} />
         <Columns editor={editor} />
 
         <Text editor={editor} />

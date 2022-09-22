@@ -8,15 +8,15 @@ import { SizeSetter } from 'components/size-setter';
 import { useUser } from 'data/user';
 import { useCallback, useEffect } from 'react';
 import { BubbleMenu } from 'tiptap/core/bubble-menu';
-import { Excalidraw, IExcalidrawAttrs } from 'tiptap/core/extensions/excalidraw';
+import { ITldrawAttrs, Tldraw } from 'tiptap/core/extensions/tldraw';
 import { useAttributes } from 'tiptap/core/hooks/use-attributes';
 import { copyNode, deleteNode, getEditorContainerDOMSize } from 'tiptap/prose-utils';
 
-import { triggerOpenExcalidrawSettingModal } from '../_event';
+import { triggerOpenTldrawSettingModal } from '../_event';
 
-export const ExcalidrawBubbleMenu = ({ editor }) => {
+export const TldrawBubbleMenu = ({ editor }) => {
   const { width: maxWidth } = getEditorContainerDOMSize(editor);
-  const attrs = useAttributes<IExcalidrawAttrs>(editor, Excalidraw.name, {
+  const attrs = useAttributes<ITldrawAttrs>(editor, Tldraw.name, {
     defaultShowPicker: false,
     createUser: '',
     width: 0,
@@ -27,26 +27,21 @@ export const ExcalidrawBubbleMenu = ({ editor }) => {
 
   const setSize = useCallback(
     (size) => {
-      editor
-        .chain()
-        .updateAttributes(Excalidraw.name, size)
-        .setNodeSelection(editor.state.selection.from)
-        .focus()
-        .run();
+      editor.chain().updateAttributes(Tldraw.name, size).setNodeSelection(editor.state.selection.from).focus().run();
     },
     [editor]
   );
   const openEditLinkModal = useCallback(() => {
-    triggerOpenExcalidrawSettingModal(editor, attrs);
+    triggerOpenTldrawSettingModal(editor, attrs);
   }, [editor, attrs]);
-  const shouldShow = useCallback(() => editor.isActive(Excalidraw.name), [editor]);
-  const copyMe = useCallback(() => copyNode(Excalidraw.name, editor), [editor]);
-  const deleteMe = useCallback(() => deleteNode(Excalidraw.name, editor), [editor]);
+  const shouldShow = useCallback(() => editor.isActive(Tldraw.name), [editor]);
+  const copyMe = useCallback(() => copyNode(Tldraw.name, editor), [editor]);
+  const deleteMe = useCallback(() => deleteNode(Tldraw.name, editor), [editor]);
 
   useEffect(() => {
     if (defaultShowPicker && user && createUser === user.id) {
       openEditLinkModal();
-      editor.chain().updateAttributes(Excalidraw.name, { defaultShowPicker: false }).focus().run();
+      editor.chain().updateAttributes(Tldraw.name, { defaultShowPicker: false }).focus().run();
     }
   }, [createUser, defaultShowPicker, editor, openEditLinkModal, user]);
 
@@ -54,7 +49,7 @@ export const ExcalidrawBubbleMenu = ({ editor }) => {
     <BubbleMenu
       className={'bubble-menu'}
       editor={editor}
-      pluginKey="excalidraw-bubble-menu"
+      pluginKey="tldraw-bubble-menu"
       shouldShow={shouldShow}
       tippyOptions={{ maxWidth: 'calc(100vw - 100px)' }}
     >

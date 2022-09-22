@@ -23,7 +23,6 @@ import { Draggable } from 'tiptap/core/extensions/draggable';
 import { Dropcursor } from 'tiptap/core/extensions/dropcursor';
 import { Emoji } from 'tiptap/core/extensions/emoji';
 import { EventEmitter } from 'tiptap/core/extensions/event-emitter';
-import { Excalidraw } from 'tiptap/core/extensions/excalidraw';
 import { Focus } from 'tiptap/core/extensions/focus';
 import { FontSize } from 'tiptap/core/extensions/font-size';
 import { Gapcursor } from 'tiptap/core/extensions/gapcursor';
@@ -64,6 +63,7 @@ import { Text } from 'tiptap/core/extensions/text';
 import { TextAlign } from 'tiptap/core/extensions/text-align';
 import { TextStyle } from 'tiptap/core/extensions/text-style';
 import { Title } from 'tiptap/core/extensions/title';
+import { Tldraw } from 'tiptap/core/extensions/tldraw';
 import { TrailingNode } from 'tiptap/core/extensions/trailing-node';
 import { Underline } from 'tiptap/core/extensions/underline';
 // markdown 支持
@@ -115,7 +115,7 @@ export const CollaborationKit = [
     class: 'dropcursor',
     color: 'skyblue',
   }),
-  Excalidraw,
+  Tldraw,
   EventEmitter,
   Focus,
   FontSize,

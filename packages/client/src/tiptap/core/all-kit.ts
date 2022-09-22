@@ -14,7 +14,6 @@ import { DocumentChildren } from 'tiptap/core/extensions/document-children';
 import { DocumentReference } from 'tiptap/core/extensions/document-reference';
 import { Dropcursor } from 'tiptap/core/extensions/dropcursor';
 import { Emoji } from 'tiptap/core/extensions/emoji';
-import { Excalidraw } from 'tiptap/core/extensions/excalidraw';
 import { Focus } from 'tiptap/core/extensions/focus';
 import { FontSize } from 'tiptap/core/extensions/font-size';
 import { Gapcursor } from 'tiptap/core/extensions/gapcursor';
@@ -54,6 +53,7 @@ import { Text } from 'tiptap/core/extensions/text';
 import { TextAlign } from 'tiptap/core/extensions/text-align';
 import { TextStyle } from 'tiptap/core/extensions/text-style';
 import { Title } from 'tiptap/core/extensions/title';
+import { Tldraw } from 'tiptap/core/extensions/tldraw';
 import { TrailingNode } from 'tiptap/core/extensions/trailing-node';
 import { Underline } from 'tiptap/core/extensions/underline';
 
@@ -73,7 +73,7 @@ export const AllExtensions = [
   Color,
   ColorHighlighter,
   Dropcursor,
-  Excalidraw,
+  Tldraw,
   Focus,
   FontSize,
   Gapcursor,

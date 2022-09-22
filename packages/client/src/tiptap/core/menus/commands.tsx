@@ -193,7 +193,7 @@ export const COMMANDS: ICommand[] = [
     label: '画板',
     shortcut: '/hb',
     action: (editor, user) => {
-      editor.chain().focus().setExcalidraw({ width: '100%', defaultShowPicker: true, createUser: user.id }).run();
+      editor.chain().focus().setTldraw({ width: '100%', defaultShowPicker: true, createUser: user.id }).run();
     },
   },
   {

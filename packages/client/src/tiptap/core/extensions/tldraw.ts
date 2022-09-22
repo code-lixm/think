@@ -1,29 +1,38 @@
 import { IUser } from '@think/domains';
 import { mergeAttributes, Node, nodeInputRule } from '@tiptap/core';
 import { ReactNodeViewRenderer } from '@tiptap/react';
-import { ExcalidrawWrapper } from 'tiptap/core/wrappers/excalidraw';
+import type { TDDocument } from '@tldraw/tldraw';
+import { TldrawWrapper } from 'tiptap/core/wrappers/tldraw';
 import { getDatasetAttribute, nodeAttrsToDataset } from 'tiptap/prose-utils';
 
-const DEFAULT_MIND_DATA = { elements: [] };
+// const DEFAULT_TLDRAW_DATA = {
+//   id: 'tldraw-doc',
+//   name: 'New Document',
+//   version: 1,
+//   pages: {},
+//   pageStates: {},
+//   assets: {},
+// };
+const DEFAULT_TLDRAW_DATA: TDDocument = undefined;
 
-export interface IExcalidrawAttrs {
+export interface ITldrawAttrs {
   defaultShowPicker?: boolean;
   createUser?: IUser['id'];
   width?: number | string;
   height?: number;
-  data?: Record<string, unknown>;
+  data?: TDDocument;
 }
 
 declare module '@tiptap/core' {
   interface Commands<ReturnType> {
-    excalidraw: {
-      setExcalidraw: (attrs?: IExcalidrawAttrs) => ReturnType;
+    tldraw: {
+      setTldraw: (attrs?: ITldrawAttrs) => ReturnType;
     };
   }
 }
 
-export const Excalidraw = Node.create({
-  name: 'excalidraw',
+export const Tldraw = Node.create({
+  name: 'tldraw',
   group: 'block',
   selectable: true,
   atom: true,
@@ -47,7 +56,7 @@ export const Excalidraw = Node.create({
         parseHTML: getDatasetAttribute('height'),
       },
       data: {
-        default: DEFAULT_MIND_DATA,
+        default: DEFAULT_TLDRAW_DATA,
         parseHTML: getDatasetAttribute('data', true),
       },
     };
@@ -56,7 +65,7 @@ export const Excalidraw = Node.create({
   addOptions() {
     return {
       HTMLAttributes: {
-        class: 'excalidraw',
+        class: 'tldraw',
       },
     };
   },
@@ -64,7 +73,7 @@ export const Excalidraw = Node.create({
   parseHTML() {
     return [
       {
-        tag: 'div[class=excalidraw]',
+        tag: 'div[class=tldraw]',
       },
     ];
   },
@@ -75,11 +84,11 @@ export const Excalidraw = Node.create({
 
   addCommands() {
     return {
-      setExcalidraw:
+      setTldraw:
         (options) =>
         ({ tr, commands, chain, editor }) => {
           options = options || {};
-          options.data = options.data || DEFAULT_MIND_DATA;
+          options.data = options.data || DEFAULT_TLDRAW_DATA;
 
           // @ts-ignore
           if (tr.selection?.node?.type?.name == this.name) {
@@ -97,13 +106,13 @@ export const Excalidraw = Node.create({
   },
 
   addNodeView() {
-    return ReactNodeViewRenderer(ExcalidrawWrapper);
+    return ReactNodeViewRenderer(TldrawWrapper);
   },
 
   addInputRules() {
     return [
       nodeInputRule({
-        find: /^\$excalidraw\$$/,
+        find: /^\$tldraw\$$/,
         type: this.type,
         getAttributes: () => {
           return { width: '100%' };

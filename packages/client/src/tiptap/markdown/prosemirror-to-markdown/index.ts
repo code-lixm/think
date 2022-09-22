@@ -9,7 +9,6 @@ import { CodeBlock } from 'tiptap/core/extensions/code-block';
 import { Countdown } from 'tiptap/core/extensions/countdown';
 import { DocumentChildren } from 'tiptap/core/extensions/document-children';
 import { DocumentReference } from 'tiptap/core/extensions/document-reference';
-import { Excalidraw } from 'tiptap/core/extensions/excalidraw';
 import { HardBreak } from 'tiptap/core/extensions/hard-break';
 import { Heading } from 'tiptap/core/extensions/heading';
 import { HorizontalRule } from 'tiptap/core/extensions/horizontal-rule';
@@ -38,6 +37,7 @@ import { TaskList } from 'tiptap/core/extensions/task-list';
 import { Text } from 'tiptap/core/extensions/text';
 import { TextStyle } from 'tiptap/core/extensions/text-style';
 import { Title } from 'tiptap/core/extensions/title';
+import { Tldraw } from 'tiptap/core/extensions/tldraw';
 
 import {
   closeTag,
@@ -127,7 +127,7 @@ const SerializerConfig = {
     [Countdown.name]: renderCustomContainer('countdown'),
     [DocumentChildren.name]: renderCustomContainer('documentChildren'),
     [DocumentReference.name]: renderCustomContainer('documentReference'),
-    [Excalidraw.name]: renderCustomContainer('excalidraw'),
+    [Tldraw.name]: renderCustomContainer('tldraw'),
     [HardBreak.name]: renderHardBreak,
     [Heading.name]: defaultMarkdownSerializer.nodes.heading,
     [HorizontalRule.name]: defaultMarkdownSerializer.nodes.horizontal_rule,

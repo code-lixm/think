@@ -18,7 +18,6 @@ import { CodeBlockWrapper } from './nodes/code-block-wrapper';
 import { Countdown } from './nodes/countdown';
 import { DocumentChildren } from './nodes/document-children';
 import { DocumentReference } from './nodes/document-reference';
-import { Excalidraw } from './nodes/excalidraw';
 import { HardBreak } from './nodes/hard-break';
 import { Heading } from './nodes/heading';
 import { HorizontalRule } from './nodes/horizontal-rule';
@@ -43,6 +42,7 @@ import { TaskListItem } from './nodes/task-list-item';
 import { Text } from './nodes/text';
 // 文本
 import { Title } from './nodes/title';
+import { Tldraw } from './nodes/tldraw';
 
 export class Renderer {
   editor: Editor;
@@ -60,7 +60,7 @@ export class Renderer {
       Attachment,
       Countdown,
       Callout,
-      Excalidraw,
+      Tldraw,
       Iframe,
       Status,
       Mention,

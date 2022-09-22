@@ -8,7 +8,6 @@ import { Columns } from 'tiptap/core/extensions/columns';
 import { Countdown } from 'tiptap/core/extensions/countdown';
 import { DocumentChildren } from 'tiptap/core/extensions/document-children';
 import { DocumentReference } from 'tiptap/core/extensions/document-reference';
-import { Excalidraw } from 'tiptap/core/extensions/excalidraw';
 import { HorizontalRule } from 'tiptap/core/extensions/horizontal-rule';
 import { Iframe } from 'tiptap/core/extensions/iframe';
 import { Image } from 'tiptap/core/extensions/image';
@@ -19,6 +18,7 @@ import { Status } from 'tiptap/core/extensions/status';
 import { Table } from 'tiptap/core/extensions/table';
 import { TableOfContents } from 'tiptap/core/extensions/table-of-contents';
 import { Title } from 'tiptap/core/extensions/title';
+import { Tldraw } from 'tiptap/core/extensions/tldraw';
 
 import { BackgroundColor } from '../background-color';
 import { Bold } from '../bold';
@@ -47,7 +47,7 @@ const OTHER_BUBBLE_MENU_TYPES = [
   Katex.name,
   HorizontalRule.name,
   Status.name,
-  Excalidraw.name,
+  Tldraw.name,
   Columns.name,
 ];
 
