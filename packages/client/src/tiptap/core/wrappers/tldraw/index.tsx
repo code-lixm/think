@@ -1,13 +1,14 @@
 import { Space, Spin, Typography } from '@douyinfe/semi-ui';
 import { NodeViewWrapper } from '@tiptap/react';
-import type { TDDocument } from '@tldraw/tldraw';
+import type { TDDocument, TldrawApp } from '@tldraw/tldraw';
 import cls from 'classnames';
 import { IconDrawPanel } from 'components/icons/IconDrawPanel';
 import { Resizable } from 'components/resizable';
 import deepEqual from 'deep-equal';
+import { Theme as ThemeState, ThemeEnum } from 'hooks/use-theme';
 import { useToggle } from 'hooks/use-toggle';
 import dynamic from 'next/dynamic';
-import React from 'react';
+import React, { useMemo } from 'react';
 import { useCallback, useEffect, useState } from 'react';
 import VisibilitySensor from 'react-visibility-sensor';
 import { Tldraw } from 'tiptap/core/extensions/tldraw';
@@ -15,23 +16,25 @@ import { getEditorContainerDOMSize } from 'tiptap/prose-utils';
 
 import styles from './index.module.scss';
 
-const { Text } = Typography;
-
 const INHERIT_SIZE_STYLE = { width: '100%', height: '100%', maxWidth: '100%' };
 
 const TldrawUI = dynamic(() => import('components/tldraw'), { ssr: false });
 
 export const _TldrawWrapper = ({ editor, node, updateAttributes }) => {
-  const id = 'tl-draw';
+  const { userPrefer } = ThemeState.useHook();
   const isEditable = editor.isEditable;
   const isActive = editor.isActive(Tldraw.name);
   const { width: maxWidth } = getEditorContainerDOMSize(editor);
   const { data, width, height } = node.attrs;
   const [loading, toggleLoading] = useToggle(true);
-  const [error, setError] = useState<Error | null>(null);
+  // const [error, setError] = useState<Error | null>(null);
   const [visible, toggleVisible] = useToggle(false);
 
   const [initialDocument, setInitialDocument] = useState<TDDocument>();
+
+  const darkMode = useMemo(() => {
+    return userPrefer === ThemeEnum.dark;
+  }, [userPrefer]);
 
   const onResize = useCallback(
     (size) => {
@@ -49,25 +52,14 @@ export const _TldrawWrapper = ({ editor, node, updateAttributes }) => {
     [toggleVisible]
   );
 
+  const onMount = useCallback((app: TldrawApp) => {
+    app.setSetting('showGrid', false);
+  }, []);
+
   useEffect(() => {
     setInitialDocument(data);
     toggleLoading(false);
   }, [toggleLoading, data]);
-
-  // useEffect(() => {
-  //   const setContent = async () => {
-  //     if (loading || error || !visible || !data) return;
-
-  //     const svg: SVGElement = await exportToSvgRef.current(data);
-
-  //     svg.setAttribute('width', '100%');
-  //     svg.setAttribute('height', '100%');
-  //     svg.setAttribute('display', 'block');
-
-  //     setSvg(svg);
-  //   };
-  //   setContent();
-  // }, [data, loading, error, visible]);
 
   return (
     <NodeViewWrapper className={cls(styles.wrap, isActive && styles.isActive)}>
@@ -77,29 +69,15 @@ export const _TldrawWrapper = ({ editor, node, updateAttributes }) => {
             className={cls(styles.renderWrap, 'render-wrapper')}
             style={{ ...INHERIT_SIZE_STYLE, overflow: 'hidden' }}
           >
-            {error && (
+            {/* {error && (
               <div style={INHERIT_SIZE_STYLE}>
                 <Text>{error.message || error}</Text>
               </div>
-            )}
+            )} */}
 
             {loading && <Spin spinning style={INHERIT_SIZE_STYLE}></Spin>}
 
-            {!loading && !error && visible && (
-              <TldrawUI id={id} readOnly={true} showUI={false} />
-              // <div
-              //   style={{
-              //     height: '100%',
-              //     maxHeight: '100%',
-              //     padding: 24,
-              //     overflow: 'hidden',
-              //     display: 'flex',
-              //     justifyContent: 'center',
-              //     alignItems: 'center',
-              //   }}
-              //   dangerouslySetInnerHTML={{ __html: Svg?.outerHTML ?? '' }}
-              // />
-            )}
+            {!loading && visible && <TldrawUI readOnly={true} showUI={false} onMount={onMount} darkMode={darkMode} />}
 
             <div className={styles.title}>
               <Space>

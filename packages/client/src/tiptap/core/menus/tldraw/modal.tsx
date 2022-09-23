@@ -13,11 +13,10 @@ type IProps = { editor: Editor };
 const Tldraw = dynamic(() => import('components/tldraw'), { ssr: false });
 
 export const TldrawSettingModal: React.FC<IProps> = ({ editor }) => {
-  const id = 'tl-draw';
   const tlDrawAppRef = useRef<TldrawApp>();
   const [visible, toggleVisible] = useToggle(false);
 
-  const onDrawMount = useCallback((app: TldrawApp) => {
+  const onMount = useCallback((app: TldrawApp) => {
     tlDrawAppRef.current = app;
     app.setSetting('language', 'zh-ch');
     app.setSetting('dockPosition', 'left');
@@ -39,8 +38,10 @@ export const TldrawSettingModal: React.FC<IProps> = ({ editor }) => {
 
   useEffect(() => {
     const handler = (data) => {
-      toggleVisible(true);
-      if (tlDrawAppRef.current && data) {
+      toggleVisible(!visible);
+      if (!visible && tlDrawAppRef.current && data) {
+        console.log('data: ', data);
+        console.log('tlDrawAppRef.current: ', tlDrawAppRef.current);
         tlDrawAppRef.current.loadDocument(data);
       }
     };
@@ -50,7 +51,7 @@ export const TldrawSettingModal: React.FC<IProps> = ({ editor }) => {
     return () => {
       cancelSubject(editor, OPEN_TLDRAW_SETTING_MODAL, handler);
     };
-  }, [editor, toggleVisible]);
+  }, [editor, visible, toggleVisible]);
 
   return (
     <Modal
@@ -70,7 +71,7 @@ export const TldrawSettingModal: React.FC<IProps> = ({ editor }) => {
           {/* {!error ? (
             <Tldraw id={id} showPages={false} showMultiplayerMenu={false} onChange={onChange} onMount={onDrawMount} />
           ) : null} */}
-          <Tldraw id={id} autofocus showPages={false} showMultiplayerMenu={false} onMount={onDrawMount} />
+          <Tldraw autofocus showPages={false} showMultiplayerMenu={false} onMount={onMount} />
         </div>
       </div>
     </Modal>
