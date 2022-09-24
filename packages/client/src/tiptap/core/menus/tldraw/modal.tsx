@@ -1,9 +1,11 @@
 import { Modal } from '@douyinfe/semi-ui';
-import type { TldrawApp } from '@tldraw/tldraw';
+import { TDDocument, TldrawApp } from '@tldraw/tldraw';
 import { useToggle } from 'hooks/use-toggle';
 import dynamic from 'next/dynamic';
 import { useCallback, useEffect, useRef, useState } from 'react';
+import { uploadFile } from 'services/file';
 import { Editor } from 'tiptap/core';
+import { ITldrawAttrs } from 'tiptap/core/extensions/tldraw';
 
 import { cancelSubject, OPEN_TLDRAW_SETTING_MODAL, subject } from '../_event';
 
@@ -15,34 +17,39 @@ const Tldraw = dynamic(() => import('components/tldraw'), { ssr: false });
 export const TldrawSettingModal: React.FC<IProps> = ({ editor }) => {
   const tlDrawAppRef = useRef<TldrawApp>();
   const [visible, toggleVisible] = useToggle(false);
+  const [initialDocument, setInitialDocument] = useState<TDDocument>();
 
-  const onMount = useCallback((app: TldrawApp) => {
-    tlDrawAppRef.current = app;
-    app.setSetting('language', 'zh-ch');
-    app.setSetting('dockPosition', 'left');
-  }, []);
-
-  const onChange = useCallback((app, reason) => {
-    console.log('app, reason: ', app, reason);
-  }, []);
+  const onMount = useCallback(
+    (app: TldrawApp) => {
+      app.setSetting('language', 'zh-ch');
+      app.setSetting('dockPosition', 'left');
+      initialDocument && app.loadDocument(initialDocument);
+      tlDrawAppRef.current = app;
+    },
+    [initialDocument]
+  );
 
   const save = useCallback(() => {
-    if (!tlDrawAppRef.current) {
+    const app = tlDrawAppRef.current;
+    if (!app) {
       toggleVisible(false);
       return;
     }
-
-    editor.chain().focus().setTldraw({ data: tlDrawAppRef.current.document }).run();
+    console.log('app.document: ', app.document);
+    editor.chain().focus().setTldraw({ data: app.document }).run();
     toggleVisible(false);
   }, [toggleVisible, editor]);
 
+  const onAssetCreate = useCallback(async (app: TldrawApp, file: File, id: string): Promise<string | false> => {
+    const res = await uploadFile(file);
+    return res;
+  }, []);
+
   useEffect(() => {
-    const handler = (data) => {
+    const handler = (data: ITldrawAttrs) => {
       toggleVisible(!visible);
-      if (!visible && tlDrawAppRef.current && data) {
-        console.log('data: ', data);
-        console.log('tlDrawAppRef.current: ', tlDrawAppRef.current);
-        tlDrawAppRef.current.loadDocument(data);
+      if (!visible) {
+        setInitialDocument(data.data);
       }
     };
 
@@ -58,7 +65,7 @@ export const TldrawSettingModal: React.FC<IProps> = ({ editor }) => {
       title="画板"
       fullScreen
       visible={visible}
-      onCancel={toggleVisible}
+      onCancel={save}
       onOk={save}
       okText="保存"
       cancelText="退出"
@@ -68,10 +75,16 @@ export const TldrawSettingModal: React.FC<IProps> = ({ editor }) => {
     >
       <div style={{ height: '100%', margin: '0 -24px', border: '1px solid var(--semi-color-border)' }}>
         <div style={{ width: '100%', height: '100%' }}>
-          {/* {!error ? (
-            <Tldraw id={id} showPages={false} showMultiplayerMenu={false} onChange={onChange} onMount={onDrawMount} />
-          ) : null} */}
-          <Tldraw autofocus showPages={false} showMultiplayerMenu={false} onMount={onMount} />
+          {visible && (
+            <Tldraw
+              showPages={false}
+              disableAssets={false}
+              showMultiplayerMenu={false}
+              document={initialDocument}
+              onMount={onMount}
+              onAssetCreate={onAssetCreate}
+            />
+          )}
         </div>
       </div>
     </Modal>

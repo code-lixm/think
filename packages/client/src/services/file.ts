@@ -1,5 +1,4 @@
 import { FILE_CHUNK_SIZE, FileApiDefinition } from '@think/domains';
-import { string } from 'lib0';
 import SparkMD5 from 'spark-md5';
 
 import { HttpClient } from './http-client';
@@ -62,7 +61,7 @@ export const uploadFile = async (
   onUploadProgress?: (progress: number) => void,
   onTooLarge?: () => void
 ): Promise<string> => {
-  const wraponUploadProgress = (percent) => {
+  const wrapOnUploadProgress = (percent) => {
     return onUploadProgress && onUploadProgress(Math.ceil(percent * 100));
   };
 
@@ -78,7 +77,7 @@ export const uploadFile = async (
     spark.append(file.lastModified);
     spark.append(file.type);
     const md5 = spark.end();
-    const url = await uploadFileToServer({ filename, file, md5, onUploadProgress: wraponUploadProgress });
+    const url = await uploadFileToServer({ filename, file, md5, onUploadProgress: wrapOnUploadProgress });
     return url;
   } else {
     const { chunks, md5 } = await splitBigFile(file);
@@ -105,7 +104,7 @@ export const uploadFile = async (
             isChunk: true,
             onUploadProgress: (progress) => {
               progressMap[index] = progress * unitPercent;
-              wraponUploadProgress(
+              wrapOnUploadProgress(
                 Math.min(
                   Object.keys(progressMap).reduce((a, c) => {
                     return (a += progressMap[c]);
@@ -127,7 +126,7 @@ export const uploadFile = async (
         },
       });
     }
-    wraponUploadProgress(1);
+    wrapOnUploadProgress(1);
     return url;
   }
 };

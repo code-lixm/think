@@ -1,6 +1,6 @@
 import { Space, Spin, Typography } from '@douyinfe/semi-ui';
 import { NodeViewWrapper } from '@tiptap/react';
-import type { TDDocument, TldrawApp } from '@tldraw/tldraw';
+import type { TldrawApp } from '@tldraw/tldraw';
 import cls from 'classnames';
 import { IconDrawPanel } from 'components/icons/IconDrawPanel';
 import { Resizable } from 'components/resizable';
@@ -8,7 +8,7 @@ import deepEqual from 'deep-equal';
 import { Theme as ThemeState, ThemeEnum } from 'hooks/use-theme';
 import { useToggle } from 'hooks/use-toggle';
 import dynamic from 'next/dynamic';
-import React, { useMemo } from 'react';
+import React, { useMemo, useRef } from 'react';
 import { useCallback, useEffect, useState } from 'react';
 import VisibilitySensor from 'react-visibility-sensor';
 import { Tldraw } from 'tiptap/core/extensions/tldraw';
@@ -27,10 +27,8 @@ export const _TldrawWrapper = ({ editor, node, updateAttributes }) => {
   const { width: maxWidth } = getEditorContainerDOMSize(editor);
   const { data, width, height } = node.attrs;
   const [loading, toggleLoading] = useToggle(true);
-  // const [error, setError] = useState<Error | null>(null);
   const [visible, toggleVisible] = useToggle(false);
-
-  const [initialDocument, setInitialDocument] = useState<TDDocument>();
+  const tlDrawAppRef = useRef<TldrawApp>();
 
   const darkMode = useMemo(() => {
     return userPrefer === ThemeEnum.dark;
@@ -52,14 +50,27 @@ export const _TldrawWrapper = ({ editor, node, updateAttributes }) => {
     [toggleVisible]
   );
 
-  const onMount = useCallback((app: TldrawApp) => {
-    app.setSetting('showGrid', false);
-  }, []);
+  const updateDraw = useCallback(() => {
+    const app = tlDrawAppRef.current;
+    if (app) {
+      app.setSetting('showGrid', false);
+      data && app.updateDocument(data);
+      app.zoomTo(0.2);
+    }
+  }, [data]);
+
+  const onMount = useCallback(
+    (app: TldrawApp) => {
+      tlDrawAppRef.current = app;
+      updateDraw();
+    },
+    [updateDraw]
+  );
 
   useEffect(() => {
-    setInitialDocument(data);
     toggleLoading(false);
-  }, [toggleLoading, data]);
+    updateDraw();
+  }, [toggleLoading, updateDraw]);
 
   return (
     <NodeViewWrapper className={cls(styles.wrap, isActive && styles.isActive)}>
@@ -69,14 +80,7 @@ export const _TldrawWrapper = ({ editor, node, updateAttributes }) => {
             className={cls(styles.renderWrap, 'render-wrapper')}
             style={{ ...INHERIT_SIZE_STYLE, overflow: 'hidden' }}
           >
-            {/* {error && (
-              <div style={INHERIT_SIZE_STYLE}>
-                <Text>{error.message || error}</Text>
-              </div>
-            )} */}
-
             {loading && <Spin spinning style={INHERIT_SIZE_STYLE}></Spin>}
-
             {!loading && visible && <TldrawUI readOnly={true} showUI={false} onMount={onMount} darkMode={darkMode} />}
 
             <div className={styles.title}>
