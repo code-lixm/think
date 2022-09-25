@@ -43,7 +43,7 @@ export const Heading: React.FC<{ editor: Editor }> = ({ editor }) => {
   );
 
   return (
-    <Select disabled={isTitleActive} value={current} onChange={toggle} style={containerStyle}>
+    <Select disabled={isTitleActive} value={current} onChange={toggle} style={containerStyle} size="small">
       <Select.Option value="paragraph">正文</Select.Option>
       <Select.Option value={1}>
         <h1 style={h1Style}>标题1</h1>

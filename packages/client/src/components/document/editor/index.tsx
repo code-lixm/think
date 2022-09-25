@@ -20,6 +20,7 @@ import Router from 'next/router';
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 
 import { DocumentActions } from '../actions';
+import { DocumentStyle } from '../style';
 import { Editor } from './editor';
 import styles from './index.module.scss';
 
@@ -74,6 +75,7 @@ export const DocumentEditor: React.FC<IProps> = ({ documentId }) => {
             documentId={documentId}
           />
         )}
+        {document && <DocumentStyle />}
         {document && (
           <DocumentActions organizationId={document.organizationId} wikiId={document.wikiId} documentId={documentId} />
         )}

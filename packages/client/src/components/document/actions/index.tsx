@@ -46,7 +46,6 @@ export const DocumentActions: React.FC<IProps> = ({
   showCreateDocument,
   size = 'default',
   hideDocumentVersion = false,
-  hideDocumentStyle = false,
 }) => {
   const [popoverVisible, togglePopoverVisible] = useToggle(false);
   const [createVisible, toggleCreateVisible] = useToggle(false);
