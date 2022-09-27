@@ -1,4 +1,4 @@
-import { Button, Col, Form, Layout, Modal, Row, Toast, Typography } from '@douyinfe/semi-ui';
+import { Button, Col, Form, Row, Toast, Typography } from '@douyinfe/semi-ui';
 import { useRegister, useSystemPublicConfig, useVerifyCode } from 'data/user';
 import { isEmail } from 'helpers/validator';
 import { useInterval } from 'hooks/use-interval';
@@ -45,18 +45,10 @@ const Page = () => {
   }, 1000);
 
   const onFinish = useCallback(
-    (values) => {
-      register(values).then((res) => {
-        Modal.confirm({
-          title: <Title heading={5}>注册成功</Title>,
-          content: <Text>是否跳转至登录?</Text>,
-          okText: '确认',
-          cancelText: '取消',
-          onOk() {
-            Router.push('/login', { query });
-          },
-        });
-      });
+    async (values) => {
+      await register(values);
+      Router.push('/login', { query });
+      Toast.success('注册成功，请登录');
     },
     [register, query]
   );
