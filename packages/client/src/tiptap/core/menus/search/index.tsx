@@ -33,8 +33,9 @@ export const Search: React.FC<{ editor: Editor }> = ({ editor }) => {
       setReplaceValue('');
       setCurrentIndex(-1);
       setResults([]);
+      editor.commands.setSearchTerm(searchValue);
     }
-  }, [visible]);
+  }, [visible, searchValue, editor]);
 
   useEffect(() => {
     if (!visible) return;

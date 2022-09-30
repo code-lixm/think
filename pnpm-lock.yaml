@@ -41,10 +41,10 @@ importers:
 
   packages/client:
     specifiers:
-      '@douyinfe/semi-icons': ^2.20.0
-      '@douyinfe/semi-illustrations': ^2.20.0
-      '@douyinfe/semi-next': ^2.20.0
-      '@douyinfe/semi-ui': ^2.20.0
+      '@douyinfe/semi-icons': ^2.20.3
+      '@douyinfe/semi-illustrations': ^2.20.3
+      '@douyinfe/semi-next': ^2.20.3
+      '@douyinfe/semi-ui': ^2.20.3
       '@hocuspocus/provider': ^1.0.0-alpha.29
       '@react-pdf-viewer/core': 3.7.0
       '@react-pdf-viewer/default-layout': 3.7.0
@@ -98,9 +98,8 @@ importers:
       '@typescript-eslint/eslint-plugin': ^5.21.0
       '@typescript-eslint/parser': ^5.21.0
       autoprefixer: ^10.4.8
-      axios: ^0.25.0
-      buffer-image-size: ^0.6.4
-      classnames: ^2.3.1
+      axios: ^0.27.2
+      classnames: ^2.3.2
       clone: ^2.1.2
       copy-webpack-plugin: 11.0.0
       cross-env: ^7.0.3
@@ -121,7 +120,6 @@ importers:
       kity: ^2.0.4
       lib0: ^0.2.47
       lodash-es: ^4.17.21
-      lodash.pick: ^4.4.0
       lowlight: ^2.5.0
       markdown-it: ^12.3.2
       markdown-it-anchor: ^8.4.1
@@ -164,10 +162,10 @@ importers:
       viewerjs: ^1.10.4
       yjs: ^13.5.24
     dependencies:
-      '@douyinfe/semi-icons': 2.20.0_react@17.0.2
-      '@douyinfe/semi-illustrations': 2.20.0_react@17.0.2
-      '@douyinfe/semi-next': 2.20.0
-      '@douyinfe/semi-ui': 2.20.0_sfoxds7t5ydpegc3knd667wn6m
+      '@douyinfe/semi-icons': 2.20.3_react@17.0.2
+      '@douyinfe/semi-illustrations': 2.20.3_react@17.0.2
+      '@douyinfe/semi-next': 2.20.3
+      '@douyinfe/semi-ui': 2.20.3_sfoxds7t5ydpegc3knd667wn6m
       '@hocuspocus/provider': 1.0.0-alpha.29
       '@react-pdf-viewer/core': 3.7.0_2vj3zozgbzfehrv2inzxxqn2wq
       '@react-pdf-viewer/default-layout': 3.7.0_2vj3zozgbzfehrv2inzxxqn2wq
@@ -215,9 +213,8 @@ importers:
       '@tiptap/react': 2.0.0-beta.107_up6nxektl7qxw2o7vovjj453hu
       '@tiptap/suggestion': 2.0.0-beta.90_neatuoot4hdn6bibaypc754kfi
       '@tldraw/tldraw': 1.24.5_mrjzkz76z4bjfdyln6n7f6h7oe
-      axios: 0.25.0
-      buffer-image-size: 0.6.4
-      classnames: 2.3.1
+      axios: 0.27.2
+      classnames: 2.3.2
       clone: 2.1.2
       cross-env: 7.0.3
       deep-equal: 2.0.5
@@ -229,7 +226,6 @@ importers:
       kity: 2.0.4
       lib0: 0.2.47
       lodash-es: 4.17.21
-      lodash.pick: 4.4.0
       lowlight: 2.5.0
       markdown-it: 12.3.2
       markdown-it-anchor: 8.4.1_markdown-it@12.3.2
@@ -1939,16 +1935,16 @@ packages:
       '@cspotcode/source-map-consumer': 0.8.0
     dev: true
 
-  /@douyinfe/semi-animation-react/2.20.0:
-    resolution: {integrity: sha512-ilu1AodUJlB05cnw3znDBwe3MBwAOJzt/VyuHnKZKRLyLlDg35lUkEjrIo53exGac9Nve3Zmltda1YX8IDSaKg==}
+  /@douyinfe/semi-animation-react/2.20.3:
+    resolution: {integrity: sha512-84H6Zq5r8hwDyYHZfSe0Gj6KZLCrwPB9tLGibaSZgxeajffqxmyrEyAO5MqRzH9N1Vlwsj03lfxMjBmGJHfj+w==}
     dependencies:
       '@douyinfe/semi-animation': 2.12.0
-      '@douyinfe/semi-animation-styled': 2.20.0
-      classnames: 2.3.1
+      '@douyinfe/semi-animation-styled': 2.20.3
+      classnames: 2.3.2
     dev: false
 
-  /@douyinfe/semi-animation-styled/2.20.0:
-    resolution: {integrity: sha512-j53k17IdftLvgw0Ww3BSwzAX9IdKr1P6nPLsCIqnIppjesLJ0lwfc64kHVyRPtcEIs1mkc/GlIzloDTkyGXmLw==}
+  /@douyinfe/semi-animation-styled/2.20.3:
+    resolution: {integrity: sha512-a99dAfr7+LkXBZwMzx5Lr2sMmucuzV5y3ht10nIfOMQ5jn2qJNaR/duBjKickzVVf5TGkNxhOf10/f2nOTfW+Q==}
     dev: false
 
   /@douyinfe/semi-animation/2.12.0:
@@ -1958,12 +1954,12 @@ packages:
       bezier-easing: 2.1.0
     dev: false
 
-  /@douyinfe/semi-foundation/2.20.0:
-    resolution: {integrity: sha512-TssBXYPf3ySu7oCt58aeku2ZovxFSkzfJVPB3UpnKNNBnusBzqbUQxjz7YRZES93gyBBRgEnrWk975jUQEjlgw==}
+  /@douyinfe/semi-foundation/2.20.3:
+    resolution: {integrity: sha512-/FFXaP0tzkthshv/tEbuPBlYHTp+H6CQEqVFLydK4i2JPa3nKMx1cmvd52WkyZPBiTbhYY/bdG0sHn5TKqP+bQ==}
     dependencies:
       '@douyinfe/semi-animation': 2.12.0
       async-validator: 3.5.2
-      classnames: 2.3.1
+      classnames: 2.3.2
       date-fns: 2.28.0
       date-fns-tz: 1.2.2_date-fns@2.28.0
       lodash: 4.17.21
@@ -1971,12 +1967,12 @@ packages:
       scroll-into-view-if-needed: 2.2.29
     dev: false
 
-  /@douyinfe/semi-icons/2.20.0_react@17.0.2:
-    resolution: {integrity: sha512-7PC2VqAitKWpL2cEhLb632Pnel9QrpVmdCPGEuuwEWi/t/ERb0sIb5fZR7dFWc2SQUZ8s6n9FtQRggna8ubxQQ==}
+  /@douyinfe/semi-icons/2.20.3_react@17.0.2:
+    resolution: {integrity: sha512-W9pbjTpcRJomHiv1B8PQPXnZAlz6R69yxeONYLe1e9IP78pWOu49+fNyU1nc7g4bPwRvHdJjFibPm6Er+u3Jrg==}
     peerDependencies:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
     dependencies:
-      classnames: 2.3.1
+      classnames: 2.3.2
       react: 17.0.2
     dev: false
 
@@ -1989,18 +1985,18 @@ packages:
       react: 17.0.2
     dev: false
 
-  /@douyinfe/semi-illustrations/2.20.0_react@17.0.2:
-    resolution: {integrity: sha512-GFIVvXcnHWrBmHXsP14HLiy2t7ammCOqK7SOw6ZTpuzeAkVKln6oeZW2wgh8k9+ki0SQOJOZqnQYA1vCnHAbvA==}
+  /@douyinfe/semi-illustrations/2.20.3_react@17.0.2:
+    resolution: {integrity: sha512-5HvKJYTw2Hjespnb9Y2tEBWvob43DByrNwR2Pv9B1NzZePouYJ9bhSswigDrTN7kGL6hcU7x3bsMUGLCFQtlcA==}
     peerDependencies:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
     dependencies:
       react: 17.0.2
     dev: false
 
-  /@douyinfe/semi-next/2.20.0:
-    resolution: {integrity: sha512-Jk8EJZOn0DQCrT//f8tEzvOHP3ilE7cgb3yFOW4cRwsrr/Ml8QKXqkaO6cWhtNARrBnCmP/S/bilquXl89G51A==}
+  /@douyinfe/semi-next/2.20.3:
+    resolution: {integrity: sha512-myNAk8/ixQHI56GhWf240Lit+EyODbnGmZjUC0SxKu77u+LIGNLpFjCyGoQHdkFgsT21C7YlzPvRT/yRXuzAcg==}
     dependencies:
-      '@douyinfe/semi-webpack-plugin': 2.20.0
+      '@douyinfe/semi-webpack-plugin': 2.20.3
     transitivePeerDependencies:
       - fibers
       - node-sass
@@ -2008,26 +2004,26 @@ packages:
       - webpack
     dev: false
 
-  /@douyinfe/semi-theme-default/2.20.0:
-    resolution: {integrity: sha512-rFV+QAR4zXx7qmQnE2o/hVTUjvQKKLMaiUiflWynEXkfQsokv5AGht5fyKcOh/nHrigCk+sQOAysGK/FOVkObQ==}
+  /@douyinfe/semi-theme-default/2.20.3:
+    resolution: {integrity: sha512-G0j4ZbkSQvc6eetZV3P39ly5YhSMo+CqOyHnctoV1EZhMIrUQ+RC3SPFnXrP61oNl9ETZZBRhkzB8HhDJQ0eFA==}
     dependencies:
       glob: 7.2.3
     dev: false
 
-  /@douyinfe/semi-ui/2.20.0_sfoxds7t5ydpegc3knd667wn6m:
-    resolution: {integrity: sha512-C2BkiDpgGEtE8XqPDxJKHIsiL0l3NGZD6E3SABsdTEICRbbXLeuEn7wLnvF4yR37TpWFu/m5UeyUc3WuiECgTQ==}
+  /@douyinfe/semi-ui/2.20.3_sfoxds7t5ydpegc3knd667wn6m:
+    resolution: {integrity: sha512-0YJvwsqtIq8ow5+O3pVoVmcWRVv6RMSyw1kUNqSbKHM0Y5nJCN+1Z3x1k8HXlwvJ9wC2Hch3DfECiAGOZJYrLA==}
     peerDependencies:
       react: '>=16.0.0'
       react-dom: '>=16.0.0'
     dependencies:
       '@douyinfe/semi-animation': 2.12.0
-      '@douyinfe/semi-animation-react': 2.20.0
-      '@douyinfe/semi-foundation': 2.20.0
-      '@douyinfe/semi-icons': 2.20.0_react@17.0.2
+      '@douyinfe/semi-animation-react': 2.20.3
+      '@douyinfe/semi-foundation': 2.20.3
+      '@douyinfe/semi-icons': 2.20.3_react@17.0.2
       '@douyinfe/semi-illustrations': 2.15.0_react@17.0.2
-      '@douyinfe/semi-theme-default': 2.20.0
+      '@douyinfe/semi-theme-default': 2.20.3
       async-validator: 3.5.2
-      classnames: 2.3.1
+      classnames: 2.3.2
       copy-text-to-clipboard: 2.2.0
       date-fns: 2.28.0
       date-fns-tz: 1.2.2_date-fns@2.28.0
@@ -2043,8 +2039,8 @@ packages:
       utility-types: 3.10.0
     dev: false
 
-  /@douyinfe/semi-webpack-plugin/2.20.0:
-    resolution: {integrity: sha512-mnVMJ4C2yx06+9xq7fzFzkosOF8N7RonToAu6ESj+Ql4voSuJRRdKyQ4Nu/4t6gghoQuNo5chkAlHt6BNvBvOA==}
+  /@douyinfe/semi-webpack-plugin/2.20.3:
+    resolution: {integrity: sha512-mUpLU1kQfyA7PP3uY329kcMlRLsgeHWn4RB13kxPjwgKfeM6dhlaCnwVMghyGK16hX6OV4pA1Hyz/loY4QUYjA==}
     peerDependencies:
       webpack: ^4 || ^5
     dependencies:
@@ -5229,10 +5225,11 @@ packages:
     transitivePeerDependencies:
       - debug
 
-  /axios/0.25.0:
-    resolution: {integrity: sha512-cD8FOb0tRH3uuEe6+evtAbgJtfxr7ly3fQjYcMcuPlgkwVS9xboaVIpcDV+cYQe+yGykgwZCs1pzjntcGa6l5g==}
+  /axios/0.27.2:
+    resolution: {integrity: sha512-t+yRIyySRTp/wua5xEr+z1q60QmLq8ABsS5O9Me1AsE5dfKqgnCFzwiCZZ/cGNd1lq4/7akDWMxdhVlucjmnOQ==}
     dependencies:
-      follow-redirects: 1.14.7
+      follow-redirects: 1.15.2
+      form-data: 4.0.0
     transitivePeerDependencies:
       - debug
     dev: false
@@ -5536,13 +5533,6 @@ packages:
   /buffer-from/1.1.2:
     resolution: {integrity: sha512-E+XQCRwSbaaiChtv6k6Dwgc+bx+Bs6vuKJHHl5kox/BaKbhiXzqQOwK4cO22yElGp2OCmjwVhT3HmxgyPGnJfQ==}
 
-  /buffer-image-size/0.6.4:
-    resolution: {integrity: sha512-nEh+kZOPY1w+gcCMobZ6ETUp9WfibndnosbpwB1iJk/8Gt5ZF2bhS6+B6bPYz424KtwsR6Rflc3tCz1/ghX2dQ==}
-    engines: {node: '>=4.0'}
-    dependencies:
-      '@types/node': 17.0.35
-    dev: false
-
   /buffer/5.7.1:
     resolution: {integrity: sha512-EHcyIPBQ4BSGlvjB16k5KgAJ27CIsHY/2JBmCRReo48y9rQ3MaUzWX3KVlBa4U7MyX02HdVj0K7C3WaB3ju7FQ==}
     dependencies:
@@ -5728,8 +5718,8 @@ packages:
       libphonenumber-js: 1.9.46
       validator: 13.7.0
 
-  /classnames/2.3.1:
-    resolution: {integrity: sha512-OlQdbZ7gLfGarSqxesMesDa5uz7KFbID8Kpq/SxIoNGDqY8lSYs0D+hhtBXhcdB3rcbXArFr7vlHheLk1voeNA==}
+  /classnames/2.3.2:
+    resolution: {integrity: sha512-CSbhY4cFEJRe6/GQzIk5qXZ4Jeg5pcsP7b5peFSDpffpe1cqjASH/n9UTjBwOp6XpMSTwQ8Za2K5V02ueA7Tmw==}
     dev: false
 
   /clean-stack/2.2.0:
@@ -7382,6 +7372,16 @@ packages:
       debug:
         optional: true
 
+  /follow-redirects/1.15.2:
+    resolution: {integrity: sha512-VQLG33o04KaQ8uYi2tVNbdrWp1QWxNNea+nmIB4EVM28v0hmP17z7aG1+wAkNzVq4KeXTq3221ye5qTJP91JwA==}
+    engines: {node: '>=4.0'}
+    peerDependencies:
+      debug: '*'
+    peerDependenciesMeta:
+      debug:
+        optional: true
+    dev: false
+
   /foreach/2.0.5:
     resolution: {integrity: sha1-C+4AUBiusmDQo6865ljdATbsG5k=}
     dev: false
@@ -7447,7 +7447,6 @@ packages:
       asynckit: 0.4.0
       combined-stream: 1.0.8
       mime-types: 2.1.34
-    dev: true
 
   /format/0.2.2:
     resolution: {integrity: sha1-1hcBB+nv3E7TDJ3DkBbflCtctYs=}
@@ -9429,10 +9428,6 @@ packages:
 
   /lodash.once/4.1.1:
     resolution: {integrity: sha1-DdOXEhPHxW34gJd9UEyI+0cal6w=}
-    dev: false
-
-  /lodash.pick/4.4.0:
-    resolution: {integrity: sha512-hXt6Ul/5yWjfklSGvLQl8vM//l3FtyHZeuelpzK6mm99pNvN9yTDruNZPEJZD1oWrqo+izBmB7oUfWgcCX7s4Q==}
     dev: false
 
   /lodash.sortby/4.7.0:

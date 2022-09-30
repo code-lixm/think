@@ -1,3 +1,4 @@
+import { Spin } from '@douyinfe/semi-ui';
 import { useToggle } from 'hooks/use-toggle';
 import React, { useEffect, useRef } from 'react';
 
@@ -29,5 +30,5 @@ export const LoadingWrap = ({ loading, delay = 200, loadingContent, normalConten
     return showLoading ? <Render fn={loadingContent} /> : null;
   }
 
-  return <Render fn={normalContent} />;
+  return <Render fn={normalContent ?? <></>} />;
 };
