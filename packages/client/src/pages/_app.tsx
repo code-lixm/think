@@ -67,10 +67,10 @@ class MyApp extends App<{ isMobile: boolean }> {
           <meta charSet="utf-8" />
           <meta name="description" content={process.env.SEO_DESCRIPTION} />
           <meta name="keywords" content={process.env.SEO_KEYWORDS}></meta>
-          <meta name="application-name" content={process.env.SEO_APPNAME} />
+          <meta name="application-name" content={process.env.SEO_APP_NAME} />
           <meta name="apple-mobile-web-app-capable" content="yes" />
           <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-          <meta name="apple-mobile-web-app-title" content={process.env.SEO_APPNAME} />
+          <meta name="apple-mobile-web-app-title" content={process.env.SEO_APP_NAME} />
           <meta name="description" content={process.env.SEO_DESCRIPTION} />
           <meta name="format-detection" content="telephone=no" />
           <meta name="mobile-web-app-capable" content="yes" />
@@ -78,9 +78,9 @@ class MyApp extends App<{ isMobile: boolean }> {
           <meta name="msapplication-tap-highlight" content="no" />
           <meta name="theme-color" content="#ffffff" />
           <meta property="og:type" content="website" />
-          <meta property="og:title" content={process.env.SEO_APPNAME} />
+          <meta property="og:title" content={process.env.SEO_APP_NAME} />
           <meta property="og:description" content={process.env.SEO_DESCRIPTION} />
-          <meta property="og:site_name" content={process.env.SEO_APPNAME} />
+          <meta property="og:site_name" content={process.env.SEO_APP_NAME} />
           <link rel="manifest" href="/manifest.json" />
           <link rel="apple-touch-icon" href="/icon192.png" />
           {((process.env.DNS_PREFETCH || []) as string[]).map((url) => (

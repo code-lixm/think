@@ -5,7 +5,7 @@ import styles from './index.module.scss';
 
 const { Text } = Typography;
 
-export const LogoName = process.env.SEO_APPNAME;
+export const LogoName = process.env.SEO_APP_NAME;
 
 export const LogoImage = () => {
   return (
