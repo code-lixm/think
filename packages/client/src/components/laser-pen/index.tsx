@@ -21,15 +21,26 @@ const LaserPen: React.FC<IProps> = ({ isDrawing = false }) => {
       if (!$canvas.current) return;
       setRoundCap(true);
 
-      const ratio = window.devicePixelRatio || 1;
       const element = $canvas.current;
       const ctx = element.getContext('2d');
+
+      const ratio = ((context: any) => {
+        const backingStore =
+          context.backingStorePixelRatio ||
+          context.webkitBackingStorePixelRatio ||
+          context.mozBackingStorePixelRatio ||
+          context.msBackingStorePixelRatio ||
+          context.oBackingStorePixelRatio ||
+          context.backingStorePixelRatio ||
+          1;
+        return (window.devicePixelRatio || 1) / backingStore;
+      })(ctx);
 
       const width = window.innerWidth * ratio + 'px';
       const height = window.innerHeight * ratio + 'px';
 
-      element.setAttribute('width', width.toString());
-      element.setAttribute('height', height.toString());
+      element.setAttribute('width', width);
+      element.setAttribute('height', height);
 
       const elementRect = element.getBoundingClientRect();
       let drawing = false;

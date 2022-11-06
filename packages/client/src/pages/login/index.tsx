@@ -1,18 +1,20 @@
-import { Button, Form, Layout, Typography } from '@douyinfe/semi-ui';
+import { Button, Form, Typography } from '@douyinfe/semi-ui';
 import { useUser } from 'data/user';
 import { useRouterQuery } from 'hooks/use-router-query';
 import { useToggle } from 'hooks/use-toggle';
 import { LoginLayout } from 'layouts/login';
 import Link from 'next/link';
-import React, { useCallback } from 'react';
+import React, { useCallback, useRef } from 'react';
 
 import styles from './index.module.scss';
 
 const { Title, Text } = Typography;
 
 const Page = () => {
-  const { login } = useUser();
+  const formRef = useRef();
   const query = useRouterQuery();
+
+  const { login } = useUser();
   const [loading, toggleLoading] = useToggle(false);
 
   const toLogin = useCallback(
@@ -28,6 +30,12 @@ const Page = () => {
     },
     [login, toggleLoading]
   );
+
+  const onClear = useCallback(() => {
+    if (formRef.current) {
+      (formRef.current as any).formApi.reset();
+    }
+  }, []);
 
   return (
     <LoginLayout title="登录">
@@ -47,7 +55,7 @@ const Page = () => {
           </Link>
         </div>
 
-        <Form className="form" initValues={{ name: '', password: '' }} onSubmit={toLogin}>
+        <Form className="form" initValues={{ name: '', password: '' }} onSubmit={toLogin} ref={formRef}>
           <Form.Input
             noLabel
             field="name"
@@ -56,6 +64,7 @@ const Page = () => {
             placeholder="输入账户名称或邮箱"
             showClear
             rules={[{ required: true, message: '请输入账户或邮箱' }]}
+            onClear={onClear}
           ></Form.Input>
 
           <Form.Input
