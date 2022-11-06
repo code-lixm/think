@@ -22,7 +22,7 @@ export const QuickInsert = Node.create({
       suggestion: {
         char: '/',
         pluginKey: QuickInsertPluginKey,
-        command: ({ editor, range, props }) => {
+        command: ({ editor, range, props, node }) => {
           const { state, dispatch } = editor.view;
           const { $head, $from, $to } = state.selection;
 
@@ -129,7 +129,6 @@ export const QuickInsert = Node.create({
 
         onExit() {
           if (!isEditable) return;
-          popup[0].destroy();
           component.destroy();
         },
       };

@@ -1,6 +1,6 @@
 "use strict";
 exports.__esModule = true;
-exports.EMPTY_DOCUMNENT = exports.DOCUMENT_COVERS = exports.ORGANIZATION_LOGOS = exports.WIKI_AVATARS = exports.DEFAULT_WIKI_AVATAR = void 0;
+exports.EMPTY_DOCUMENT = exports.DOCUMENT_COVERS = exports.ORGANIZATION_LOGOS = exports.WIKI_AVATARS = exports.DEFAULT_WIKI_AVATAR = void 0;
 exports.DEFAULT_WIKI_AVATAR = 'https://wipi.oss-cn-shanghai.aliyuncs.com/2022-07-20/default7-97.png';
 exports.WIKI_AVATARS = [exports.DEFAULT_WIKI_AVATAR];
 exports.ORGANIZATION_LOGOS = [exports.DEFAULT_WIKI_AVATAR];
@@ -12,7 +12,7 @@ exports.DOCUMENT_COVERS = [
     'https://wipi.oss-cn-shanghai.aliyuncs.com/2022-07-20/photo-1547891654-e66ed7ebb968.avif',
     'https://wipi.oss-cn-shanghai.aliyuncs.com/2022-07-20/photo-1629461461750-ef5b81781bc2.avif',
 ];
-exports.EMPTY_DOCUMNENT = {
+exports.EMPTY_DOCUMENT = {
     content: JSON.stringify({
         "default": {
             type: 'doc',

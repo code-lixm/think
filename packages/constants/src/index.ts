@@ -13,7 +13,7 @@ export const DOCUMENT_COVERS = [
   'https://wipi.oss-cn-shanghai.aliyuncs.com/2022-07-20/photo-1629461461750-ef5b81781bc2.avif',
 ];
 
-export const EMPTY_DOCUMNENT = {
+export const EMPTY_DOCUMENT = {
   content: JSON.stringify({
     default: {
       type: 'doc',

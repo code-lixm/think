@@ -5,8 +5,9 @@ import cls from 'classnames';
 import { IconFullscreen } from 'components/icons/IconFullscreen';
 import { IconPencil } from 'components/icons/IconPencil';
 import { safeJSONParse } from 'helpers/json';
-import { useDrawingCursor } from 'hooks/use-cursor';
+// import { useDrawingCursor } from 'hooks/use-cursor';
 import { useToggle } from 'hooks/use-toggle';
+import dynamic from 'next/dynamic';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { FullScreen, useFullScreenHandle } from 'react-full-screen';
 import { CollaborationKit, Document } from 'tiptap/editor';
@@ -14,6 +15,8 @@ import { CollaborationKit, Document } from 'tiptap/editor';
 import styles from './index.module.scss';
 
 const { Title } = Typography;
+
+const LaserPen = dynamic(() => import('components/laser-pen'), { ssr: false });
 
 // 控制器
 const FullscreenController = ({ handle: fullscreenHandler, isDrawing, toggleDrawing }) => {
@@ -57,12 +60,6 @@ const FullscreenController = ({ handle: fullscreenHandler, isDrawing, toggleDraw
   );
 };
 
-// 画笔
-const DrawingCursor = ({ isDrawing }) => {
-  useDrawingCursor(isDrawing);
-  return isDrawing && <div className={cls(styles.drawingCursor, 'drawing-cursor')}></div>;
-};
-
 interface IProps {
   data?: any;
 }
@@ -72,7 +69,7 @@ export const DocumentFullscreen: React.FC<IProps> = ({ data }) => {
   const fullscreenHandler = useFullScreenHandle();
   const [visible, toggleVisible] = useToggle(false);
   const [isDrawing, toggleDrawing] = useToggle(false);
-  const [cover, setCover] = useState('');
+  // const [cover, setCover] = useState('');
 
   const editor = useEditor(
     {
@@ -103,7 +100,7 @@ export const DocumentFullscreen: React.FC<IProps> = ({ data }) => {
     const docJSON = safeJSONParse(data.content, { default: {} }).default;
     const titleNode = docJSON.content.find((item) => item.type === 'title');
     docJSON.content = docJSON.content.filter((item) => item.type !== 'title');
-    setCover(titleNode.attrs.cover ?? '');
+    // setCover(titleNode.attrs.cover ?? '');
     editor.commands.setContent(docJSON);
   }, [editor, data, visible]);
 
@@ -134,17 +131,12 @@ export const DocumentFullscreen: React.FC<IProps> = ({ data }) => {
             </div>
             <div className={cls(styles.content, 'light-scrollbar')}>
               <div className={styles.title}>
-                {cover && (
-                  <div className={styles.imgCover}>
-                    <img src={cover} alt="背景图" />
-                  </div>
-                )}
                 <p>{data.title || '未命名文档'}</p>
               </div>
               <EditorContent editor={editor} />
               <div className="py-[100px]"></div>
             </div>
-            <DrawingCursor isDrawing={isDrawing} />
+            <LaserPen isDrawing={isDrawing} />
             <FullscreenController handle={fullscreenHandler} isDrawing={isDrawing} toggleDrawing={toggleDrawing} />
           </div>
         )}

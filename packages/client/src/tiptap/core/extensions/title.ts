@@ -39,14 +39,14 @@ export const Title = Node.create<TitleOptions>({
     };
   },
 
-  addAttributes() {
-    return {
-      cover: {
-        default: '',
-        parseHTML: getDatasetAttribute('cover'),
-      },
-    };
-  },
+  // addAttributes() {
+  //   return {
+  //     cover: {
+  //       default: '',
+  //       parseHTML: getDatasetAttribute('cover'),
+  //     },
+  //   };
+  // },
 
   parseHTML() {
     return [
@@ -57,16 +57,16 @@ export const Title = Node.create<TitleOptions>({
   },
 
   renderHTML({ HTMLAttributes, node }) {
-    const { cover } = node.attrs;
+    // const { cover } = node.attrs;
     return [
       'h1',
       mergeAttributes(this.options.HTMLAttributes, HTMLAttributes, nodeAttrsToDataset(node)),
-      [
-        'img',
-        {
-          src: cover,
-        },
-      ],
+      // [
+      //   'img',
+      //   {
+      //     src: cover,
+      //   },
+      // ],
       ['div', 0],
     ];
   },
@@ -113,6 +113,7 @@ export const Title = Node.create<TitleOptions>({
             touchstart: closeSelectTitleNode,
           },
           handleKeyDown(view, evt) {
+            console.log('view: ', view);
             const { state, dispatch } = view;
 
             closeSelectTitleNode();
@@ -130,12 +131,13 @@ export const Title = Node.create<TitleOptions>({
               const titleNode = $head.node($head.depth);
               const endPos = ((titleNode.firstChild && titleNode.firstChild.nodeSize) || 0) + 1;
 
-              // const nextNode = getNodeAtPos(state, Math.min(endPos + 2, state.doc.content.size));
-              const nextNode = getNodeAtPos(state, endPos + 2);
+              dispatch(state.tr.insert(endPos, paragraph.create()));
 
-              if (!nextNode) {
-                dispatch(state.tr.insert(endPos, paragraph.create()));
-              }
+              // const nextNode = getNodeAtPos(state, endPos + 2);
+
+              // if (!nextNode) {
+              //   dispatch(state.tr.insert(endPos, paragraph.create()));
+              // }
 
               const newState = view.state;
               const next = new TextSelection(newState.doc.resolve(endPos + 2));
@@ -154,7 +156,8 @@ export const Title = Node.create<TitleOptions>({
           if (shouldSelectTitleNode) {
             const firstNode = newState?.doc?.content?.content?.[0];
             if (firstNode && firstNode.type.name === this.name && firstNode.nodeSize === 2) {
-              const selection = new TextSelection(newState.tr.doc.resolve(firstNode?.attrs?.cover ? 1 : 0));
+              // const selection = new TextSelection(newState.tr.doc.resolve(firstNode?.attrs?.cover ? 1 : 0));
+              const selection = new TextSelection(newState.tr.doc.resolve(0));
               tr.setSelection(selection).scrollIntoView();
               tr.setMeta('addToHistory', false);
               shouldReturnTr = true;

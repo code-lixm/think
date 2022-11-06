@@ -69,9 +69,9 @@ export const COMMANDS: ICommand[] = [
     icon: <IconTable />,
     label: '表格',
     shortcut: '/bg',
-    custom: (editor, runCommand, key = 'table') => (
+    custom: (editor, runCommand, key) => (
       <Popover
-        key={key + 'tooltip-table'}
+        key={key}
         showArrow
         position="rightTop"
         zIndex={10000}
@@ -81,9 +81,9 @@ export const COMMANDS: ICommand[] = [
               onSelect={({ rows, cols }) => {
                 return runCommand({
                   label: '表格',
-                  action: () => {
+                  action: (editor) => {
                     editor.chain().focus().run();
-                    editor.chain().insertTable({ rows, cols, withHeaderRow: true }).focus().run();
+                    editor.chain().focus().insertTable({ rows, cols, withHeaderRow: true }).run();
                   },
                 })();
               }}
@@ -91,7 +91,7 @@ export const COMMANDS: ICommand[] = [
           </div>
         }
       >
-        <Dropdown.Item key={key}>
+        <Dropdown.Item key="table">
           <IconTable />
           表格
         </Dropdown.Item>
@@ -111,9 +111,9 @@ export const COMMANDS: ICommand[] = [
     icon: <IconLayout />,
     label: '布局',
     shortcut: '/bj',
-    custom: (editor, runCommand, key = 'layout') => (
+    custom: (editor, runCommand, key) => (
       <Popover
-        key={key + 'tooltip-layout'}
+        key={key}
         showArrow
         position="rightTop"
         zIndex={10000}
@@ -125,7 +125,8 @@ export const COMMANDS: ICommand[] = [
               onSelect={({ cols }) => {
                 return runCommand({
                   label: '布局',
-                  action: () => {
+                  action: (editor) => {
+                    console.log('editor: ', editor);
                     editor.chain().focus().run();
                     editor.chain().setColumns({ type: 'left-right', columns: cols }).focus().run();
                   },
@@ -135,7 +136,7 @@ export const COMMANDS: ICommand[] = [
           </div>
         }
       >
-        <Dropdown.Item key={key}>
+        <Dropdown.Item key="layout">
           <IconLayout />
           布局
         </Dropdown.Item>

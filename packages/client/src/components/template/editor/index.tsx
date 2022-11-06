@@ -50,7 +50,7 @@ export const TemplateEditor: React.FC<IProps> = ({ templateId }) => {
 
   return (
     <>
-      {data && <Seo title={data.title} />}
+      {data && <Seo title={data.title || '未命名文档'} />}
       <div className={styles.wrap}>
         <header>
           <Nav

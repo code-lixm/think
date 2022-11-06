@@ -14,7 +14,7 @@ import { TemplateService } from '@services/template.service';
 import { UserService } from '@services/user.service';
 import { ViewService } from '@services/view.service';
 import { WikiService } from '@services/wiki.service';
-import { EMPTY_DOCUMNENT } from '@think/constants';
+import { EMPTY_DOCUMENT } from '@think/constants';
 import { AuthEnum, buildMessageURL, DocumentStatus, IUser } from '@think/domains';
 import { instanceToPlain } from 'class-transformer';
 import * as HTMLtoDOCX from 'html-to-docx';
@@ -276,7 +276,7 @@ export class DocumentService {
         )
       : -1;
 
-    let state = EMPTY_DOCUMNENT.state;
+    let state = EMPTY_DOCUMENT.state;
 
     if ('state' in dto) {
       state = Buffer.from(dto.state);
@@ -288,7 +288,7 @@ export class DocumentService {
       isWikiHome,
       title: '未命名文档',
       index: maxIndex + 1,
-      ...EMPTY_DOCUMNENT,
+      ...EMPTY_DOCUMENT,
       ...dto,
       state,
     };

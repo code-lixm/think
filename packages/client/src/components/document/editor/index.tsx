@@ -145,7 +145,7 @@ export const DocumentEditor: React.FC<IProps> = ({ documentId }) => {
           normalContent={() => {
             return (
               <>
-                {document && <Seo title={document.title} />}
+                {document && <Seo title={document.title || '未命名文档'} />}
                 {user && <Editor user={user} documentId={documentId} authority={authority} />}
               </>
             );

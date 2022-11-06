@@ -77,7 +77,7 @@ const DocumentWithTitle = Document.extend({
 
 export { Document };
 
-const placeholders = ['输入 / 唤起更多', '支持 MD 语法', '输入 @ 来提及他人', '输入 : 来插入表情'];
+// const placeholders = ['输入 / 唤起更多', '支持 MD 语法', '输入 @ 来提及他人', '输入 : 来插入表情'];
 
 const getCreateUserId = () => safeJSONParse(window.localStorage.getItem('user')).id;
 
@@ -91,7 +91,8 @@ export const CollaborationKit = [
 
       if (!editor.isEditable) return;
 
-      return placeholders[~~(Math.random() * placeholders.length)];
+      // return placeholders[~~(Math.random() * placeholders.length)];
+      return '输入 / 唤起更多';
     },
     showOnlyCurrent: false,
     showOnlyWhenEditable: false,

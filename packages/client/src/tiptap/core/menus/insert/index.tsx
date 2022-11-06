@@ -3,7 +3,7 @@ import { Button, Dropdown } from '@douyinfe/semi-ui';
 import { Tooltip } from 'components/tooltip';
 import { useUser } from 'data/user';
 import { useToggle } from 'hooks/use-toggle';
-import { unionBy } from 'lodash-es';
+import { xorBy } from 'lodash-es';
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { Editor } from 'tiptap/core';
 import { Title } from 'tiptap/core/extensions/title';
@@ -18,7 +18,7 @@ const _CommandRender = ({ commands, editor, runCommand }) => {
         return command.title ? (
           <Dropdown.Title key={'title' + index}>{command.title}</Dropdown.Title>
         ) : command.custom ? (
-          command.custom(editor, runCommand)
+          command.custom(editor, runCommand, Math.random())
         ) : (
           <Dropdown.Item key={index + '-' + command.label} onClick={runCommand(command)}>
             {command.icon}
@@ -41,10 +41,11 @@ export const Insert: React.FC<{ editor: Editor }> = ({ editor }) => {
   const [visible, toggleVisible] = useToggle(false);
 
   const renderedCommands = useMemo(() => {
-    const list = recentUsed.length ? [{ title: '最近使用' }, ...unionBy(recentUsed, 'label'), ...COMMANDS] : COMMANDS;
-    return list.filter((command) => {
-      return command.label === '表格' || command.label === '布局' ? 'custom' in command : true;
-    });
+    const list = recentUsed.length ? [{ title: '最近使用' }, ...recentUsed, ...COMMANDS] : COMMANDS;
+    // return list.filter((command) => {
+    //   return command.label === '表格' || command.label === '布局' ? 'custom' in command : true;
+    // });
+    return list;
   }, [recentUsed]);
 
   const runCommand = useCallback(

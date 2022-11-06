@@ -61,6 +61,7 @@ export const _TldrawWrapper = ({ editor, node, updateAttributes }) => {
 
   const onMount = useCallback(
     (app: TldrawApp) => {
+      console.log('TldrawApp: ', app);
       tlDrawAppRef.current = app;
       updateDraw();
     },
@@ -81,7 +82,16 @@ export const _TldrawWrapper = ({ editor, node, updateAttributes }) => {
             style={{ ...INHERIT_SIZE_STYLE, overflow: 'hidden' }}
           >
             {loading && <Spin spinning style={INHERIT_SIZE_STYLE}></Spin>}
-            {!loading && visible && <TldrawUI readOnly={true} showUI={false} onMount={onMount} darkMode={darkMode} />}
+            {!loading && visible && (
+              <TldrawUI
+                readOnly
+                disableAssets={false}
+                showPages={false}
+                showUI={false}
+                onMount={onMount}
+                darkMode={darkMode}
+              />
+            )}
 
             <div className={styles.title}>
               <Space>

@@ -78,8 +78,8 @@ export const GridSelect = ({
           <GridCell
             id={x + '-' + y}
             key={x + '-' + y}
-            onClick={() => onClick({ x, y, isCellDisabled })}
-            onMouseEnter={onHover.bind(null, { x, y, isCellDisabled })}
+            onMouseDown={() => onClick({ x, y, isCellDisabled })}
+            onMouseEnter={() => onHover({ x, y, isCellDisabled })}
             active={isActive}
             hover={isHover}
             disabled={isCellDisabled}

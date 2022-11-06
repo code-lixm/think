@@ -3,7 +3,7 @@ export declare const DEFAULT_WIKI_AVATAR = "https://wipi.oss-cn-shanghai.aliyunc
 export declare const WIKI_AVATARS: string[];
 export declare const ORGANIZATION_LOGOS: string[];
 export declare const DOCUMENT_COVERS: string[];
-export declare const EMPTY_DOCUMNENT: {
+export declare const EMPTY_DOCUMENT: {
     content: string;
     state: Buffer;
 };

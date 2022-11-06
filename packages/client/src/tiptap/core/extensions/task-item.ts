@@ -1,11 +1,13 @@
 import { mergeAttributes, Node, wrappingInputRule } from '@tiptap/core';
+import { Node as ProseMirrorNode } from 'prosemirror-model';
 
 export interface TaskItemOptions {
+  onReadOnlyChecked?: (node: ProseMirrorNode, checked: boolean) => boolean;
   nested: boolean;
   HTMLAttributes: Record<string, any>;
 }
 
-export const inputRegex = /^\s*(\[([ |x])\])\s$/;
+export const inputRegex = /^\s*(\[([( |x])?\])\s$/;
 
 export const TaskItem = Node.create<TaskItemOptions>({
   name: 'taskItem',
@@ -39,7 +41,7 @@ export const TaskItem = Node.create<TaskItemOptions>({
   parseHTML() {
     return [
       {
-        tag: `li.task-list-item`,
+        tag: `li[data-type="${this.name}"]`,
         priority: 51,
       },
     ];
@@ -48,7 +50,9 @@ export const TaskItem = Node.create<TaskItemOptions>({
   renderHTML({ node, HTMLAttributes }) {
     return [
       'li',
-      mergeAttributes(this.options.HTMLAttributes, HTMLAttributes, { 'data-type': this.name }),
+      mergeAttributes(this.options.HTMLAttributes, HTMLAttributes, {
+        'data-type': this.name,
+      }),
       [
         'label',
         [
@@ -91,17 +95,17 @@ export const TaskItem = Node.create<TaskItemOptions>({
       checkboxWrapper.contentEditable = 'false';
       checkbox.type = 'checkbox';
       checkbox.addEventListener('change', (event) => {
-        // if the editor isn’t editable
-        // we have to undo the latest change
-        // if (!editor.isEditable) {
-        //   checkbox.checked = !checkbox.checked;
+        // if the editor isn’t editable and we don't have a handler for
+        // readonly checks we have to undo the latest change
+        if (!editor.isEditable && !this.options.onReadOnlyChecked) {
+          checkbox.checked = !checkbox.checked;
 
-        //   return;
-        // }
+          return;
+        }
 
         const { checked } = event.target as any;
 
-        if (typeof getPos === 'function') {
+        if (editor.isEditable && typeof getPos === 'function') {
           editor
             .chain()
             .focus(undefined, { scrollIntoView: false })
@@ -117,6 +121,12 @@ export const TaskItem = Node.create<TaskItemOptions>({
               return true;
             })
             .run();
+        }
+        if (!editor.isEditable && this.options.onReadOnlyChecked) {
+          // Reset state if onReadOnlyChecked returns false
+          if (!this.options.onReadOnlyChecked(node, checked)) {
+            checkbox.checked = !checkbox.checked;
+          }
         }
       });
 
@@ -164,13 +174,6 @@ export const TaskItem = Node.create<TaskItemOptions>({
         type: this.type,
         getAttributes: (match) => ({
           checked: match[match.length - 1] === 'x',
-        }),
-      }),
-      wrappingInputRule({
-        find: /^\s*([-+*])\s(\[(x|X| ?)\])\s$/,
-        type: this.type,
-        getAttributes: (match) => ({
-          checked: 'xX'.includes(match[match.length - 1]),
         }),
       }),
     ];
