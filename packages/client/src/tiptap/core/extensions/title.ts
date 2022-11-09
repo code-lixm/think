@@ -113,7 +113,6 @@ export const Title = Node.create<TitleOptions>({
             touchstart: closeSelectTitleNode,
           },
           handleKeyDown(view, evt) {
-            console.log('view: ', view);
             const { state, dispatch } = view;
 
             closeSelectTitleNode();

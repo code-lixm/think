@@ -1,4 +1,4 @@
-import { IconArticle, IconBranch, IconExport, IconHistory, IconMore, IconPlus, IconStar } from '@douyinfe/semi-icons';
+import { IconBranch, IconExport, IconHistory, IconMore, IconPlus, IconStar } from '@douyinfe/semi-icons';
 import { Button, Dropdown, Space, Tooltip, Typography } from '@douyinfe/semi-ui';
 import { ButtonProps } from '@douyinfe/semi-ui/button/Button';
 import { IDocument, IOrganization, IWiki } from '@think/domains';

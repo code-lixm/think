@@ -29,7 +29,7 @@ export const Author: React.FC<IProps> = ({ document }) => {
             {document && document.createUser && document.createUser.name}
             {' ⦁ '}
             <LocaleTime date={document && document.updatedAt} />
-            更新
+            <span> 更新</span>
           </p>
           {/* <p style={{ margin: '8px 0 0' }}>
             最近更新日期：
