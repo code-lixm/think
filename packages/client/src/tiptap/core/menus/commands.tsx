@@ -128,7 +128,7 @@ export const COMMANDS: ICommand[] = [
                   action: (editor) => {
                     console.log('editor: ', editor);
                     editor.chain().focus().run();
-                    editor.chain().setColumns({ type: 'left-right', columns: cols }).focus().run();
+                    editor.chain().insertColumns({ cols }).focus().run();
                   },
                 })();
               }}
@@ -241,7 +241,7 @@ export const COMMANDS: ICommand[] = [
   },
 ];
 
-export const QUICK_INSERT_COMMANDS: ICommand[] = [
+export const QUICK_INSERT_COMMANDS: any[] = [
   ...COMMANDS.slice(0, 1),
   {
     icon: <IconTable />,
@@ -253,8 +253,7 @@ export const QUICK_INSERT_COMMANDS: ICommand[] = [
     isBlock: true,
     icon: <IconLayout />,
     label: '布局',
-    shortcut: '/bj',
-    action: (editor) => editor.chain().focus().setColumns({ type: 'left-right', columns: 2 }).run(),
+    action: (editor) => editor.chain().focus().insertColumns({ cols: 2 }).run(),
   },
   ...COMMANDS.slice(4),
 ];

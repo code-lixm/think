@@ -1,27 +1,22 @@
+import { IconDelete } from '@douyinfe/semi-icons';
 import { Button, Space, Tooltip } from '@douyinfe/semi-ui';
 import { Divider } from 'components/divider';
+import { IconAddColAfter, IconAddColBefore, IconDeleteCol } from 'components/icons';
 import { IconDuplicate } from 'components/icons/IconDuplicate';
 import { IconTrash } from 'components/icons/IconTrash';
 import { useCallback } from 'react';
 import { BubbleMenu } from 'tiptap/core/bubble-menu';
-import { Columns, IColumnsAttrs } from 'tiptap/core/extensions/columns';
-import { useAttributes } from 'tiptap/core/hooks/use-attributes';
-import { copyNode, deleteNode, getEditorContainerDOMSize } from 'tiptap/prose-utils';
+import { Columns } from 'tiptap/core/extensions/columns';
+import { copyNode, deleteNode } from 'tiptap/prose-utils';
 
 export const ColumnsBubbleMenu = ({ editor }) => {
-  const attrs = useAttributes<IColumnsAttrs>(editor, Columns.name, {
-    type: 'left-right',
-    columns: 2,
-  });
-  const { type, columns } = attrs;
-
   const getRenderContainer = useCallback((node) => {
     let container = node;
     if (!container.tag) {
       container = node.parentElement;
     }
 
-    while (container && container.classList && !container.classList.contains('node-columns')) {
+    while (container && container.classList && !container.classList.contains('columns')) {
       container = container.parentElement;
     }
 
@@ -31,6 +26,9 @@ export const ColumnsBubbleMenu = ({ editor }) => {
   const shouldShow = useCallback(() => editor.isActive(Columns.name), [editor]);
   const copyMe = useCallback(() => copyNode(Columns.name, editor), [editor]);
   const deleteMe = useCallback(() => deleteNode(Columns.name, editor), [editor]);
+  const addColBefore = useCallback(() => editor.chain().focus().addColBefore().run(), [editor]);
+  const addColAfter = useCallback(() => editor.chain().focus().addColAfter().run(), [editor]);
+  const deleteCol = useCallback(() => editor.chain().focus().deleteCol().run(), [editor]);
 
   return (
     <BubbleMenu
@@ -50,6 +48,24 @@ export const ColumnsBubbleMenu = ({ editor }) => {
 
         <Tooltip content="删除">
           <Button onClick={deleteMe} icon={<IconTrash />} type="tertiary" theme="borderless" size="small" />
+        </Tooltip>
+
+        <Tooltip content="向前插入一列">
+          <Button onClick={addColBefore} icon={<IconAddColBefore />} size="small" type="tertiary" theme="borderless" />
+        </Tooltip>
+
+        <Tooltip content="向后插入一列">
+          <Button onClick={addColAfter} icon={<IconAddColAfter />} size="small" type="tertiary" theme="borderless" />
+        </Tooltip>
+
+        <Tooltip content="删除当前列">
+          <Button onClick={deleteCol} icon={<IconDeleteCol />} size="small" type="tertiary" theme="borderless" />
+        </Tooltip>
+
+        <Divider />
+
+        <Tooltip content="删除">
+          <Button size="small" type="tertiary" theme="borderless" icon={<IconDelete />} onClick={deleteMe} />
         </Tooltip>
       </Space>
     </BubbleMenu>

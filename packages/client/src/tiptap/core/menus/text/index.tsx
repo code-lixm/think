@@ -32,7 +32,6 @@ import { Underline } from '../underline';
 
 const OTHER_BUBBLE_MENU_TYPES = [
   Title.name,
-  Link.name,
   Attachment.name,
   Countdown.name,
   Image.name,
@@ -53,7 +52,14 @@ const OTHER_BUBBLE_MENU_TYPES = [
 
 export const Text = ({ editor }) => {
   const shouldShow = useCallback(() => {
-    return !editor.state.selection.empty && OTHER_BUBBLE_MENU_TYPES.every((type) => !editor.isActive(type));
+    if (editor.state.selection.empty) return false;
+    if (OTHER_BUBBLE_MENU_TYPES.some((type) => editor.isActive(type))) return false;
+
+    const selection = editor.state.selection;
+    const slice = selection.content();
+    const text = slice.content.textBetween(0, slice.content.size);
+
+    return text && text.length;
   }, [editor]);
 
   return (
@@ -63,6 +69,7 @@ export const Text = ({ editor }) => {
       pluginKey="text-bubble-menu"
       shouldShow={shouldShow}
       tippyOptions={{ maxWidth: 'calc(100vw - 100px)' }}
+      defaultAnimation={false}
     >
       <Space spacing={4}>
         <Bold editor={editor} />
