@@ -308,6 +308,7 @@ define(function (require, exports, module) {
             dy = e.wheelDelta;
           }
 
+          // 允许移动
           // this._viewDragger.move({
           //   x: dx / 2.5,
           //   y: dy / 2.5,

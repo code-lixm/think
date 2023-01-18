@@ -32,6 +32,7 @@ type IBaseCommand = {
   isBlock?: boolean;
   icon: React.ReactNode;
   label: string;
+  pinyin: string;
   user?: IUser;
   shortcut: string;
 };
@@ -62,6 +63,7 @@ export const COMMANDS: ICommand[] = [
     icon: <IconTableOfContents />,
     label: '目录',
     shortcut: '/ml',
+    pinyin: 'mulu',
     action: (editor) => editor.chain().focus().setTableOfContents().run(),
   },
   {
@@ -69,6 +71,7 @@ export const COMMANDS: ICommand[] = [
     icon: <IconTable />,
     label: '表格',
     shortcut: '/bg',
+    pinyin: 'biaoge',
     custom: (editor, runCommand, key) => (
       <Popover
         key={key}
@@ -103,6 +106,7 @@ export const COMMANDS: ICommand[] = [
     icon: <IconLink />,
     label: '外链',
     shortcut: '/wl',
+    pinyin: 'wailian',
     action: (editor, user) =>
       editor.chain().focus().setIframe({ url: '', defaultShowPicker: true, createUser: user.id }).run(),
   },
@@ -110,6 +114,7 @@ export const COMMANDS: ICommand[] = [
     isBlock: true,
     icon: <IconLayout />,
     label: '布局',
+    pinyin: 'buju',
     shortcut: '/bj',
     custom: (editor, runCommand, key) => (
       <Popover
@@ -148,6 +153,7 @@ export const COMMANDS: ICommand[] = [
     icon: <IconCodeBlock />,
     label: '代码块',
     shortcut: '/dmk',
+    pinyin: 'daimakuai',
     action: (editor) => editor.chain().focus().toggleCodeBlock().run(),
   },
   {
@@ -155,6 +161,7 @@ export const COMMANDS: ICommand[] = [
     icon: <IconImage />,
     label: '图片',
     shortcut: '/tp',
+    pinyin: 'tupian',
     action: (editor) => editor.chain().focus().setEmptyImage({ width: '100%' }).run(),
   },
   {
@@ -162,6 +169,7 @@ export const COMMANDS: ICommand[] = [
     icon: <IconAttachment />,
     label: '附件',
     shortcut: '/fj',
+    pinyin: 'fujian',
     action: (editor) => editor.chain().focus().setAttachment().run(),
   },
   {
@@ -169,14 +177,16 @@ export const COMMANDS: ICommand[] = [
     icon: <IconCountdown />,
     label: '倒计时',
     shortcut: '/djs',
+    pinyin: 'daojishi',
     action: (editor) => createCountdown(editor),
   },
   {
-    isBlock: true,
-    icon: <IconCodeBlock />,
-    label: '代码块',
-    shortcut: '/dmk',
-    action: (editor) => editor.chain().focus().toggleCodeBlock().run(),
+    shortcut: '/wl',
+    icon: <IconLink />,
+    label: '外链',
+    pinyin: 'wailian',
+    action: (editor, user) =>
+      editor.chain().focus().setIframe({ url: '', defaultShowPicker: true, createUser: user.id }).run(),
   },
   {
     title: '卡片',
@@ -186,6 +196,7 @@ export const COMMANDS: ICommand[] = [
     icon: <IconStatus />,
     label: '状态',
     shortcut: '/zt',
+    pinyin: 'zhuangtai',
     action: (editor, user) => editor.chain().focus().setStatus({ defaultShowPicker: true, createUser: user.id }).run(),
   },
   {
@@ -193,6 +204,7 @@ export const COMMANDS: ICommand[] = [
     icon: <IconDrawPanel />,
     label: '画板',
     shortcut: '/hb',
+    pinyin: 'huaban',
     action: (editor, user) => {
       editor.chain().focus().setTldraw({ width: '100%', defaultShowPicker: true, createUser: user.id }).run();
     },
@@ -202,6 +214,7 @@ export const COMMANDS: ICommand[] = [
     icon: <IconCallout />,
     label: '高亮块',
     shortcut: '/glk',
+    pinyin: 'gaoliangkuai',
     action: (editor) => editor.chain().focus().setCallout().run(),
   },
   {
@@ -209,6 +222,7 @@ export const COMMANDS: ICommand[] = [
     icon: <IconMind />,
     label: '思维导图',
     shortcut: '/swdt',
+    pinyin: 'siweidaotu',
     action: (editor, user) => {
       editor.chain().focus().setMind({ width: '100%', defaultShowPicker: true, createUser: user.id }).run();
     },
@@ -217,7 +231,8 @@ export const COMMANDS: ICommand[] = [
     isBlock: true,
     icon: <IconMath />,
     label: '数学公式',
-    shortcut: '/sxgs',
+    shortcut: 'sxgs',
+    pinyin: 'shuxuegongshi',
     action: (editor, user) => editor.chain().focus().setKatex({ defaultShowPicker: true, createUser: user.id }).run(),
   },
   {
@@ -229,6 +244,7 @@ export const COMMANDS: ICommand[] = [
     icon: <IconDocument />,
     label: '文档',
     shortcut: '/wd',
+    pinyin: 'wendang',
     action: (editor, user) =>
       editor.chain().focus().setDocumentReference({ defaultShowPicker: true, createUser: user.id }).run(),
   },
@@ -237,6 +253,7 @@ export const COMMANDS: ICommand[] = [
     icon: <IconDocument />,
     label: '子文档',
     shortcut: '/zwd',
+    pinyin: 'ziwendang',
     action: (editor) => editor.chain().focus().setDocumentChildren().run(),
   },
 ];
@@ -247,12 +264,14 @@ export const QUICK_INSERT_COMMANDS: any[] = [
     icon: <IconTable />,
     label: '表格',
     shortcut: '/bg',
+    pinyin: 'biaoge',
     action: (editor: Editor) => editor.chain().focus().insertTable({ rows: 3, cols: 3, withHeaderRow: true }).run(),
   },
   {
     isBlock: true,
     icon: <IconLayout />,
     label: '布局',
+    pinyin: 'buju',
     action: (editor) => editor.chain().focus().insertColumns({ cols: 2 }).run(),
   },
   ...COMMANDS.slice(4),

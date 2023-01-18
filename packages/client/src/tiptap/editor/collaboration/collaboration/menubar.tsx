@@ -17,6 +17,7 @@ import { Countdown } from 'tiptap/core/menus/countdown';
 import { DocumentChildren } from 'tiptap/core/menus/document-children';
 import { DocumentReference } from 'tiptap/core/menus/document-reference';
 import { Emoji } from 'tiptap/core/menus/emoji';
+import { FontFamily } from 'tiptap/core/menus/fontfamily';
 import { FontSize } from 'tiptap/core/menus/fontsize';
 import { Heading } from 'tiptap/core/menus/heading';
 import { HorizontalRule } from 'tiptap/core/menus/horizontal-rule';
@@ -67,6 +68,7 @@ const _MenuBar: React.FC<{ editor: Editor }> = ({ editor }) => {
         <Divider />
 
         <Heading editor={editor} />
+        <FontFamily editor={editor} />
         <FontSize editor={editor} />
         <Bold editor={editor} />
         <Italic editor={editor} />

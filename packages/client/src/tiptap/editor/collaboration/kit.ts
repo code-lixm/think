@@ -24,6 +24,7 @@ import { Dropcursor } from 'tiptap/core/extensions/dropcursor';
 import { Emoji } from 'tiptap/core/extensions/emoji';
 import { EventEmitter } from 'tiptap/core/extensions/event-emitter';
 import { Focus } from 'tiptap/core/extensions/focus';
+import { FontFamily } from 'tiptap/core/extensions/font-family';
 import { FontSize } from 'tiptap/core/extensions/font-size';
 import { Gapcursor } from 'tiptap/core/extensions/gapcursor';
 import { HardBreak } from 'tiptap/core/extensions/hard-break';
@@ -44,9 +45,9 @@ import { OrderedList } from 'tiptap/core/extensions/ordered-list';
 import { Paragraph } from 'tiptap/core/extensions/paragraph';
 import { Paste } from 'tiptap/core/extensions/paste';
 import { Placeholder } from 'tiptap/core/extensions/placeholder';
-import { QuickInsert } from 'tiptap/core/extensions/quick-insert';
+import { Scroll2Cursor } from 'tiptap/core/extensions/scroll-to-cursor';
 import { SearchNReplace } from 'tiptap/core/extensions/search';
-import { SelectionExtension } from 'tiptap/core/extensions/selection';
+import { EnSlashExtension, ZhSlashExtension } from 'tiptap/core/extensions/slash';
 import { Status } from 'tiptap/core/extensions/status';
 import { Strike } from 'tiptap/core/extensions/strike';
 import { Subscript } from 'tiptap/core/extensions/subscript';
@@ -118,6 +119,7 @@ export const CollaborationKit = [
   Tldraw,
   EventEmitter,
   Focus,
+  FontFamily,
   FontSize,
   Gapcursor,
   HardBreak,
@@ -131,7 +133,6 @@ export const CollaborationKit = [
   ListItem,
   Loading,
   OrderedList,
-  // SelectionExtension,
   Strike,
   Subscript,
   Superscript,
@@ -166,7 +167,8 @@ export const CollaborationKit = [
   Mind.configure({
     getCreateUserId,
   }),
-  QuickInsert,
+  EnSlashExtension,
+  ZhSlashExtension,
   SearchNReplace,
   Status,
   TableOfContents.configure({
@@ -177,4 +179,5 @@ export const CollaborationKit = [
   Title,
   DocumentWithTitle,
   // Draggable,
+  Scroll2Cursor,
 ];

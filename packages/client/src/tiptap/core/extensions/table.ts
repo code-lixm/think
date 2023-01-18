@@ -1,5 +1,7 @@
 import BuiltInTable from '@tiptap/extension-table';
 import { Node as ProseMirrorNode } from 'prosemirror-model';
+import { Plugin, PluginKey } from 'prosemirror-state';
+import { tableNodeTypes } from 'prosemirror-tables';
 import { NodeView } from 'prosemirror-view';
 
 function updateColumns(
@@ -105,6 +107,26 @@ class TableView implements NodeView {
   }
 }
 
+export function readonlyTableView({ cellMinWidth = 25, View = TableView } = {}) {
+  const plugin = new Plugin({
+    key: new PluginKey('readonlyTableView'),
+    state: {
+      init(_, state) {
+        this.spec.props.nodeViews[tableNodeTypes(state.schema).table.name] = (node, view) =>
+          new View(node, cellMinWidth);
+        return {};
+      },
+      apply(tr, prev) {
+        return prev;
+      },
+    },
+    props: {
+      nodeViews: {},
+    },
+  });
+  return plugin;
+}
+
 export const Table = BuiltInTable.extend({
   // @ts-ignore
   addOptions() {
@@ -117,5 +139,13 @@ export const Table = BuiltInTable.extend({
       lastColumnResizable: true,
       allowTableNodeSelection: false,
     };
+  },
+
+  addProseMirrorPlugins() {
+    // @ts-ignore
+    const isPrint = this.editor?.options?.editorProps?.print;
+    const isEditable = this.editor?.isEditable;
+
+    return [...this.parent(), !isPrint && !isEditable && readonlyTableView()].filter(Boolean);
   },
 }).configure({ resizable: true });

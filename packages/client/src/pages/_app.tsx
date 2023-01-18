@@ -4,6 +4,7 @@ import 'styles/globals.scss';
 import 'tiptap/core/styles/index.scss';
 import '@react-pdf-viewer/core/lib/styles/index.css';
 import '@react-pdf-viewer/default-layout/lib/styles/index.css';
+import 'thirtypart/array-prototype-at';
 
 import { Worker } from '@react-pdf-viewer/core';
 import { isMobile } from 'helpers/env';
@@ -87,7 +88,7 @@ class MyApp extends App<{ isMobile: boolean }> {
             <link key={url} rel="dns-prefetch" href={url} />
           ))}
         </Head>
-        <Worker workerUrl="https://unpkg.com/pdfjs-dist@2.15.349/build/pdf.worker.js">
+        <Worker workerUrl="https://unpkg.com/pdfjs-dist@3.1.81/build/pdf.worker.js">
           <QueryClientProvider client={queryClient}>
             <Hydrate state={pageProps.dehydratedState}>
               <Theme.Provider>

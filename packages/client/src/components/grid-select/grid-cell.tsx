@@ -1,7 +1,6 @@
 import React, { MouseEventHandler } from 'react';
 
 type CellProperties = {
-  active: boolean;
   hover: boolean;
   disabled: boolean;
   cellSize: number;
@@ -38,16 +37,7 @@ const getMergedStyle = (baseStyles, styles, styleClass) => ({
   ...(styles && styles[styleClass] ? styles[styleClass] : {}),
 });
 
-export const GridCell = ({
-  active,
-  hover,
-  disabled,
-  onMouseDown,
-  onMouseEnter,
-  cellSize,
-  styles,
-  id,
-}: CellProperties) => {
+export const GridCell = ({ hover, disabled, onMouseDown, onMouseEnter, cellSize, styles, id }: CellProperties) => {
   const baseStyles = getBaseStyles(cellSize);
   const cellStyles = {
     cell: getMergedStyle(baseStyles, styles, 'cell'),
@@ -61,9 +51,8 @@ export const GridCell = ({
       id={id}
       style={{
         ...cellStyles.cell,
-        ...(active && cellStyles.active),
         ...(hover && cellStyles.hover),
-        ...(!active && disabled && cellStyles.disabled),
+        ...(disabled && cellStyles.disabled),
       }}
       onMouseDown={onMouseDown}
       onMouseEnter={onMouseEnter}
